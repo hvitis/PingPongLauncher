@@ -1,0 +1,124 @@
+[
+  {
+    "file": "fqj详细/6cea18466d4672c141360f91df2b0eee.mp4",
+    "bytes": 1721797,
+    "sha256": "400cc40a6e8c1463eaa8dcb4d7de0731a73a843fc0cae4681f321f91bb35b655",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/demonstration.mp4"
+    ],
+    "transformation": "English filename; bytes unchanged. Visual-description captions added separately; audio not transcribed."
+  },
+  {
+    "file": "fqj详细/Snipaste_2025-12-18_15-52-42.png",
+    "bytes": 385658,
+    "sha256": "e76c93d73f04ecfc3910df45cc541d6c6439944ebe8a8cc85049a3755a4e9804",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/cad-reference.png"
+    ],
+    "transformation": "English filename; bytes unchanged."
+  },
+  {
+    "file": "fqj详细/bbffe64718b3a671384e6189360d378d.jpg",
+    "bytes": 822262,
+    "sha256": "52c127baee655b415d06e6df06052a9b50b5e20171a55393613ffc37c8f2981f",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/controller.webp"
+    ],
+    "transformation": "English filename; optimized WebP derivative, maximum 1600 pixels, quality 83. Original JPEG removed."
+  },
+  {
+    "file": "fqj详细/d9049c5d85e714e573bba65672516036.jpg",
+    "bytes": 228725,
+    "sha256": "53de35888c0629f87cf0ce28f14e3c1c009108c06115c57fc25ce0e8128403cb",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/feed-motor.webp"
+    ],
+    "transformation": "English filename; optimized WebP derivative, maximum 1600 pixels, quality 83. Original JPEG removed."
+  },
+  {
+    "file": "fqj详细/e3411b99ea34f2d93a98d1bd1b25c63b.jpg",
+    "bytes": 235529,
+    "sha256": "04e98cb6ce670fadb98c222aaf38cf727b5c763cafdbf16389abff8d85dc599f",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/stopper.webp"
+    ],
+    "transformation": "English filename; optimized WebP derivative, maximum 1600 pixels, quality 83. Original JPEG removed."
+  },
+  {
+    "file": "fqj详细/e6fa87b92f54e296261e851eaacab819.jpg",
+    "bytes": 188744,
+    "sha256": "71d9b4aeec8425891ce440b3a82ea71a013e8a1f92e08b90cf95be5a7dbceebb",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/wheels.webp"
+    ],
+    "transformation": "English filename; optimized WebP derivative, maximum 1600 pixels, quality 83. Original JPEG removed."
+  },
+  {
+    "file": "fqj详细/fc2bf2426c2015c644c9d6a33f29501d.jpg",
+    "bytes": 3579310,
+    "sha256": "890af336ddfa0d953447d50d41fe194a15bdebc78e41d2b71a43131d6180a486",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/assets/photos/prototype.webp"
+    ],
+    "transformation": "English filename; optimized WebP derivative, maximum 1600 pixels, quality 83. Original JPEG removed."
+  },
+  {
+    "file": "fqj详细/元件.xls",
+    "bytes": 32256,
+    "sha256": "d5a007c0a904b8f2da61cce83835ffd497f6f6aebf177bd206bf162a2a1c893d",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/data/source-bom.json",
+      "docs/hardware-bom.md",
+      "docs/downloads/hardware-bom.csv"
+    ],
+    "transformation": "All nonempty source rows extracted; technical content translated."
+  },
+  {
+    "file": "fqj详细/啊啊啊啊啊.STEP",
+    "bytes": 9013307,
+    "sha256": "c6180dceec651a281ec5986abe437c96af61ba69167bca40ed08de178804c618",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/downloads/launcher-assembly.step"
+    ],
+    "transformation": "English filename; bytes unchanged. Duplicate source copies share this retained file."
+  },
+  {
+    "file": "fqj详细/新建 DOCX 文档.docx",
+    "bytes": 2570440,
+    "sha256": "8e670430fa1a1dd537cc867fe4088bc6b38f2d5a87480f11d15f1271ace342fb",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/translation.md"
+    ],
+    "transformation": "Technical annotations transcribed and translated. Application UI excluded."
+  },
+  {
+    "file": "fqj详细/零件2^测试装配体2.3mf",
+    "bytes": 20759524,
+    "sha256": "b3b5391af6655e0d5816f00f45f09dd98acc3776bc1fd86cc3e3e16de3db4814",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/downloads/launcher-english.3mf"
+    ],
+    "transformation": "English object display names and normalized source-file metadata; other ZIP entries unchanged."
+  },
+  {
+    "file": "啊啊啊啊啊.STEP",
+    "bytes": 9013307,
+    "sha256": "c6180dceec651a281ec5986abe437c96af61ba69167bca40ed08de178804c618",
+    "status": "Original input removed after derivative verification, at user request.",
+    "retainedAs": [
+      "docs/downloads/launcher-assembly.step"
+    ],
+    "transformation": "English filename; bytes unchanged. Duplicate source copies share this retained file."
+  }
+]

@@ -1,0 +1,556 @@
+{
+  "plates": [
+    {
+      "plate": 1,
+      "objects": [
+        2
+      ],
+      "names": [
+        "Hopper"
+      ]
+    },
+    {
+      "plate": 2,
+      "objects": [
+        54
+      ],
+      "names": [
+        "Base enclosure"
+      ]
+    },
+    {
+      "plate": 3,
+      "objects": [
+        52
+      ],
+      "names": [
+        "Base lid"
+      ]
+    },
+    {
+      "plate": 4,
+      "objects": [
+        18,
+        26,
+        36,
+        42,
+        44,
+        46,
+        56
+      ],
+      "names": [
+        "Launch wheel A",
+        "Launch wheel B",
+        "Motor mount 1A",
+        "Motor mount 1B",
+        "Motor mount 2A",
+        "Motor mount 2B",
+        "Outlet tube - revision pending"
+      ]
+    },
+    {
+      "plate": 5,
+      "objects": [
+        22,
+        30,
+        34,
+        38,
+        40
+      ],
+      "names": [
+        "Rear cover",
+        "Feed motor mount",
+        "Rear support",
+        "Tilt linkage A",
+        "Tilt linkage B"
+      ]
+    },
+    {
+      "plate": 6,
+      "objects": [
+        48
+      ],
+      "names": [
+        "Main body half A"
+      ]
+    },
+    {
+      "plate": 7,
+      "objects": [
+        50
+      ],
+      "names": [
+        "Main body half B"
+      ]
+    },
+    {
+      "plate": 8,
+      "objects": [
+        6,
+        10,
+        12,
+        16,
+        20,
+        24,
+        28,
+        32
+      ],
+      "names": [
+        "Wheel flange A",
+        "Wheel flange B",
+        "Bevel gear",
+        "Bevel pinion",
+        "Captive nut knob A",
+        "Captive nut knob B",
+        "Printed knob A",
+        "Printed knob B"
+      ]
+    },
+    {
+      "plate": 9,
+      "objects": [
+        4
+      ],
+      "names": [
+        "Feed screw"
+      ]
+    },
+    {
+      "plate": 10,
+      "objects": [
+        8,
+        14
+      ],
+      "names": [
+        "Launch support A",
+        "Launch support B"
+      ]
+    }
+  ],
+  "objects": [
+    {
+      "id": 2,
+      "name": "Hopper",
+      "plate": 1,
+      "triangles": 264770,
+      "sizeMm": [
+        130.0,
+        175.0,
+        72.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-01/02-hopper.stl"
+    },
+    {
+      "id": 4,
+      "name": "Feed screw",
+      "plate": 9,
+      "triangles": 252808,
+      "sizeMm": [
+        40.0,
+        40.0,
+        114.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-09/04-feed-screw.stl"
+    },
+    {
+      "id": 6,
+      "name": "Wheel flange A",
+      "plate": 8,
+      "triangles": 3030,
+      "sizeMm": [
+        22.0,
+        21.894,
+        18.037
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/06-wheel-flange-a.stl"
+    },
+    {
+      "id": 8,
+      "name": "Launch support A",
+      "plate": 10,
+      "triangles": 13942,
+      "sizeMm": [
+        72.715,
+        122.194,
+        33.003
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-10/08-launch-support-a.stl"
+    },
+    {
+      "id": 10,
+      "name": "Wheel flange B",
+      "plate": 8,
+      "triangles": 3030,
+      "sizeMm": [
+        22.0,
+        22.001,
+        14.855
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/10-wheel-flange-b.stl"
+    },
+    {
+      "id": 12,
+      "name": "Bevel gear",
+      "plate": 8,
+      "triangles": 98950,
+      "sizeMm": [
+        15.95,
+        16.02,
+        13.128
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/12-bevel-gear.stl"
+    },
+    {
+      "id": 14,
+      "name": "Launch support B",
+      "plate": 10,
+      "triangles": 13942,
+      "sizeMm": [
+        72.713,
+        122.197,
+        33.021
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-10/14-launch-support-b.stl"
+    },
+    {
+      "id": 16,
+      "name": "Bevel pinion",
+      "plate": 8,
+      "triangles": 97662,
+      "sizeMm": [
+        15.96,
+        16.019,
+        13.128
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/16-bevel-pinion.stl"
+    },
+    {
+      "id": 18,
+      "name": "Launch wheel A",
+      "plate": 4,
+      "triangles": 131792,
+      "sizeMm": [
+        57.715,
+        57.708,
+        20.019
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/18-launch-wheel-a.stl"
+    },
+    {
+      "id": 20,
+      "name": "Captive nut knob A",
+      "plate": 8,
+      "triangles": 1240,
+      "sizeMm": [
+        8.998,
+        9.0,
+        8.5
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/20-captive-nut-knob-a.stl"
+    },
+    {
+      "id": 22,
+      "name": "Rear cover",
+      "plate": 5,
+      "triangles": 55660,
+      "sizeMm": [
+        75.87,
+        76.0,
+        15.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-05/22-rear-cover.stl"
+    },
+    {
+      "id": 24,
+      "name": "Captive nut knob B",
+      "plate": 8,
+      "triangles": 1240,
+      "sizeMm": [
+        8.997,
+        9.0,
+        8.5
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/24-captive-nut-knob-b.stl"
+    },
+    {
+      "id": 26,
+      "name": "Launch wheel B",
+      "plate": 4,
+      "triangles": 131792,
+      "sizeMm": [
+        57.708,
+        57.708,
+        20.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/26-launch-wheel-b.stl"
+    },
+    {
+      "id": 28,
+      "name": "Printed knob A",
+      "plate": 8,
+      "triangles": 1616,
+      "sizeMm": [
+        8.999,
+        9.0,
+        8.5
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/28-printed-knob-a.stl"
+    },
+    {
+      "id": 30,
+      "name": "Feed motor mount",
+      "plate": 5,
+      "triangles": 5018,
+      "sizeMm": [
+        42.0,
+        40.0,
+        28.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-05/30-feed-motor-mount.stl"
+    },
+    {
+      "id": 32,
+      "name": "Printed knob B",
+      "plate": 8,
+      "triangles": 1616,
+      "sizeMm": [
+        8.999,
+        8.999,
+        8.5
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-08/32-printed-knob-b.stl"
+    },
+    {
+      "id": 34,
+      "name": "Rear support",
+      "plate": 5,
+      "triangles": 30066,
+      "sizeMm": [
+        24.0,
+        76.0,
+        30.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-05/34-rear-support.stl"
+    },
+    {
+      "id": 36,
+      "name": "Motor mount 1A",
+      "plate": 4,
+      "triangles": 6192,
+      "sizeMm": [
+        45.163,
+        49.143,
+        55.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/36-motor-mount-1a.stl"
+    },
+    {
+      "id": 38,
+      "name": "Tilt linkage A",
+      "plate": 5,
+      "triangles": 3204,
+      "sizeMm": [
+        23.999,
+        64.5,
+        16.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-05/38-tilt-linkage-a.stl"
+    },
+    {
+      "id": 40,
+      "name": "Tilt linkage B",
+      "plate": 5,
+      "triangles": 3616,
+      "sizeMm": [
+        23.999,
+        64.5,
+        16.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-05/40-tilt-linkage-b.stl"
+    },
+    {
+      "id": 42,
+      "name": "Motor mount 1B",
+      "plate": 4,
+      "triangles": 6192,
+      "sizeMm": [
+        41.0,
+        46.0,
+        55.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/42-motor-mount-1b.stl"
+    },
+    {
+      "id": 44,
+      "name": "Motor mount 2A",
+      "plate": 4,
+      "triangles": 4126,
+      "sizeMm": [
+        41.0,
+        44.0,
+        5.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/44-motor-mount-2a.stl"
+    },
+    {
+      "id": 46,
+      "name": "Motor mount 2B",
+      "plate": 4,
+      "triangles": 4126,
+      "sizeMm": [
+        41.0,
+        43.787,
+        14.439
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/46-motor-mount-2b.stl"
+    },
+    {
+      "id": 48,
+      "name": "Main body half A",
+      "plate": 6,
+      "triangles": 105880,
+      "sizeMm": [
+        133.294,
+        163.762,
+        38.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-06/48-main-body-half-a.stl"
+    },
+    {
+      "id": 50,
+      "name": "Main body half B",
+      "plate": 7,
+      "triangles": 105844,
+      "sizeMm": [
+        133.294,
+        163.762,
+        38.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-07/50-main-body-half-b.stl"
+    },
+    {
+      "id": 52,
+      "name": "Base lid",
+      "plate": 3,
+      "triangles": 8252,
+      "sizeMm": [
+        147.0,
+        142.0,
+        35.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-03/52-base-lid.stl"
+    },
+    {
+      "id": 54,
+      "name": "Base enclosure",
+      "plate": 2,
+      "triangles": 22184,
+      "sizeMm": [
+        147.0,
+        142.0,
+        46.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-02/54-base-enclosure.stl"
+    },
+    {
+      "id": 56,
+      "name": "Outlet tube - revision pending",
+      "plate": 4,
+      "triangles": 44216,
+      "sizeMm": [
+        51.0,
+        70.0,
+        125.0
+      ],
+      "boundaryEdges": 0,
+      "nonManifoldEdges": 0,
+      "degenerateTriangles": 0,
+      "file": "plate-04/56-outlet-tube---revision-pending.stl"
+    }
+  ],
+  "limitations": [
+    "Edge incidence and degenerate triangle checks only. No wall-thickness, self-intersection, material, balance, fit, or physical validation.",
+    "STL files preserve source plate orientation but contain no support painting or slicer profile. Use English 3MF to retain those settings."
+  ]
+}

@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f5f5f7" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
+    <meta
+      name="description"
+      content="Build a 3D-printed ping pong launcher. Explore the original CAD in 3D, download English print files, and follow the illustrated assembly guide."
+    />
+    <title>Ping Pong Launcher — A maker’s build guide</title>
+    <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
+    <link rel="stylesheet" href="styles.css" />
+    <script type="importmap">
+      { "imports": { "three": "./vendor/three.module.js" } }
+    </script>
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip" href="#main">Skip to content</a>
+    <header class="header wrap">
+      <a href="#" class="brand" aria-label="Ping Pong Launcher home"
+        ><span class="brand-icon" aria-hidden="true">◒</span> PING / PONG
+        <span class="brand-sub">BUILD LAB</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a href="#explore">Explore</a><a href="#hardware">Parts list</a
+        ><a href="#printing">Print guide</a><a href="#build">Assembly</a>
+      </nav>
+      <a class="header-cta" href="#downloads">Get the files <span aria-hidden="true">↗</span></a>
+    </header>
+    <main id="main">
+      <section class="hero wrap" id="explore">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="status-dot"></span> THE PRACTICE PROJECT / 001</div>
+          <h1>Make it.<br />Build it.<br /><em>Serve it.</em></h1>
+          <p class="hero-description">Your next practice partner,<br />built by you.</p>
+          <p class="hero-detail">
+            A 3D-printed ping pong launcher. Original CAD, English instructions, and a step-by-step
+            guide from the first print to the first ball.
+          </p>
+          <a class="button primary" href="#build"
+            >Start the build <span aria-hidden="true">↗</span></a
+          >
+          <a class="text-link" href="#how-it-works"
+            >How it works <span aria-hidden="true">↓</span></a
+          >
+          <div class="hero-specs">
+            <div><b>10</b><span>print plates</span></div>
+            <div><b>3</b><span>motor channels</span></div>
+            <div><b>12 V</b><span>source design</span></div>
+          </div>
+        </div>
+        <div class="hero-explorer">
+          <div class="viewer-topline">
+            <span><span class="status-dot"></span> ORIGINAL CAD / INTERACTIVE 3D</span
+            ><span>FQJ ASSEMBLY</span>
+          </div>
+          <div class="viewer" id="hero-viewer" aria-label="Interactive 3D launcher model">
+            <img
+              class="viewer-fallback"
+              src="assets/photos/cad-reference.png"
+              alt="Supplied CAD overview of the launcher: hopper, feed body, twin launch wheels, and base"
+            />
+            <span class="model-loading" role="status">Loading the original assembly…</span>
+            <div class="viewer-label label-hopper">01 / HOPPER</div>
+            <div class="viewer-label label-wheel">02 / TWIN WHEELS</div>
+            <div class="viewer-label label-base">03 / SPEED CONTROLS</div>
+          </div>
+          <div class="viewer-toolbar">
+            <button type="button" id="explode" aria-pressed="false">
+              ⊞ <span>Explode view</span></button
+            ><button type="button" id="rotate" aria-pressed="false">
+              ↻ <span>Auto rotate</span></button
+            ><button type="button" id="reset-view">⟲ <span>Reset</span></button>
+          </div>
+          <div class="viewer-bottom">
+            <span id="viewer-part" aria-live="polite"
+              >Drag to orbit · Scroll to zoom · Select a part</span
+            ><span class="dimension">101 CAD MESHES</span>
+          </div>
+        </div>
+      </section>
+      <div class="project-strip">
+        <div class="wrap">
+          <span>PRINT → ASSEMBLE → ADJUST → PRACTICE</span
+          ><span>DESIGNED IN CAD. EXPLAINED IN ENGLISH.</span>
+        </div>
+      </div>
+      <section class="intro-section wrap" id="how-it-works">
+        <div>
+          <div class="eyebrow">A SMALL MACHINE. A SATISFYING BUILD.</div>
+          <h2>From a handful of parts<br />to a better practice session.</h2>
+        </div>
+        <div class="intro-text">
+          <p>
+            A hopper feeds balls into a motor-driven screw. Two rubber-covered wheels accelerate
+            each ball through the outlet. Three PWM controls adjust the two launch motors and the
+            feeder independently.
+          </p>
+          <p class="muted">
+            This guide translates the supplied Chinese source files. The assembly order is
+            reconstructed from CAD and photos; physical verification remains open.
+          </p>
+          <a class="text-link" href="build-notes.md">Read the build notes ↗</a>
+        </div>
+        <div class="process-grid">
+          <article>
+            <span>01 / MAKE</span>
+            <h3>Print with a plan.</h3>
+            <p>
+              Ten original plates, English part names, and individual STL files organized by plate.
+            </p>
+          </article>
+          <article>
+            <span>02 / BUILD</span>
+            <h3>See how it fits.</h3>
+            <p>
+              Explore the actual assembly and follow a guided sequence with animated 3D part groups.
+            </p>
+          </article>
+          <article>
+            <span>03 / PRACTICE</span>
+            <h3>Start with one ball.</h3>
+            <p>Check each motor, confirm the feed path, and record a controlled first trial.</p>
+          </article>
+        </div>
+        <div class="mechanism-panel">
+          <div>
+            <div class="eyebrow">WHAT ACTUALLY THROWS THE BALL?</div>
+            <h3>Two wheels. One quick transfer of energy.</h3>
+            <p>
+              The feeder brings a ball between the rubber-covered rims. Both contact surfaces move
+              toward the exit. Friction grips and accelerates the ball; the outlet guides its path.
+            </p>
+            <p>
+              Wheel speed changes the launch. A difference between the two contact speeds can add
+              spin. Feeder speed controls when the next ball arrives.
+            </p>
+            <button class="text-link" id="mechanism-play" type="button" aria-pressed="false">
+              Play the mechanism →
+            </button>
+          </div>
+          <figure class="mechanism-diagram" id="mechanism-diagram">
+            <svg viewBox="0 0 440 280" role="img" aria-labelledby="mechanism-title mechanism-desc">
+              <title id="mechanism-title">Friction-wheel throwing mechanism</title>
+              <desc id="mechanism-desc">
+                A ball moves from the feeder through the gap between two opposing rubber-covered
+                wheels. Both inner rim surfaces move toward the outlet. This diagram illustrates the
+                principle, not CAD dimensions or operating speed.
+              </desc>
+              <defs>
+                <marker
+                  id="motion-arrow"
+                  markerWidth="7"
+                  markerHeight="7"
+                  refX="5"
+                  refY="3"
+                  orient="auto"
+                >
+                  <path d="M0 0L6 3L0 6" fill="none" stroke="#607257" />
+                </marker>
+              </defs>
+              <path d="M28 140H410" fill="none" stroke="#a8b39c" stroke-dasharray="4 5" />
+              <g class="schematic-wheel wheel-top">
+                <circle cx="210" cy="74" r="49" fill="#d4673f" stroke="#ad5639" stroke-width="7" />
+                <path d="M177 74H243M210 41V107" stroke="#f4c3a4" stroke-width="2" />
+                <circle cx="210" cy="74" r="9" fill="#294333" />
+              </g>
+              <g class="schematic-wheel wheel-bottom">
+                <circle cx="210" cy="206" r="49" fill="#d4673f" stroke="#ad5639" stroke-width="7" />
+                <path d="M177 206H243M210 173V239" stroke="#f4c3a4" stroke-width="2" />
+                <circle cx="210" cy="206" r="9" fill="#294333" />
+              </g>
+              <path
+                d="M186 122H238M186 158H238M310 140H379"
+                stroke="#607257"
+                stroke-width="2"
+                marker-end="url(#motion-arrow)"
+              />
+              <circle
+                class="schematic-ball"
+                cx="48"
+                cy="140"
+                r="15"
+                fill="#fffef8"
+                stroke="#a9b19e"
+                stroke-width="1.5"
+              />
+              <g font-family="Arial,sans-serif" font-size="10" fill="#52634b" letter-spacing="1">
+                <text x="20" y="111">FEED IN</text>
+                <text x="319" y="112">BALL OUT</text>
+                <text x="279" y="44">RUBBER RIM</text>
+              </g>
+            </svg>
+            <figcaption>Principle diagram · illustrative movement and speed</figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="hardware-section section-pad" id="hardware">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">01 / THE PARTS BENCH</div>
+              <h2>The shopping list for your build.</h2>
+            </div>
+            <a
+              class="button primary"
+              id="download-shopping-csv"
+              href="downloads/shopping-list.csv"
+              download
+              >Download shopping list ↓</a
+            >
+          </div>
+          <p class="section-description">
+            Tick the items you already have. This list includes the source hardware, print
+            materials, trial supplies, and additions for a complete installation. Confirm entries
+            with unresolved dimensions or ratings before buying.
+          </p>
+          <div class="notice">
+            <span aria-hidden="true">ⓘ</span>
+            <p>
+              <b>Before ordering:</b> confirm motor shafts, controller current ratings, and fastener
+              differences. The source’s 12 V / 3 A supply has no verified system current budget.
+            </p>
+          </div>
+          <div class="supplier-legend">
+            <p id="supplier-checked-on" class="small muted"></p>
+            <p class="small muted">
+              Listed spec matches means the published specification matches, not that physical fit
+              is validated. Alternatives can require new mounts. Browse links open categories, not
+              confirmed substitutes. Shared kits and filament spools appear in several rows; buy
+              them once.
+            </p>
+          </div>
+          <div class="parts-tools">
+            <div class="filter-group" role="group" aria-label="Filter parts">
+              <button class="selected" data-filter="All" aria-pressed="true">All parts</button
+              ><button data-filter="Electronics" aria-pressed="false">Electronics</button
+              ><button data-filter="Fasteners" aria-pressed="false">Fasteners</button
+              ><button data-filter="Mechanical" aria-pressed="false">Mechanical</button
+              ><button data-filter="Consumables" aria-pressed="false">Consumables</button>
+            </div>
+            <label class="search-label"
+              ><span class="sr-only">Search parts</span
+              ><input id="parts-search" type="search" placeholder="Search parts…"
+            /></label>
+          </div>
+          <div class="component-view-tools">
+            <div class="component-mode-control" role="group" aria-label="Component image style">
+              <button type="button" data-component-mode="photo" aria-pressed="true">Photos</button>
+              <button type="button" data-component-mode="svg" aria-pressed="false">SVG diagrams</button>
+            </div>
+            <p class="small muted">Select an image to compare its photo and SVG. Reference images show appearance, not a verified fit. <a href="component-image-sources.md">Image sources ↗</a></p>
+          </div>
+          <div class="shopping-status">
+            <p id="shopping-progress" class="small" aria-live="polite"></p>
+            <button class="text-link" id="shopping-reset" type="button">
+              Clear gathered items ⟲
+            </button>
+          </div>
+          <div class="table-scroll">
+            <table>
+              <caption class="sr-only">
+                Hardware, specifications, purchase quantities, and source notes
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col"><span class="sr-only">Gathered</span>✓</th>
+                  <th scope="col">PART</th>
+                  <th scope="col">SPECIFICATION / BUILD NOTE</th>
+                  <th scope="col">QTY</th>
+                  <th scope="col">BOTLAND / COMPATIBILITY</th>
+                </tr>
+              </thead>
+              <tbody id="parts-body"></tbody>
+            </table>
+          </div>
+          <p id="parts-count" class="small muted" aria-live="polite"></p>
+          <p class="small muted">
+            <a href="shopping-list.md">Printable shopping checklist and buying notes ↗</a>
+          </p>
+          <details>
+            <summary>Tools for your workbench</summary>
+            <ul id="tool-list"></ul>
+          </details>
+        </div>
+      </section>
+      <section class="section-pad wrap" id="printing">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">02 / FROM FILE TO FILAMENT</div>
+            <h2>A place for every print.</h2>
+          </div>
+          <a class="button secondary" href="downloads/launcher-english.3mf" download
+            >English 3MF <span>↓</span></a
+          >
+        </div>
+        <p class="section-description">
+          Keep the original plate orientations and support painting. Change the printer and filament
+          profiles to match your equipment, then inspect each slice.
+        </p>
+        <div class="print-settings" id="print-settings"></div>
+        <div class="plate-grid" id="plate-grid"></div>
+        <p class="small muted">
+          28 source objects · 1,422,006 triangles · no boundary edges, non-manifold edges, or
+          degenerate triangles in the exported mesh checks. Wall thickness, self-intersections,
+          balance, fit, and physical performance remain unverified.
+        </p>
+        <div class="print-note">
+          <span class="note-number">!</span>
+          <div>
+            <h3>Give the small gears their own print.</h3>
+            <p>
+              The original maker recommends a finer layer height for the bevel gears. The source
+              gives no exact value. Measure a tight shaft bore and correct the fit before assembly.
+            </p>
+            <a class="text-link" href="print-guide.md">Read the full print guide ↗</a>
+          </div>
+        </div>
+      </section>
+      <section class="assembly-section section-pad" id="build">
+        <div class="wrap">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">03 / THE GUIDED BUILD</div>
+              <h2>One step closer to the first serve.</h2>
+            </div>
+            <button class="text-link" id="restart" type="button">Reset progress ⟲</button>
+          </div>
+          <div class="guide-progress">
+            <span id="progress-text" aria-live="polite">0 of 13 checks complete</span
+            ><span>Saved on this device</span>
+            <div class="progress-track"><div id="progress-fill"></div></div>
+          </div>
+          <div class="wizard-layout">
+            <aside><nav class="step-list" id="step-list" aria-label="Assembly steps"></nav></aside>
+            <div class="step-main">
+              <div class="step-heading">
+                <span id="step-counter" class="eyebrow"></span>
+                <h3 id="step-title" tabindex="-1"></h3>
+                <p id="step-intro"></p>
+              </div>
+              <ol id="step-actions" class="action-list"></ol>
+              <div class="step-note">
+                <b>Build note</b>
+                <p id="step-note"></p>
+              </div>
+              <label class="completion-check"
+                ><input type="checkbox" id="step-complete" /><span id="step-check-label"></span
+              ></label>
+              <div class="step-pagination">
+                <button id="step-prev" class="button secondary" type="button">← Previous</button
+                ><button id="step-next" class="button primary" type="button">Next step →</button>
+              </div>
+              <p class="small muted" id="step-source"></p>
+              <p class="small" id="guide-finish" role="status" hidden>
+                Guide review complete. Resolve remaining build notes before routine use.
+              </p>
+            </div>
+            <div class="step-visual">
+              <div class="assembly-viewer-heading">
+                <span class="eyebrow">ASSEMBLY EXPLORER</span
+                ><button type="button" id="replay" class="text-link">Replay ↻</button>
+              </div>
+              <div class="viewer assembly-viewer" id="assembly-viewer">
+                <img
+                  class="viewer-fallback"
+                  src="assets/photos/cad-reference.png"
+                  alt="CAD overview; use the reference photo and instructions for this assembly step"
+                /><span class="model-loading" role="status">Loading assembly…</span>
+              </div>
+              <p class="small muted animation-caption" id="assembly-part" aria-live="polite">
+                Suggested sequence · movement is illustrative
+              </p>
+              <figure class="reference-photo">
+                <img
+                  id="step-photo"
+                  src="assets/photos/prototype.webp"
+                  alt="Original launcher prototype"
+                  loading="lazy"
+                />
+                <figcaption id="step-caption"></figcaption>
+              </figure>
+            </div>
+          </div>
+          <noscript
+            ><p>
+              JavaScript is needed for the 3D viewer and wizard.
+              <a href="assembly-guide.md">Read the complete English assembly guide</a>.
+            </p></noscript
+          >
+        </div>
+      </section>
+      <section class="section-pad wrap wiring-section" id="wiring">
+        <div>
+          <div class="eyebrow">04 / CONNECT WITH CARE</div>
+          <h2>Three motors.<br />Three controls.</h2>
+          <p>
+            The controllers share a 12 V DC supply. Each controller drives one motor. Confirm the
+            labels and ratings on your selected hardware.
+          </p>
+          <div class="notice">
+            <p>
+              <b>Topology only.</b> This is not a terminal-level schematic. Fuse values, connector
+              polarity, and current ratings need confirmation. Keep mains wiring inside an enclosed,
+              isolated supply.
+            </p>
+          </div>
+          <a href="wiring-guide.md" class="text-link">Wiring checks and first power-on ↗</a>
+        </div>
+        <figure class="wiring-figure">
+          <svg viewBox="0 0 600 340" role="img" aria-labelledby="wire-title wire-desc">
+            <title id="wire-title">DC wiring topology</title>
+            <desc id="wire-desc">
+              The positive 12 volt lead passes through a DC switch and suitable protection, then
+              divides into three parallel PWM controller branches. Each branch drives one motor. The
+              three controllers share the DC return.
+            </desc>
+            <g fill="none" stroke="#c85b36" stroke-width="2">
+              <path d="M110 130H185V65H310M185 130V165H310M185 165V265H310" />
+              <path d="M425 65H465M425 165H465M425 265H465" />
+            </g>
+            <g fill="none" stroke="#6d806a" stroke-width="2">
+              <path d="M110 210H155V310H290V85H310M290 185H310M290 285H310" />
+            </g>
+            <g fill="#f8f7f0" stroke="#bac3b5">
+              <rect x="15" y="100" width="100" height="140" rx="8" />
+              <rect x="310" y="40" width="115" height="55" rx="6" />
+              <rect x="310" y="140" width="115" height="55" rx="6" />
+              <rect x="310" y="240" width="115" height="55" rx="6" />
+              <circle cx="500" cy="65" r="30" />
+              <circle cx="500" cy="165" r="30" />
+              <circle cx="500" cy="265" r="30" />
+            </g>
+            <g fill="#263c30" font-family="sans-serif" font-size="13" text-anchor="middle">
+              <text x="65" y="155">12 V DC</text>
+              <text x="65" y="176">SUPPLY</text>
+              <text x="365" y="72">PWM 1</text>
+              <text x="365" y="172">PWM 2</text>
+              <text x="365" y="272">PWM 3</text>
+              <text x="500" y="70">M1</text>
+              <text x="500" y="170">M2</text>
+              <text x="500" y="270">M3</text>
+            </g>
+            <g fill="#6c7267" font-family="sans-serif" font-size="11">
+              <text x="195" y="24">DC SWITCH + PROTECTION</text>
+              <text x="468" y="113">Left wheel</text>
+              <text x="468" y="213">Right wheel</text>
+              <text x="468" y="313">Feeder</text>
+              <text x="170" y="330">Shared DC return (0 V)</text>
+            </g>
+          </svg>
+          <figcaption>
+            Functional topology · confirm all component terminals before wiring
+          </figcaption>
+        </figure>
+      </section>
+      <section class="prototype-section section-pad">
+        <div class="wrap prototype-grid">
+          <div>
+            <div class="eyebrow">FROM THE ORIGINAL WORKBENCH</div>
+            <h2>A real prototype.<br />A clearer path to yours.</h2>
+            <p>
+              The supplied photographs document the motor mounts, rubber-covered wheels, feeder
+              gear, and ball stopper. Keep them beside you during assembly.
+            </p>
+            <a href="translation.md" class="text-link">Read the source translations ↗</a>
+            <p class="small muted">
+              The source video is preserved unchanged. It is a visual reference, not a performance
+              specification.
+            </p>
+          </div>
+          <figure>
+            <video
+              controls
+              preload="metadata"
+              playsinline
+              poster="assets/photos/prototype.webp"
+              aria-label="Original launcher demonstration"
+            >
+              <source src="assets/photos/demonstration.mp4" type="video/mp4" />
+              <track
+                kind="captions"
+                src="assets/demonstration-en.vtt"
+                srclang="en"
+                label="English visual description"
+                default
+              />
+            </video>
+            <figcaption>
+              Original maker’s demonstration · English visual description available in captions
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+      <section class="section-pad wrap downloads-section" id="downloads">
+        <div class="section-heading">
+          <div>
+            <div class="eyebrow">05 / TAKE IT TO YOUR WORKBENCH</div>
+            <h2>The files. All in one place.</h2>
+          </div>
+          <span class="small muted">English filenames. Source geometry retained.</span>
+        </div>
+        <div class="download-grid">
+          <a href="downloads/launcher-english.3mf" download
+            ><span class="file-tag">3MF</span>
+            <div>
+              <h3>English print project</h3>
+              <p>28 renamed objects · original 10-plate setup</p>
+            </div>
+            <span>↓</span></a
+          ><a href="downloads/launcher-stl-pack.zip" download
+            ><span class="file-tag">ZIP</span>
+            <div>
+              <h3>Individual STL files</h3>
+              <p>Organized by plate · millimeter units</p>
+            </div>
+            <span>↓</span></a
+          ><a href="downloads/launcher-assembly.step" download
+            ><span class="file-tag">STEP</span>
+            <div>
+              <h3>Original CAD assembly</h3>
+              <p>Editable source geometry · original names</p>
+            </div>
+            <span>↓</span></a
+          ><a href="downloads/english-build-guide.zip" download
+            ><span class="file-tag">DOCS</span>
+            <div>
+              <h3>English build guide</h3>
+              <p>Assembly, printing, wiring, translation, and BOM</p>
+            </div>
+            <span>↓</span></a
+          >
+        </div>
+        <p class="small muted">
+          Also available: <a href="data/print-inventory.json">mesh inspection report</a> ·
+          <a href="data/source-manifest.json">source checksums</a>
+        </p>
+        <details>
+          <summary>Open build questions before routine use</summary>
+          <ul id="open-questions"></ul>
+        </details>
+        <details>
+          <summary>What to improve next</summary>
+          <ol>
+            <li>Complete a measured build and confirm every fastener and fit.</li>
+            <li>Add guards and verify the DC current budget and protection.</li>
+            <li>Finalize the outlet, stopper, and replaceable wheel tires.</li>
+            <li>Add measured speed feedback and repeatable practice settings.</li>
+          </ol>
+          <a class="text-link" href="future-iterations.md"
+            >Future iterations and completion evidence ↗</a
+          >
+        </details>
+      </section>
+    </main>
+    <dialog id="component-dialog" class="component-dialog" aria-labelledby="component-dialog-title" aria-describedby="component-dialog-note">
+      <div class="component-dialog-heading">
+        <div><p class="eyebrow" id="component-dialog-id"></p><h2 id="component-dialog-title"></h2></div>
+        <button type="button" id="component-dialog-close" class="component-dialog-close" aria-label="Close component images" autofocus>×</button>
+      </div>
+      <div class="component-comparison">
+        <figure><img id="component-dialog-photo" width="600" height="450" alt="Component source photograph" decoding="async"><figcaption>Source photograph</figcaption></figure>
+        <figure><img id="component-dialog-svg" width="600" height="450" alt="Component SVG appearance illustration" decoding="async"><figcaption>SVG appearance illustration · not to scale</figcaption></figure>
+      </div>
+      <p id="component-dialog-note" class="component-dialog-note"></p>
+      <p id="component-dialog-observations" class="small muted"></p>
+      <div class="component-dialog-links"><a id="component-photo-source" class="text-link" target="_blank" rel="noopener noreferrer">Photo source ↗</a><a id="component-svg-download" class="text-link" download>Download SVG ↓</a></div>
+      <p id="component-photo-credit" class="small muted"></p>
+    </dialog>
+    <footer>
+      <div class="wrap">
+        <a href="#" class="brand"
+          ><span class="brand-icon" aria-hidden="true">◒</span> PING / PONG</a
+        >
+        <p>Made to be understood. Built to be explored.</p>
+        <a href="attribution.md">Sources & rights ↗</a>
+      </div>
+    </footer>
+  </body>
+</html>

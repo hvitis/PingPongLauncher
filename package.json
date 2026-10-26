@@ -1,0 +1,14 @@
+{
+  "name": "ping-pong-launcher",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "English build guide and Three.js explorer for the supplied ping pong launcher",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "node scripts/build.mjs",
+    "check": "node scripts/check.mjs",
+    "test": "node tests/browser.mjs",
+    "docs": "node scripts/generate-docs.mjs"
+  }
+}

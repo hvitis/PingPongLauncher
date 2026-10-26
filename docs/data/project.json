@@ -1,0 +1,830 @@
+{
+  "title": "Ping Pong Launcher",
+  "revision": "English build guide · source set December 2025",
+  "status": "Documented prototype",
+  "summary": "A printable, twin-wheel ball launcher with a geared feeder and three independent speed controls.",
+  "sourceNote": "Translated from the supplied Chinese spreadsheet and annotated photographs. The assembly sequence is reconstructed from the CAD and photographs. No physical build has been validated for this guide.",
+  "bom": [
+    {
+      "id": "H01",
+      "name": "M3 heat-set inserts",
+      "spec": "M3 × 5 × 5 mm, source notation",
+      "quantity": "20",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 2",
+      "note": "Confirm outside diameter and length against the printed pockets.",
+      "botland": {
+        "status": "no-match",
+        "note": "No current M3 × 5 × 5 mm insert was verified. The retired Botland insert set lists a different M3 outside diameter. Confirm the actual printed pocket.",
+        "links": [
+          {
+            "label": "Browse mounting parts",
+            "url": "https://botland.com.pl/11-elementy-montazowe",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H02",
+      "name": "Socket head screws",
+      "spec": "M3 × 20 mm, 304 stainless steel",
+      "quantity": "10+",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 3",
+      "note": "CAD also contains M3 × 18 mm screws. Measure each joint before installation.",
+      "botland": {
+        "status": "alternative",
+        "note": "The shared kit lists 25 M3 × 20 mm screws. Socket-head geometry and 304 stainless steel are not confirmed. Compare the head clearance before substitution.",
+        "links": [
+          {
+            "label": "M3/M4/M5/M6 screw kit · AKS-23456",
+            "url": "https://botland.com.pl/srubki-i-nakretki/23456-zestaw-srub-i-nakretek-m3m4m5m6-1000szt-5904257801784.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "One shared kit can cover H02, H03, and H09. Do not buy one kit for every row."
+      }
+    },
+    {
+      "id": "H03",
+      "name": "Socket head screws",
+      "spec": "M3 × 10 mm, 304 stainless steel",
+      "quantity": "50",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 4",
+      "note": "Do not assume that every screw position uses this length.",
+      "botland": {
+        "status": "alternative",
+        "note": "The shared kit lists 50 M3 × 10 mm screws. Socket-head geometry and 304 stainless steel are not confirmed.",
+        "links": [
+          {
+            "label": "Shared screw kit · AKS-23456",
+            "url": "https://botland.com.pl/srubki-i-nakretki/23456-zestaw-srub-i-nakretek-m3m4m5m6-1000szt-5904257801784.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Included in the same kit linked in H02."
+      }
+    },
+    {
+      "id": "H04",
+      "name": "Socket head screws",
+      "spec": "M3 × 25 mm, 304 stainless steel",
+      "quantity": "2",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 5",
+      "note": "Compare with the rear support in the CAD.",
+      "botland": {
+        "status": "no-match",
+        "note": "No M3 × 25 mm socket-head product was verified. The linked shared kit does not list M3 × 25 mm screws.",
+        "links": [
+          {
+            "label": "Browse fasteners",
+            "url": "https://botland.com.pl/120-srubki-i-nakretki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H05",
+      "name": "Socket head screws",
+      "spec": "M3 × 65 mm, 304 stainless steel",
+      "quantity": "10",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 6",
+      "note": "Source purchase quantity, not a confirmed installed count.",
+      "botland": {
+        "status": "no-match",
+        "note": "No M3 × 65 mm socket-head product was verified. Source this length separately after confirming the CAD joint.",
+        "links": [
+          {
+            "label": "Browse fasteners",
+            "url": "https://botland.com.pl/120-srubki-i-nakretki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H06",
+      "name": "Geared feed motor",
+      "spec": "12 V · 77 rpm · source torque notation: 2 kg",
+      "quantity": "1",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 7",
+      "note": "Torque unit is incomplete. Confirm shaft diameter, mounting, rated current, and stall current.",
+      "botland": {
+        "status": "no-match",
+        "note": "No 12 V / 77 rpm motor with a verified matching body, shaft, and mounting pattern was found. A similar rpm alone does not establish fit.",
+        "links": [
+          {
+            "label": "Browse geared motors",
+            "url": "https://botland.com.pl/328-silniki-dc-standard-z-przekladnia",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H07",
+      "name": "550 launch motors",
+      "spec": "12 V · body Ø35.8 mm · source Hmin = 52+ mm",
+      "quantity": "2",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 8",
+      "note": "Confirm body length reference, shaft diameter, shaft length, speed, and current before buying.",
+      "botland": {
+        "status": "no-match",
+        "note": "No matching 12 V 550 motor with the source Ø35.8 mm body and confirmed shaft dimensions was verified.",
+        "links": [
+          {
+            "label": "Browse motors",
+            "url": "https://botland.com.pl/5-silniki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H08",
+      "name": "Star knob screws",
+      "spec": "M5 × 12 mm",
+      "quantity": "2",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 9",
+      "note": "CAD also shows an M5 × 35 mm tilt bolt, wing nut, and washer, absent from this purchase list.",
+      "botland": {
+        "status": "no-match",
+        "note": "No M5 × 12 mm star-knob screw was verified. A normal M5 screw is not a confirmed substitute for this adjustment handle.",
+        "links": [
+          {
+            "label": "Browse fasteners",
+            "url": "https://botland.com.pl/120-srubki-i-nakretki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H09",
+      "name": "M5 hex nuts",
+      "spec": "M5",
+      "quantity": "2",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 10",
+      "note": "Confirm the printed nut pockets.",
+      "botland": {
+        "status": "matches-spec",
+        "note": "The shared kit lists 40 M5 nuts. Confirm the nut shape and width against the printed pocket.",
+        "links": [
+          {
+            "label": "Shared kit with M5 nuts · AKS-23456",
+            "url": "https://botland.com.pl/srubki-i-nakretki/23456-zestaw-srub-i-nakretek-m3m4m5m6-1000szt-5904257801784.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Use the same kit as H02/H03; only two M5 nuts are specified by the source."
+      }
+    },
+    {
+      "id": "H10",
+      "name": "M3 hex nuts",
+      "spec": "M3",
+      "quantity": "About 20",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 11",
+      "note": "The source says a small quantity, approximately 20.",
+      "botland": {
+        "status": "matches-spec",
+        "note": "Metal M3 nuts, ten per pack. Confirm fit in the printed nut pockets.",
+        "links": [
+          {
+            "label": "M3 nuts · 10-pack · NSZ-00806",
+            "url": "https://botland.com.pl/srubki-i-nakretki/806-nakretki-m3-10szt-5904422300982.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Two 10-packs cover about 20 nuts. Skip these packs if using the shared kit, which already lists 100 M3 nuts."
+      }
+    },
+    {
+      "id": "H11",
+      "name": "Self-tapping screws",
+      "spec": "M3 × 14 mm, source notation",
+      "quantity": "About 20",
+      "category": "Fasteners",
+      "source": "Spreadsheet, row 12",
+      "note": "The source suggests buying 100 if a small pack is unavailable. Confirm thread and pilot-hole fit.",
+      "botland": {
+        "status": "no-match",
+        "note": "No M3 × 14 mm self-tapping product was verified. M3 × 14 mm machine screws in a kit do not replace self-tapping screws.",
+        "links": [
+          {
+            "label": "Browse fasteners",
+            "url": "https://botland.com.pl/120-srubki-i-nakretki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H12",
+      "name": "Hookup wire",
+      "spec": "0.5 mm², source suggestion",
+      "quantity": "5 m",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 13",
+      "note": "Confirm wire rating for the actual motor current and installation.",
+      "botland": {
+        "status": "matches-spec",
+        "note": "Stranded copper wire with a 0.5 mm² cross-section. Confirm its rating for the measured branch current.",
+        "links": [
+          {
+            "label": "LgY 1 × 0.5 mm² black wire · KAB-06689",
+            "url": "https://botland.com.pl/przewody-lgy/6689-przewod-instalacyjny-lgy-1x05-h05v-k-czarny-rolka-100m-5907702813332.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Sold as a 100 m roll; the source calls for 5 m. A smaller length from another supplier can avoid surplus."
+      }
+    },
+    {
+      "id": "H13",
+      "name": "DC power supply",
+      "spec": "12 V · 3 A · 36 W",
+      "quantity": "1",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 14",
+      "note": "This is the source specification, not a verified system power budget. Use an enclosed, isolated supply.",
+      "botland": {
+        "status": "alternative",
+        "note": "Enclosed 12 V / 5 A adapter with a 5.5 × 2.1 mm plug. This differs from the source 3 A supply. Confirm polarity, connector fit, and the complete measured current budget.",
+        "links": [
+          {
+            "label": "12 V / 5 A adapter · PIN-13231",
+            "url": "https://botland.com.pl/zasilanie-pine64/13231-zasilacz-12v-5a-dc-55x21mm-do-pine64-rockpro64-850796007291.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "One adapter is a candidate only after the real load and protection are selected."
+      }
+    },
+    {
+      "id": "H14",
+      "name": "Inline switch",
+      "spec": "Source keyword: hand-operated inline switch",
+      "quantity": "1",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 15",
+      "note": "Source says to switch the live conductor. This guide uses a DC-rated switch in the +12 V lead only.",
+      "botland": {
+        "status": "alternative",
+        "note": "The ASW-14D listing specifies 12 V / 20 A. It is a panel toggle, not the source inline switch. Confirm DC motor-load suitability, wiring, and the required mounting hole.",
+        "links": [
+          {
+            "label": "ASW-14D switch · UCC-08389",
+            "url": "https://botland.com.pl/przelaczniki-dzwigienkowe/8389-przelacznik-dzwigniowy-on-off-asw-14d-12v20a-podswietlany-zielony-5904422311650.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "One switch; requires a suitable panel or separate switch enclosure."
+      }
+    },
+    {
+      "id": "H15",
+      "name": "PWM motor controllers",
+      "spec": "Youxin type in source · one per motor",
+      "quantity": "3",
+      "category": "Electronics",
+      "source": "Spreadsheet, row 16",
+      "note": "Other brands can have different dimensions and mounting holes. Confirm voltage and motor-current ratings.",
+      "botland": {
+        "status": "alternative",
+        "note": "Cytron MD10-POT: 7–30 V, 10 A continuous, manual potentiometer. Its 81.28 × 48.26 mm board differs from the source mounts; the base layout needs redesign. Confirm motor currents. No reverse-polarity protection.",
+        "links": [
+          {
+            "label": "Cytron MD10-POT · CTN-13450",
+            "url": "https://botland.com.pl/sterowniki-silnikow-moduly/13450-cytron-md10-pot-sterownik-silnikow-dc-30v10a-przelacznik-potencjometr-5904422377274.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Three controllers, one per motor, only if the redesigned mounting and electrical ratings are confirmed."
+      }
+    },
+    {
+      "id": "H16",
+      "name": "Bearings",
+      "spec": "7 mm bore × 16 mm OD × 5 mm width",
+      "quantity": "4",
+      "category": "Mechanical",
+      "source": "Spreadsheet, row 17",
+      "note": "Source notation: d=7, D=16, h=5. Confirm shaft and pocket fit.",
+      "botland": {
+        "status": "no-match",
+        "note": "No bearing with the exact 7 mm bore × 16 mm OD × 5 mm width was verified. Do not replace it with a similar bearing size.",
+        "links": [
+          {
+            "label": "Browse mechanical parts",
+            "url": "https://botland.com.pl/11-elementy-montazowe",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H17",
+      "name": "Table tennis rubber + adhesive",
+      "spec": "Rubber strips for both launch wheels; source adhesive: 502 cyanoacrylate",
+      "quantity": "To fit",
+      "category": "Consumables",
+      "source": "Annotated image 3",
+      "note": "Rubber thickness and strip length are not specified. Keep both wheels balanced.",
+      "botland": {
+        "status": "no-match",
+        "note": "No complete wheel-rubber and compatible adhesive combination was verified. Source table tennis rubber and select adhesive for the actual rubber and PETG.",
+        "links": [],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H18",
+      "name": "Ball stopper + cable ties",
+      "spec": "Short filament piece or thin shaft; source mentions 10 mm",
+      "quantity": "To fit",
+      "category": "Consumables",
+      "source": "Annotated image 3 and prototype photographs",
+      "note": "The 10 mm reference is ambiguous. Confirm length and position against the photographs.",
+      "botland": {
+        "status": "partial",
+        "note": "A short piece of filament can provide the source stopper material. The filament does not cover the cable ties. Confirm the ambiguous stopper length and source ties separately.",
+        "links": [
+          {
+            "label": "PETG stopper material · same spool as H21",
+            "url": "https://botland.com.pl/filamenty-petg/23711-filament-devil-design-petg-175mm-1kg-graphite-5902280033240.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Use an offcut from H21; do not buy a separate spool for this row."
+      }
+    },
+    {
+      "id": "H19",
+      "name": "Additional CAD fasteners",
+      "spec": "M3 × 15 mm; M3 × 18 mm; M5 × 35 mm; M5 wing nut and washer",
+      "quantity": "Confirm in CAD",
+      "category": "Fasteners",
+      "source": "STEP assembly component names",
+      "note": "These appear in the CAD but are missing or different in the spreadsheet. Resolve before ordering.",
+      "botland": {
+        "status": "no-match",
+        "note": "No complete set covering the extra M3 × 15/18 mm and M5 × 35 mm fasteners, wing nut, and washer was verified.",
+        "links": [
+          {
+            "label": "Browse fasteners",
+            "url": "https://botland.com.pl/120-srubki-i-nakretki",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H20",
+      "name": "DC connectors, insulation, and branch protection",
+      "spec": "Matching DC inlet, strain relief, insulated terminals, and selected protection",
+      "quantity": "Design to confirm",
+      "category": "Electronics",
+      "source": "Guide addition, not in source BOM",
+      "note": "Connector polarity, fuse values, and branch current limits need confirmation before power-on.",
+      "botland": {
+        "status": "partial",
+        "note": "The 5.5 × 2.1 mm panel socket matches the nominal plug size of H13’s candidate adapter. Confirm its current rating and panel fit. Insulation, strain relief, and selected branch protection remain separate.",
+        "links": [
+          {
+            "label": "5.5 × 2.1 mm panel socket · KAB-13693",
+            "url": "https://botland.com.pl/wtyki-dc/13693-gniazdo-dc-5521mm-do-obudowy-10szt-5904422342029.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "The socket is sold in a 10-pack; the installation needs one inlet. Other electrical items are not included."
+      }
+    },
+    {
+      "id": "H21",
+      "name": "Printing filament",
+      "spec": "1.75 mm PETG in the source project; match the selected printer/material profile",
+      "quantity": "Confirm from slice total",
+      "category": "Consumables",
+      "source": "3MF filament slot 1",
+      "note": "Use the slicer total for all ten plates, plus supports and trial prints. No spool count or mass is verified.",
+      "botland": {
+        "status": "matches-spec",
+        "note": "Devil Design PETG, 1.75 mm, 1 kg, Graphite. This matches the saved material type and diameter. Use a profile for the actual filament; printed fit remains unverified.",
+        "links": [
+          {
+            "label": "Devil Design PETG · DEV-23711",
+            "url": "https://botland.com.pl/filamenty-petg/23711-filament-devil-design-petg-175mm-1kg-graphite-5902280033240.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Confirm spool quantity from all ten sliced plates, supports, and trial prints. The same spool can supply H18 and guard material."
+      }
+    },
+    {
+      "id": "H22",
+      "name": "40 mm table tennis balls",
+      "spec": "Consistent 40 mm balls for initial trials",
+      "quantity": "At least 3 for trials",
+      "category": "Consumables",
+      "source": "STEP ball diameter + guide trial quantity",
+      "note": "The trial quantity is a guide suggestion, not a verified hopper capacity.",
+      "botland": {
+        "status": "no-match",
+        "note": "No matching 40 mm table tennis ball listing was verified at Botland. Use a sports supplier.",
+        "links": [],
+        "orderNote": ""
+      }
+    },
+    {
+      "id": "H23",
+      "name": "Guard material and mounting hardware",
+      "spec": "Guards for accessible wheels, feeder, and gears",
+      "quantity": "To match guard design",
+      "category": "Mechanical",
+      "source": "Guide addition, not in source BOM",
+      "note": "No validated guard design is supplied. Confirm material, clearance, and attachment before selecting or printing parts.",
+      "botland": {
+        "status": "partial",
+        "note": "PETG is available as a candidate guard-printing material. No guard geometry, thickness, attachment, or clearance is validated by this link.",
+        "links": [
+          {
+            "label": "PETG material · same spool as H21",
+            "url": "https://botland.com.pl/filamenty-petg/23711-filament-devil-design-petg-175mm-1kg-graphite-5902280033240.html",
+            "kind": "product"
+          }
+        ],
+        "orderNote": "Share H21 material if the verified guard design uses PETG; mounting hardware remains to be selected."
+      }
+    },
+    {
+      "id": "H24",
+      "name": "Stable support and non-slip pads",
+      "spec": "Rigid support matched to the launcher base and trial area",
+      "quantity": "1 installation",
+      "category": "Mechanical",
+      "source": "Guide addition, not in source BOM",
+      "note": "Select the mounting method after inspecting the base and the chosen work surface. Mounting fasteners are not specified.",
+      "botland": {
+        "status": "no-match",
+        "note": "A rigid support, mounting fasteners, and non-slip pads need selection for the actual work surface. No complete matching installation was verified.",
+        "links": [
+          {
+            "label": "Browse mounting parts",
+            "url": "https://botland.com.pl/11-elementy-montazowe",
+            "kind": "category"
+          }
+        ],
+        "orderNote": ""
+      }
+    }
+  ],
+  "tools": [
+    "FDM printer and a slicer that supports Bambu 3MF projects",
+    "Hex keys matched to the selected screws",
+    "Calipers, small file, and deburring tool",
+    "Temperature-controlled insert tool or soldering iron",
+    "Wire stripper, suitable crimp tool, and insulated terminals",
+    "Multimeter and current-limited 12 V bench supply for commissioning"
+  ],
+  "printSettings": [
+    {
+      "label": "Printer profile",
+      "value": "Bambu Lab A1 mini",
+      "note": "Source profile; change it to your printer."
+    },
+    {
+      "label": "Build area",
+      "value": "180 × 180 mm",
+      "note": "Source plate profile, not maximum assembly size."
+    },
+    {
+      "label": "Nozzle / layers",
+      "value": "0.4 / 0.20 mm",
+      "note": "Saved source settings."
+    },
+    {
+      "label": "Walls / infill",
+      "value": "4 / 25%",
+      "note": "Saved source settings."
+    },
+    {
+      "label": "Top / bottom",
+      "value": "5 / 3 layers",
+      "note": "Saved source settings."
+    },
+    {
+      "label": "Support",
+      "value": "Manual tree",
+      "note": "Support enabled. Inspect painted regions before slicing."
+    },
+    {
+      "label": "Assigned filament",
+      "value": "PETG, slot 1",
+      "note": "All 28 objects use slot 1. Other saved slots are PLA."
+    }
+  ],
+  "steps": [
+    {
+      "id": "plan",
+      "title": "Read the design",
+      "short": "Start here",
+      "group": "all",
+      "photo": "prototype.webp",
+      "caption": "The supplied prototype photograph. The website colors identify parts; they do not prescribe filament colors.",
+      "intro": "Understand the ball path before you print or buy parts.",
+      "actions": [
+        "Compare the STEP assembly with the prototype photograph.",
+        "Identify the hopper, feed screw, launch wheels, tilt support, and base.",
+        "Read the unresolved specifications in the build notes.",
+        "Record the exact motors, controllers, and power supply that you will use."
+      ],
+      "check": "I understand the design and have recorded the unresolved specifications.",
+      "note": "The 3D geometry comes from the supplied STEP. Animation shows a suggested assembly order, not a verified insertion path.",
+      "source": "STEP assembly + prototype photograph"
+    },
+    {
+      "id": "parts",
+      "title": "Prepare the hardware",
+      "short": "Hardware",
+      "group": "hardware",
+      "photo": "cad-reference.png",
+      "caption": "The CAD contains fasteners that differ from the spreadsheet. Compare both sources before ordering.",
+      "intro": "Use the translated purchase list as a starting inventory.",
+      "actions": [
+        "Compare your hardware with each row of the parts list.",
+        "Measure the motor bodies, shafts, bearings, and controller boards.",
+        "Resolve the M3 screw-length and M5 tilt-bolt differences against the CAD.",
+        "Collect the tools, rubber strips, adhesive, and cable ties."
+      ],
+      "check": "I have checked the hardware dimensions and resolved the fastener differences.",
+      "note": "The spreadsheet lists purchase quantities. It does not define every installed screw position.",
+      "source": "元件.xls, rows 2–17 + STEP fastener names"
+    },
+    {
+      "id": "print",
+      "title": "Print and inspect the parts",
+      "short": "Print",
+      "group": "all",
+      "photo": "cad-reference.png",
+      "caption": "Use the English 3MF to keep the original plate layout, orientations, and support painting.",
+      "intro": "Start with the saved ten-plate project and review every slice.",
+      "actions": [
+        "Open launcher-english.3mf in a compatible slicer.",
+        "Select your actual printer, nozzle, filament, and bed profile.",
+        "Keep the parts at 100% scale and confirm millimeter units.",
+        "Inspect support painting, thin walls, bridges, and every first layer.",
+        "Print the small bevel gears separately at a finer layer height.",
+        "Remove supports and inspect each part for cracks or blocked holes."
+      ],
+      "check": "I have inspected the slices and the printed parts, including the small gears.",
+      "note": "The source recommends a lower layer height for the bevel gear but gives no value. No print time or filament total is verified.",
+      "source": "3MF project settings + annotated image 2"
+    },
+    {
+      "id": "fits",
+      "title": "Prepare the printed fits",
+      "short": "Fits & inserts",
+      "group": "body",
+      "photo": "cad-reference.png",
+      "caption": "Use the CAD to identify bearing seats, shaft bores, nut pockets, and insert pockets before fitting hardware.",
+      "intro": "Prepare the mating surfaces before assembly.",
+      "actions": [
+        "Remove support remnants and burrs from all mating surfaces.",
+        "Measure each shaft bore, bearing seat, and insert pocket.",
+        "Identify the intended insert pockets against the CAD.",
+        "Install heat-set inserts squarely with a temperature-controlled tool.",
+        "Let each insert cool before fitting a screw.",
+        "Dry-fit bearings and shafts without forcing them into the prints."
+      ],
+      "check": "The mating surfaces are clear, and the confirmed inserts, bearings, and shafts fit correctly.",
+      "note": "Insert locations and fit tolerances are not dimensioned in the source. Confirm each pocket before heating or pressing hardware.",
+      "source": "Guide preparation procedure + STEP; physical fit confirmation required"
+    },
+    {
+      "id": "base",
+      "title": "Prepare the base and controls",
+      "short": "Base",
+      "group": "base",
+      "photo": "controller.webp",
+      "caption": "The source mounts a PWM board to its printed support with self-tapping screws.",
+      "intro": "Fit the controls while the power supply remains disconnected.",
+      "actions": [
+        "Locate the base enclosure, base lid, and three PWM controllers.",
+        "Dry-fit each board and its knob through the front panel.",
+        "Secure each board through its mounting holes with compatible screws.",
+        "Route the unpowered leads away from the lid and tilt mechanism.",
+        "Leave the base open for the wiring inspection."
+      ],
+      "check": "The boards are secure, and no screw or wire touches an exposed conductor.",
+      "note": "Different PWM brands have different mounting holes. Confirm screw length and clearance under each board.",
+      "source": "Annotated image 1 + STEP base assembly"
+    },
+    {
+      "id": "body",
+      "title": "Assemble the body and feeder",
+      "short": "Body",
+      "group": "body",
+      "photo": "prototype.webp",
+      "caption": "The black body contains the feed screw. The hopper attaches above its rear opening.",
+      "intro": "Dry-fit the feed path before you tighten the body.",
+      "actions": [
+        "Identify both body halves, the feed screw, and the four bearings.",
+        "Compare each bearing location with the STEP assembly.",
+        "Fit the bearings without force against their shields.",
+        "Place the feed screw and dry-fit the body halves.",
+        "Turn the feeder by hand and remove any rubbing or binding.",
+        "Fit the tilt support and confirm free movement before tightening."
+      ],
+      "check": "The feeder turns freely by hand, and the body and tilt support remain aligned.",
+      "note": "Insert locations, bearing fits, and tightening torques need confirmation on the actual prints. Do not pull misaligned halves together with screws.",
+      "source": "STEP body + feed assemblies; reconstructed sequence"
+    },
+    {
+      "id": "drive",
+      "title": "Fit the geared feed drive",
+      "short": "Feed drive",
+      "group": "feed",
+      "photo": "feed-motor.webp",
+      "caption": "The small blue bevel pinion connects the geared motor to the feeder drive.",
+      "intro": "Align the small bevel gears before you secure the motor.",
+      "actions": [
+        "Dry-fit the geared motor, rear cover, motor mount, and bevel gears.",
+        "Confirm the motor shaft diameter against the printed pinion bore.",
+        "Align the gear axes and leave enough clearance for free rotation.",
+        "Secure the motor and rotate the feeder by hand again."
+      ],
+      "check": "The gears engage and turn without tight spots or shaft movement.",
+      "note": "The original note suggests heating a tight pinion with a lighter. Use a measured bore correction instead. The gear fit is not specified.",
+      "source": "Annotated image 2 + STEP rear drive"
+    },
+    {
+      "id": "wheels",
+      "title": "Build the twin launch wheels",
+      "short": "Wheels",
+      "group": "wheels",
+      "photo": "wheels.webp",
+      "caption": "The prototype uses strips of table tennis rubber bonded around both printed wheel rims.",
+      "intro": "Keep both wheel assemblies concentric and balanced.",
+      "actions": [
+        "Dry-fit the two 550 motors in their printed mounts.",
+        "Fit the flanges and launch wheels using the CAD as a reference.",
+        "Cut matching rubber strips for the two wheel rims.",
+        "Bond the strips evenly with an adhesive compatible with the materials.",
+        "Let the adhesive cure for its specified time.",
+        "Turn each wheel by hand and inspect clearance, runout, and loose rubber."
+      ],
+      "check": "Both wheels turn freely, and the rubber is secure, even, and clear of the frame.",
+      "note": "The source names 502 cyanoacrylate. Rubber thickness, finished wheel gap, speed, and balance limits are not supplied.",
+      "source": "Annotated image 3 + STEP launch assemblies"
+    },
+    {
+      "id": "outlet",
+      "title": "Fit the outlet and ball stopper",
+      "short": "Outlet",
+      "group": "body",
+      "photo": "stopper.webp",
+      "caption": "The small stopper above the outlet prevents a launched ball from pulling the next ball through.",
+      "intro": "Prevent double feeding without blocking the ball path.",
+      "actions": [
+        "Fit the outlet tube between the launch wheels.",
+        "Compare the stopper position with the close-up photographs.",
+        "Fit a short filament piece or thin shaft as the stopper.",
+        "Move one ball through the unpowered feed path by hand.",
+        "Confirm that the following ball remains behind the stopper."
+      ],
+      "check": "One ball passes freely, and the following ball stays behind the stopper.",
+      "note": "The outlet filename says revision pending. The source mentions 10 mm for the stopper but does not define the dimension clearly.",
+      "source": "Annotated images 3–4 + outlet CAD name"
+    },
+    {
+      "id": "hopper",
+      "title": "Attach the hopper and set the tilt",
+      "short": "Hopper",
+      "group": "hopper",
+      "photo": "prototype.webp",
+      "caption": "The blue hopper feeds the rear of the body. The side knobs lock the launch angle.",
+      "intro": "Complete the mechanical assembly before you connect power.",
+      "actions": [
+        "Fit the hopper to the body neck using the CAD and photograph.",
+        "Secure the hopper without deforming its neck.",
+        "Set the launcher on a stable support.",
+        "Adjust the tilt and tighten the compatible locking hardware.",
+        "Keep cables clear throughout the full tilt range."
+      ],
+      "check": "The hopper and tilt lock are secure, and the launcher remains stable.",
+      "note": "Hopper fastener allocation and support mounting details need confirmation on the actual assembly.",
+      "source": "STEP hopper and tilt mechanism + prototype photograph"
+    },
+    {
+      "id": "wiring",
+      "title": "Connect the three motor channels",
+      "short": "Wiring",
+      "group": "base",
+      "photo": "controller.webp",
+      "caption": "One PWM channel controls each launch motor. A third channel controls the geared feeder.",
+      "intro": "Use the wiring diagram as a topology guide. Confirm every terminal from the selected component documentation.",
+      "actions": [
+        "Disconnect the DC supply and set all speed controls to zero.",
+        "Identify the supply and motor terminals on each PWM controller.",
+        "Connect one motor to each controller output.",
+        "Connect the controller supply inputs in parallel through suitable branch protection.",
+        "Place a DC-rated switch in the positive 12 V supply lead.",
+        "Inspect polarity, insulation, strain relief, and continuity before power-on."
+      ],
+      "check": "I have confirmed component ratings, polarity, protection, and insulation for the complete circuit.",
+      "note": "No verified schematic, terminal pinout, fuse values, or current measurements are supplied. Do not use the source mains-switch note as a wiring procedure.",
+      "source": "Spreadsheet electronics + guide topology; no source schematic"
+    },
+    {
+      "id": "commission",
+      "title": "Commission one motor at a time",
+      "short": "First power",
+      "group": "all",
+      "photo": "wheels.webp",
+      "caption": "Keep clear of the exposed launch wheels. Complete guarding before operating the launcher.",
+      "intro": "Inspect each motor channel before you introduce a ball.",
+      "actions": [
+        "Secure the launcher and fit guards around accessible rotating parts.",
+        "Keep the hopper empty and keep people clear of the outlet.",
+        "Use a current-limited supply for the initial motor checks.",
+        "Run each motor separately at its lowest stable setting.",
+        "Confirm that both wheel contact surfaces move toward the outlet.",
+        "Confirm that the feeder advances toward the launch wheels.",
+        "Stop immediately if a part rubs, vibrates, loosens, or overheats."
+      ],
+      "check": "All three channels run in the correct direction without binding, loose parts, or excessive current.",
+      "note": "Confirm the real current budget before using the source 3 A supply. Disconnect power and wait for full stop before changes.",
+      "source": "Guide commissioning procedure; physical verification required"
+    },
+    {
+      "id": "launch",
+      "title": "Try one ball, then tune the feed",
+      "short": "First ball",
+      "group": "all",
+      "photo": "prototype.webp",
+      "caption": "Use the supplied demonstration video as visual context, not proof of a validated performance specification.",
+      "intro": "Begin with a clear target area and the lowest useful wheel speeds.",
+      "actions": [
+        "Aim the launcher at a clear table or a suitable catch net.",
+        "Wear eye protection and keep hands clear of the feed and wheels.",
+        "Start the launch wheels before you start the feeder.",
+        "Introduce one ball and observe its path from a safe position.",
+        "Stop the feeder before you stop the launch wheels.",
+        "Disconnect power before adjusting the stopper, rubber, gears, or wheel spacing.",
+        "Record the settings, current, and any changes before repeating the trial."
+      ],
+      "check": "I have recorded a controlled single-ball trial and the adjustments that remain.",
+      "note": "Increase the ball count only after repeatable single-ball feeding. No range, launch rate, capacity, or lifetime is verified.",
+      "source": "Guide trial procedure + supplied demonstration video"
+    }
+  ],
+  "openQuestions": [
+    "Resolve CAD versus spreadsheet fasteners: M3 × 15/18/20 mm and M5 tilt hardware.",
+    "Confirm both 550 motor shaft dimensions, speeds, running currents, and stall currents.",
+    "Confirm the geared motor shaft and the incomplete 2 kg torque notation.",
+    "Confirm controller terminal labels, current ratings, mounting, and branch protection.",
+    "Measure the complete current budget before relying on the source 12 V / 3 A supply.",
+    "Confirm insert pockets, bearing fits, support mounting, and each fastener location.",
+    "Resolve the outlet revision and measure the stopper, rubber thickness, and final wheel gap.",
+    "Complete guards, slice inspection, and a physical build review before routine use."
+  ],
+  "supplierCheckedOn": "2026-10-26",
+  "supplierStatuses": {
+    "matches-spec": {
+      "label": "Listed spec matches",
+      "description": "The listing matches the stated specification. Physical fit and system suitability still need confirmation."
+    },
+    "alternative": {
+      "label": "Alternative · check fit",
+      "description": "A functional candidate with differences from the source part. Confirm dimensions, current ratings, and mounting."
+    },
+    "partial": {
+      "label": "Partial supply",
+      "description": "The link supplies only part of this row. Other materials or selections are still needed."
+    },
+    "no-match": {
+      "label": "No verified match",
+      "description": "No matching Botland product was verified. Browse links are categories, not confirmed substitutes."
+    }
+  }
+}
