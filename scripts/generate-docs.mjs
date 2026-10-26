@@ -2,6 +2,7 @@ import fs from 'node:fs';
 import { writeZip } from './lib/zip.mjs';
 const project = JSON.parse(fs.readFileSync('docs/data/project.json', 'utf8'));
 const inventory = JSON.parse(fs.readFileSync('docs/data/print-inventory.json', 'utf8'));
+const visuals = JSON.parse(fs.readFileSync('docs/data/component-visuals.json', 'utf8'));
 const write = (path, text) => {
   if (!fs.existsSync(path) || fs.readFileSync(path, 'utf8') !== text) fs.writeFileSync(path, text);
 };
@@ -114,6 +115,35 @@ ${project.openQuestions.map((question) => `- [ ] ${question}`).join('\n')}
 The website saves gathered-item checkboxes locally on your device. No shop account or purchase is connected. Use the CSV download for a spreadsheet or a printed buying list.
 `,
 );
+const scopeLabels = {
+  listing: 'Listing photo',
+  reference: 'Reference',
+  material: 'Material',
+};
+write(
+  'docs/component-image-sources.md',
+  `# Component image sources and reference records\n\nThis document records the source photographs, vector illustrations, visual evidence, rights statements, and limitation notes for each component in the bill of materials.\n\n## Purpose and scope\n\nPhotographs and SVG illustrations in this build guide serve visual identification only:\n\n- **Listing photo (\`listing\`)**: Photographed from candidate supplier listings (Botland) to help identify commercial items. Printed pocket fits, batch tolerances, and electrical ratings must still be verified against the physical parts.\n- **Reference (\`reference\`)**: Representative product or hardware family photographs from manufacturer or distributor listings. Used to illustrate general physical appearance; dimensions, grades, lengths, or electrical characteristics may differ from the source specification.\n- **Material (\`material\`)**: Depicts raw material stock (such as a 3D-printing filament spool) rather than a finished or custom-fabricated component (such as a safety guard).\n\nWARNING: These illustrations and photographs depict physical appearance only. They are not dimensioned engineering drawings, CAD models, or certified proof of fit or compatibility. Copyright in product photographs remains with the respective source photographers and retailers.\n\n## Component visual references\n\n| ID | Part | Scope | Photo credit / source | Visible features | Limitations and notes |\n|---|---|---|---|---|---|\n${project.bom
+    .map((part) => {
+      const comp = visuals.components[part.id];
+      const asset = visuals.assets[comp.asset];
+      return `| ${[
+        part.id,
+        part.name,
+        scopeLabels[comp.scope] ?? comp.scope,
+        `[${escape(asset.credit)}](${asset.sourcePage})`,
+        comp.observations.join('; '),
+        comp.note,
+      ]
+        .map(escape)
+        .join(' | ')} |`;
+    })
+    .join('\n')}\n\n## Source asset records and rights\n\n${Object.entries(visuals.assets)
+    .map(
+      ([key, asset]) =>
+        `### ${asset.credit} (\`${key}\`)\n\n- **Local photo:** \`${asset.photo}\`\n- **Source page:** [${escape(asset.sourcePage)}](${asset.sourcePage})\n- **Direct image URL:** [${escape(asset.sourceImage)}](${asset.sourceImage})\n- **Checked on:** ${asset.checkedOn}\n- **Rights:** ${asset.rights}\n- **Processing:** ${asset.processing}\n- **Local photo SHA-256:** \`${asset.photoSha256}\`\n- **Original image SHA-256:** \`${asset.sourceSha256}\`\n`,
+    )
+    .join('\n')}`,
+);
 const files = [
   'shopping-list.md',
   'future-iterations.md',
@@ -124,6 +154,7 @@ const files = [
   'translation.md',
   'build-notes.md',
   'attribution.md',
+  'component-image-sources.md',
 ];
 writeZip('docs/downloads/english-build-guide.zip', [
   ...files.map((name) => [name, fs.readFileSync(`docs/${name}`)]),

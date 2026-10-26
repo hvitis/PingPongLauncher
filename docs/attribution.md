@@ -22,4 +22,4 @@ The viewer uses 101 meshes tessellated from the STEP assembly. It applies guide 
 
 ## Provenance after cleanup
 
-The original Chinese-named inputs are removed at the user’s request after derivative verification. [source-manifest.json](data/source-manifest.json) retains their historical names and hashes. Useful source content remains under English filenames, with translated annotations in [translation.md](translation.md).
+The original Chinese-named inputs are removed at the user’s request after derivative verification. [source-manifest.json](data/source-manifest.json) retains their historical names and hashes. Useful source content remains under English filenames, with translated annotations in [translation.md](translation.md). Component reference photographs, vector illustrations, and supplier photo rights are cataloged in [component-image-sources.md](component-image-sources.md).

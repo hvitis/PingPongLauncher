@@ -103,14 +103,16 @@ const server = http.createServer((request, response) => {
 let timer;
 const watcher = fs.watch(root, { recursive: true }, (_, file) => {
   if (!file) return;
-  if (file === 'data/project.json') {
+  if (file === 'data/project.json' || file === 'data/component-visuals.json') {
     const result = spawnSync(
       process.execPath,
       [fileURLToPath(new URL('./generate-docs.mjs', import.meta.url))],
       { stdio: 'inherit' },
     );
     if (result.status)
-      console.error('Documentation generation failed. Correct project.json and save again.');
+      console.error(
+        'Documentation generation failed. Correct project.json / component-visuals.json and save again.',
+      );
   }
   clearTimeout(timer);
   timer = setTimeout(() => {

@@ -81,6 +81,7 @@ Start with [the full English assembly guide](docs/assembly-guide.md). Use the we
 |---|---|
 | Shopping checklist | [Website-ready checklist](docs/shopping-list.md) · [CSV](docs/downloads/shopping-list.csv) |
 | Hardware and tools | [English BOM](docs/hardware-bom.md) · [CSV](docs/downloads/hardware-bom.csv) |
+| Component image sources | [Photo references and rights](docs/component-image-sources.md) |
 | Print settings, orientations, and plates | [Print guide](docs/print-guide.md) |
 | English print project | [28 objects on 10 plates](docs/downloads/launcher-english.3mf) |
 | Individual STL files | [ZIP, organized by plate](docs/downloads/launcher-stl-pack.zip) |
