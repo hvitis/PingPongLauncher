@@ -1,0 +1,14 @@
+Connector,Net,Endpoint,Notes
+J1.1,GND,Mega GND,Common signal ground; motor/servo returns go directly to their supply.
+J1.2,+5V_LOGIC,Mega 5V output,"Feeds pots, receiver and low-current buzzer module only; never servo or motors."
+J1.3 → J2.2,FEED_A0,Mega A0,J2: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K feed interval pot.
+J1.4 → J3.2,SPEED_A1,Mega A1,J3: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K launch-speed pot.
+J1.5 → J4.2,SWEEP_A2,Mega A2,J4: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K sweep-range pot.
+J1.6 → J5.2,BALL_D22,Mega D22,J5.1 GND to switch COM; J5.2 to NO. INPUT_PULLUP; debounce in firmware.
+J1.7 → J6.3,IR_D24,Mega D24,J6: 1 GND · 2 +5V_LOGIC · 3 receiver OUT. Verify module connector order.
+J1.8 → J7.3,TONE_D26,Mega D26,J7: 1 GND · 2 +5V_LOGIC · 3 passive driver IN. No bare magnetic buzzer on GPIO.
+Off board,SERVO_D9,Mega D9 / shield servo signal,"Servo + to external regulated 5 V, servo − to supply ground. Do not join external +5 V to shield +5 V."
+Shield M1,LAUNCH_LEFT,Left launch motor,Proposed dedicated channel; confirm forward direction at low duty.
+Shield M2,LAUNCH_RIGHT,Right launch motor,"Proposed dedicated channel; opposite mechanical rotation, both surfaces propel ball outward."
+Shield M3,FEED_MOTOR,Rotary feeder motor,Proposed dedicated channel; M4 unused. Verify each motor against driver current limits.
+Off board,VMOTOR,External supply → fuse → disconnect → shield EXT_PWR,Remove shield power jumper for USB logic + external motor power. Voltage depends on measured motor ratings.

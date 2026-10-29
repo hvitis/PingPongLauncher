@@ -1,0 +1,69 @@
+{
+  "currency": "PLN",
+  "note": "Prices are typical Polish retail (Botland, Kamami, TME, Allegro, hardware stores) in 2026, rounded; check before ordering.",
+  "groups": [
+    {
+      "name": "Electronics",
+      "where": "electronics shop (Botland / Kamami / TME / Allegro)",
+      "items": [
+        {"id": "E1", "qty": 1, "name": "Raspberry Pi Pico 2 WH", "spec": "RP2350, Wi-Fi + Bluetooth, soldered headers", "price": 40},
+        {"id": "E2", "qty": 3, "name": "N20 micro gearmotor 6 V, 5:1, ~3000 rpm", "spec": "3 mm D-shaft, 12×10 mm gearbox (e.g. Botland N20-BT40). 2 used + 1 spare", "price": 22},
+        {"id": "E3", "qty": 1, "name": "DRV8833 dual H-bridge module", "spec": "2.7–10.8 V, 1.5 A/ch (Pololu 2130 or red HW-627 clone)", "price": 15},
+        {"id": "E4", "qty": 1, "name": "Micro servo MG90S (metal gear)", "spec": "swing servo, 180°, 4.8–6.6 V", "price": 18},
+        {"id": "E5", "qty": 1, "name": "Micro servo SG90", "spec": "ball-feed escapement, 180°", "price": 10},
+        {"id": "E6", "qty": 1, "name": "4×AA battery holder, enclosed, with switch and lid", "spec": "≈67×62×19 mm, wire leads", "price": 8},
+        {"id": "E7", "qty": 4, "name": "AA cells", "spec": "NiMH 2000+ mAh (eneloop) recommended; alkaline works (6.4 V fresh)", "price": 10},
+        {"id": "E8", "qty": 1, "name": "Rocker switch KCD1-101", "spec": "SPST ON/OFF, 6 A, panel cut-out 19×13 mm", "price": 2},
+        {"id": "E9", "qty": 3, "name": "Momentary push button, 12 mm panel mount", "spec": "normally open (e.g. PBS-33B / R13-507)", "price": 3},
+        {"id": "E10", "qty": 3, "name": "Potentiometer 10 kΩ linear (B10K)", "spec": "16 mm body, M7 bushing, 6 mm D-shaft (flat at 4.5 mm)", "price": 3},
+        {"id": "E11", "qty": 1, "name": "LED 5 mm green + 220 Ω resistor", "spec": "READY indicator", "price": 1},
+        {"id": "E12", "qty": 2, "name": "Diode 1N4001 (or 1N4007)", "spec": "two in series drop 6.4 V to ≤ 5 V for the Pico VSYS", "price": 0.5},
+        {"id": "E13", "qty": 1, "name": "Electrolytic capacitor 470 µF 16 V", "spec": "across the battery rail at the driver", "price": 1},
+        {"id": "E14", "qty": 1, "name": "Electrolytic capacitor 100 µF 10–16 V", "spec": "Pico VSYS to GND", "price": 0.5},
+        {"id": "E15", "qty": 2, "name": "Ceramic capacitor 100 nF", "spec": "soldered across each motor's terminals (noise)", "price": 0.5},
+        {"id": "E16", "qty": 1, "name": "Perfboard 50×70 mm", "spec": "holes 2 mm from the corners (66×46 mm pitch)", "price": 4},
+        {"id": "E17", "qty": 1, "name": "Female header strips 2.54 mm", "spec": "2×20 for the Pico, 2×6 for the driver", "price": 4},
+        {"id": "E18", "qty": 3, "name": "Screw terminal 2-pin 5.08 mm", "spec": "battery in, top motor, bottom motor", "price": 1},
+        {"id": "E19", "qty": 2, "name": "3-pin male header", "spec": "servo plugs on the perfboard", "price": 0.5},
+        {"id": "E20", "qty": 1, "name": "Wire kit", "spec": "silicone 0.35 mm² red/black ~2 m, 6-core flexible cable ~0.5 m to the turret, heat-shrink", "price": 12},
+        {"id": "E21", "qty": 2, "name": "JST-XH 2-pin plug + socket (optional)", "spec": "makes the head removable", "price": 2}
+      ]
+    },
+    {
+      "name": "Mechanical hardware",
+      "where": "hardware store (Castorama / Leroy Merlin / OBI) and a bearing or skate shop",
+      "items": [
+        {"id": "M1", "qty": 2, "name": "Ball bearing 608ZZ", "spec": "8×22×7 mm (skateboard bearing)", "price": 4},
+        {"id": "M2", "qty": 1, "name": "Hex bolt M8×40 (DIN 933) + M8 nyloc nut", "spec": "yaw axle", "price": 2},
+        {"id": "M3", "qty": 2, "name": "Hex bolt M5×12 + M5 washer", "spec": "elevation pivots: screwed through the cheeks, the plain tip turns in the head", "price": 0.5},
+        {"id": "M4", "qty": 2, "name": "Hex bolt M4×20 + M4 washer", "spec": "elevation locks, pressed into the printed knobs", "price": 0.5},
+        {"id": "M5", "qty": 4, "name": "Screw M4×10", "spec": "cheek feet → turret (self-tapping into plastic)", "price": 0.3},
+        {"id": "M6", "qty": 4, "name": "Screw M3×40", "spec": "join the two head halves", "price": 0.4},
+        {"id": "M7", "qty": 4, "name": "Screw M3×12 + M3 nut + washer", "spec": "motor clamps → head (nuts sit in the head)", "price": 0.3},
+        {"id": "M8", "qty": 4, "name": "Grub screw M3×4 / screw M3×8", "spec": "2 set screws in the hubs, 2 motor retainers in the clamps", "price": 0.3},
+        {"id": "M9", "qty": 8, "name": "Screw M3×20", "spec": "cheeks → feed-tube ears", "price": 0.2},
+        {"id": "M10", "qty": 4, "name": "Countersunk screw M3×12", "spec": "lid → tray", "price": 0.2},
+        {"id": "M11", "qty": 4, "name": "Screw M3×8", "spec": "perfboard → standoffs", "price": 0.2},
+        {"id": "M12", "qty": 2, "name": "Screw M3×10 + nut", "spec": "battery holder → left wall (or double-sided tape)", "price": 0.2},
+        {"id": "M13", "qty": 6, "name": "Screw M4×10 + nut (optional)", "spec": "attach your basket to the hopper collar", "price": 0.2},
+        {"id": "M14", "qty": 4, "name": "Self-adhesive rubber feet", "spec": "Ø 10–15 mm", "price": 1},
+        {"id": "M15", "qty": 10, "name": "Cable ties", "spec": "tidy the turret cable loop", "price": 0.1}
+      ]
+    },
+    {
+      "name": "Wheels",
+      "where": "Botland",
+      "items": [
+        {"id": "L1", "qty": 2, "name": "Wheel with tyre 65×26 mm, yellow (TT-motor wheel)", "spec": "Botland 14245 (EAN 5903351248181): rubber tyre, ABS rim, 5 mm bore with two flats made for a TT gearmotor shaft. The printed hub carries a matching stub. LEGO Technic wheels with a cross hole also work: set wheel_type = \"lego\" in cad/config.scad", "price": 3.5},
+        {"id": "L2", "qty": 2, "name": "Self-tapping screw M2×6 (optional)", "spec": "through the wheel centre into the hub stub, if a wheel works loose", "price": 0.2}
+      ]
+    },
+    {
+      "name": "Filament",
+      "where": "3D printing shop",
+      "items": [
+        {"id": "F1", "qty": 1, "name": "PETG filament", "spec": "≈ 0.7 kg for all printed parts (any colour; translucent looks great on the hopper)", "price": 70}
+      ]
+    }
+  ]
+}

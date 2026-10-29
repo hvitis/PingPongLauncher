@@ -1,0 +1,275 @@
+{
+  "id": "mobile01",
+  "title": "Cody\u2019s Arduino launcher",
+  "author": "codyhsu",
+  "published": "2019-08-09",
+  "checkedOn": "2026-10-27",
+  "source": "https://www.mobile01.com/topicdetail.php?f=696&t=5867234",
+  "status": "Source analysis and proposed breakout; not a verified build",
+  "parts": [
+    {
+      "id": "M01",
+      "name": "Controller",
+      "spec": "Arduino Mega 2560",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "UNO was the earlier version; Mega is used for IR and sound."
+    },
+    {
+      "id": "M02",
+      "name": "Motor driver",
+      "spec": "L293D / Adafruit Motor Shield v1 compatible",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "AFMotor.h interface; not the I\u00b2C v2 shield. Verify clone wiring."
+    },
+    {
+      "id": "M03",
+      "name": "Launch motors",
+      "spec": "DC motor; model and voltage unspecified",
+      "quantity": 2,
+      "evidence": "Source BOM",
+      "note": "Measure stall current before selecting a driver or supply."
+    },
+    {
+      "id": "M04",
+      "name": "Launch tires",
+      "spec": "Tamiya 94325 large-diameter sponge tire / wheel set",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Source names a limited-edition Mini 4WD set; fit and availability unverified."
+    },
+    {
+      "id": "M05",
+      "name": "Feeder motor",
+      "spec": "Plastic DC gearmotor, 1:220",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Drives the rotary ball-metering disk; no rated voltage given."
+    },
+    {
+      "id": "M06",
+      "name": "Aiming servo",
+      "spec": "MG90S metal-gear micro servo",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Moves the hinge linkage. Verify travel and load before attaching horn."
+    },
+    {
+      "id": "M07",
+      "name": "Ball detector",
+      "spec": "Omron SS-5GL microswitch",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Senses a ball in the feed channel; not a speed sensor."
+    },
+    {
+      "id": "M08",
+      "name": "Local controls",
+      "spec": "B10K linear potentiometer + knob",
+      "quantity": 3,
+      "evidence": "Source BOM",
+      "note": "Feed interval, launch speed, oscillation range."
+    },
+    {
+      "id": "M09",
+      "name": "Remote control",
+      "spec": "HX1838 receiver module + NEC IR remote",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Check receiver-module pin order; bare receiver and module differ."
+    },
+    {
+      "id": "M10",
+      "name": "Sound",
+      "spec": "Passive buzzer, 3\u20135 V",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Proposed PCB uses an external passive buzzer driver module instead."
+    },
+    {
+      "id": "M11",
+      "name": "Regulator",
+      "spec": "LM2596S adjustable buck module",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Set output before connection. Input must exceed required output."
+    },
+    {
+      "id": "M12",
+      "name": "Battery cells",
+      "spec": "18650 cells; source claims 4200 mAh",
+      "quantity": 2,
+      "evidence": "Source BOM",
+      "note": "Unverified capacity claim. Pack topology and protection are not established."
+    },
+    {
+      "id": "M13",
+      "name": "Battery holder",
+      "spec": "18650 holder",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Series/parallel wiring not specified; do not infer a charger connection."
+    },
+    {
+      "id": "M14",
+      "name": "Charger",
+      "spec": "NYI-0850 single-cell Li-ion charger",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Listed for individual 3.7 V nominal cells; not a documented 2S charger."
+    },
+    {
+      "id": "M15",
+      "name": "Prototype board",
+      "spec": "400-point solderless breadboard",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Replace with the proposed breakout after bench verification."
+    },
+    {
+      "id": "M16",
+      "name": "Hopper",
+      "spec": "Reused chicken bucket",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Feeds the rotary disk under gravity."
+    },
+    {
+      "id": "M17",
+      "name": "Structure",
+      "spec": "Wood strips",
+      "quantity": 2,
+      "evidence": "Source BOM",
+      "note": "Stand, cross feet and hopper cradle; dimensions not published."
+    },
+    {
+      "id": "M18",
+      "name": "Pivot",
+      "spec": "Small door hinge",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Servo linkage steers the launcher assembly."
+    },
+    {
+      "id": "M19",
+      "name": "Feed tube",
+      "spec": "Reused kitchen paper tube",
+      "quantity": 1,
+      "evidence": "Source BOM",
+      "note": "Guides balls toward the wheels; fit must be measured."
+    },
+    {
+      "id": "P01",
+      "name": "Control breakout",
+      "spec": "80 \u00d7 55 mm, 2-layer PCB placement draft",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "J1\u2013J7, C1 100 nF, C2 10 \u00b5F; unrouted, no fabrication outputs."
+    },
+    {
+      "id": "P02",
+      "name": "Buzzer interface",
+      "spec": "5 V passive buzzer driver module, active-high signal",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "Input must accept 5 V logic and tone pulses; choose module before routing."
+    },
+    {
+      "id": "P03",
+      "name": "Bench power",
+      "spec": "Current-limited motor supply + regulated 5 V servo supply",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "Mega powered by USB for initial tests; grounds common, positive rails separate."
+    },
+    {
+      "id": "P04",
+      "name": "Protection and assembly",
+      "spec": "Fuse, disconnect, wire, connectors, guards, fasteners",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "Size protection and wiring from measured current; quantities depend on build."
+    }
+  ],
+  "connections": [
+    {
+      "connector": "J1.1",
+      "net": "GND",
+      "endpoint": "Mega GND",
+      "note": "Common signal ground; motor/servo returns go directly to their supply."
+    },
+    {
+      "connector": "J1.2",
+      "net": "+5V_LOGIC",
+      "endpoint": "Mega 5V output",
+      "note": "Feeds pots, receiver and low-current buzzer module only; never servo or motors."
+    },
+    {
+      "connector": "J1.3 \u2192 J2.2",
+      "net": "FEED_A0",
+      "endpoint": "Mega A0",
+      "note": "J2: 1 GND \u00b7 2 wiper \u00b7 3 +5V_LOGIC; B10K feed interval pot."
+    },
+    {
+      "connector": "J1.4 \u2192 J3.2",
+      "net": "SPEED_A1",
+      "endpoint": "Mega A1",
+      "note": "J3: 1 GND \u00b7 2 wiper \u00b7 3 +5V_LOGIC; B10K launch-speed pot."
+    },
+    {
+      "connector": "J1.5 \u2192 J4.2",
+      "net": "SWEEP_A2",
+      "endpoint": "Mega A2",
+      "note": "J4: 1 GND \u00b7 2 wiper \u00b7 3 +5V_LOGIC; B10K sweep-range pot."
+    },
+    {
+      "connector": "J1.6 \u2192 J5.2",
+      "net": "BALL_D22",
+      "endpoint": "Mega D22",
+      "note": "J5.1 GND to switch COM; J5.2 to NO. INPUT_PULLUP; debounce in firmware."
+    },
+    {
+      "connector": "J1.7 \u2192 J6.3",
+      "net": "IR_D24",
+      "endpoint": "Mega D24",
+      "note": "J6: 1 GND \u00b7 2 +5V_LOGIC \u00b7 3 receiver OUT. Verify module connector order."
+    },
+    {
+      "connector": "J1.8 \u2192 J7.3",
+      "net": "TONE_D26",
+      "endpoint": "Mega D26",
+      "note": "J7: 1 GND \u00b7 2 +5V_LOGIC \u00b7 3 passive driver IN. No bare magnetic buzzer on GPIO."
+    },
+    {
+      "connector": "Off board",
+      "net": "SERVO_D9",
+      "endpoint": "Mega D9 / shield servo signal",
+      "note": "Servo + to external regulated 5 V, servo \u2212 to supply ground. Do not join external +5 V to shield +5 V."
+    },
+    {
+      "connector": "Shield M1",
+      "net": "LAUNCH_LEFT",
+      "endpoint": "Left launch motor",
+      "note": "Proposed dedicated channel; confirm forward direction at low duty."
+    },
+    {
+      "connector": "Shield M2",
+      "net": "LAUNCH_RIGHT",
+      "endpoint": "Right launch motor",
+      "note": "Proposed dedicated channel; opposite mechanical rotation, both surfaces propel ball outward."
+    },
+    {
+      "connector": "Shield M3",
+      "net": "FEED_MOTOR",
+      "endpoint": "Rotary feeder motor",
+      "note": "Proposed dedicated channel; M4 unused. Verify each motor against driver current limits."
+    },
+    {
+      "connector": "Off board",
+      "net": "VMOTOR",
+      "endpoint": "External supply \u2192 fuse \u2192 disconnect \u2192 shield EXT_PWR",
+      "note": "Remove shield power jumper for USB logic + external motor power. Voltage depends on measured motor ratings."
+    }
+  ]
+}

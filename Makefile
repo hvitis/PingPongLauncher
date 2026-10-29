@@ -23,6 +23,7 @@ docs: ## Generate Markdown, BOM/shopping CSV files, and the guide ZIP
 
 test: ## Run browser checks against a running preview
 	node tests/browser.mjs
+	node tests/thrower-browser.mjs
 
 clean: ## Remove only disposable build/test output
 	rm -rf dist test-results playwright-report

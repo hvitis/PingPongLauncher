@@ -1,0 +1,144 @@
+<div id="app">
+  <section id="stage">
+    <canvas id="view" aria-label="Interactive PingPongThrower model"></canvas>
+    <div id="hud">
+      <div class="brand">PingPong<b>Thrower</b></div>
+      <div id="readout"></div>
+    </div>
+    <div id="viewbar">
+      <button data-cam="robot" class="on">Robot</button>
+      <button data-cam="table">Table</button>
+      <button data-cam="player">Player</button>
+      <label><input type="checkbox" id="cutaway"> Cutaway</label>
+      <label>Explode <input type="range" id="explode" min="0" max="1" step="0.01" value="0"></label>
+    </div>
+    <div id="stepbar" hidden>
+      <div class="sb-row"><b id="sb-phase"></b><button id="sb-close" title="Back to the finished robot" aria-label="Back to the finished robot">✕</button></div>
+      <div class="sb-row">
+        <button id="sb-prev" aria-label="Previous step">◀</button>
+        <button id="sb-play" aria-label="Play the build">▶</button>
+        <button id="sb-next" aria-label="Next step">▶▏</button>
+        <span id="sb-count"></span>
+      </div>
+      <div id="sb-title"></div>
+    </div>
+    <div id="tip" hidden></div>
+    <div id="loading">Loading models…</div>
+  </section>
+
+  <aside id="panel">
+    <nav id="tabs">
+      <button data-tab="sim" class="on">Simulate</button>
+      <button data-tab="poc">POC</button>
+      <button data-tab="how">How it works</button>
+      <button data-tab="parts">Parts</button>
+      <button data-tab="wiring">Wiring</button>
+      <button data-tab="build">Build</button>
+    </nav>
+
+    <!-- ===================== SIMULATE ===================== -->
+    <div class="tab on" id="tab-sim">
+      <p class="lead">The same controls as the real panel. The firmware logic is mirrored here, and balls fly with drag and spin (Magnus) over a regulation table.</p>
+      <p class="note" id="sim-phase" hidden></p>
+      <div class="buttons">
+        <button id="b-motors" class="big">MOTORS</button>
+        <button id="b-swing" class="big">SWING</button>
+        <button id="b-feed" class="big">FEED</button>
+        <button id="b-drop" class="big" hidden>DROP BALL</button>
+      </div>
+      <p class="hint">Click = toggle. <kbd>Shift</kbd>+click = long press (SWING: next pattern, FEED: one ball, MOTORS: stop all).</p>
+      <div class="led-row"><span id="led" class="led"></span> <span id="state">idle</span></div>
+
+      <h3 id="knobs-title">Panel knobs</h3>
+      <label class="knob">SPEED <output id="o-speed"></output><input type="range" id="k-speed" min="0" max="1" step="0.01" value="0.55"></label>
+      <label class="knob">SPIN <small>backspin ◂ ▸ topspin</small> <output id="o-spin"></output><input type="range" id="k-spin" min="0" max="1" step="0.01" value="0.5"></label>
+      <label class="knob">RATE <output id="o-rate"></output><input type="range" id="k-rate" min="0" max="1" step="0.01" value="0.5"></label>
+
+      <h3>Mechanical setting</h3>
+      <label class="knob">Elevation (lock knob) <output id="o-pitch"></output><input type="range" id="k-pitch" min="-5" max="30" step="1" value="8"></label>
+
+      <h3>Phone remote extras</h3>
+      <label class="knob">Swing width <output id="o-width"></output><input type="range" id="k-width" min="0" max="35" step="1" value="25"></label>
+      <label class="knob">Sweep period <output id="o-period"></output><input type="range" id="k-period" min="1" max="10" step="0.5" value="4"></label>
+      <label class="knob">Swing pattern
+        <select id="k-pattern"><option value="sweep">Sweep</option><option value="step3">Left · centre · right</option><option value="random">Random</option></select></label>
+      <label class="knob">Batteries
+        <select id="k-batt"><option value="5.2">4 × NiMH (≈ 5.2 V under load)</option><option value="6.0" selected>4 × alkaline, fresh (≈ 6.0 V)</option><option value="4.6">4 × alkaline, tired (≈ 4.6 V)</option></select></label>
+
+      <h3>Physics readout</h3>
+      <table class="kv" id="physics"></table>
+      <p class="hint">Wheels are drawn at 1/40 of their real speed so you can see them turn.</p>
+    </div>
+
+    <!-- ===================== TEST PHASES ===================== -->
+    <div class="tab" id="tab-poc">
+      <h2>Proof-of-concept test phases</h2>
+      <p class="lead" id="poc-note"></p>
+      <div class="seg" id="phase-pick" role="group" aria-label="Test phase"></div>
+      <div id="phase-body"></div>
+    </div>
+
+    <!-- ===================== HOW IT WORKS ===================== -->
+    <div class="tab" id="tab-how">
+      <h2>How it works</h2>
+      <p class="lead">Six subsystems, each simple on its own. Everything you print is in PETG. Everything electrical comes from a hobby-electronics shop. The rest is bolts, two skate bearings and two rubber-tyred wheels.</p>
+
+      <h3>1 · Power</h3>
+      <p>Four AA cells in a closed holder on the left wall give 4.8–6.4 V. The <b>POWER</b> rocker switch on the back panel feeds that straight to the motor driver and both servos, which are all rated for it. The Pico 2 W tolerates at most 5.5 V on VSYS, so it gets the battery through <b>two 1N4001 diodes in series</b>. They drop about 1.4 V, which keeps fresh alkalines (6.4 V) safe, and the Pico still runs when the pack sags to 4 V. A 470 µF capacitor at the driver absorbs motor start-up spikes. The firmware also ramps the motors up gently so the cells don't brown out the controller. Expect 2–4 hours of play per set of NiMH cells.</p>
+
+      <h3>2 · Throwing: two spinning wheels</h3>
+      <p>Two <b>N20 gearmotors</b> (6 V, 5:1, about 3000 rpm) each spin a 65 mm yellow TT-motor wheel with a rubber tyre. A printed <b>hub</b> clamps the 3 mm D-shaft with an M3 set screw and carries a stub shaped like the TT motor shaft the wheel was made for (or a LEGO cross, for LEGO wheels). One wheel sits above the ball and one below. The gap between them is the ball diameter minus ~2 mm (<code>ball_squeeze</code>), so the soft tyres grip the 40 mm ball and fling it out at roughly the wheels' surface speed. A 65 mm wheel at 3000 rpm has a rim speed of 10.2 m/s, so balls leave at about 2.5–8 m/s, which is the range of normal rallies. The top motor sits in vertical slots. Loosen two screws to adjust the squeeze or to fit a worn tyre.</p>
+      <p>The original TT 1:48 motors only turn ~200 rpm, which gives a 0.6 m/s dribble. That is why the design uses N20s.</p>
+
+      <h3>3 · Speed and spin</h3>
+      <p>The <b>DRV8833</b> driver gives each motor its own 20 kHz PWM, so the wheels can run at different speeds. <b>SPEED</b> sets the average duty (30–100 %). <b>SPIN</b> splits it: turn right and the top wheel runs faster, which gives <b>topspin</b> (the ball dips). Turn left for <b>backspin</b> (the ball floats). A dead band in the middle gives a flat ball. The Simulate tab shows the Magnus effect on the trajectory.</p>
+
+      <h3>4 · Ball feed: the escapement</h3>
+      <p>Balls drop from your basket through the <b>hopper funnel</b> into a vertical <b>feed tube</b> that holds a stack of balls. A <b>rocker</b> on the second micro-servo pokes two fingers through windows in the tube, 30 mm apart. In the rest position the lower finger is in and holds the stack. To release, the rocker tips the other way. The upper finger slides in under ball 2 and lifts the stack a few millimetres off ball 1, then the lower finger pulls out and ball 1 drops alone. When the rocker tips back, the column settles one ball lower. The <b>RATE</b> knob sets one ball every 5 s down to every 0.8 s.</p>
+      <svg viewBox="0 0 420 150" class="diagram" role="img" aria-label="Escapement sequence">
+        <g font-size="11" text-anchor="middle" fill="currentColor">
+          <g transform="translate(20,10)"><rect x="20" y="0" width="44" height="120" rx="3" class="tube"/><circle cx="42" cy="38" r="20" class="ball"/><circle cx="42" cy="80" r="20" class="ball"/><rect x="20" y="100" width="14" height="5" class="finger"/><rect x="10" y="57" width="4" height="5" class="finger ghost"/><text x="42" y="138">rest: lower in</text></g>
+          <g transform="translate(150,10)"><rect x="20" y="0" width="44" height="120" rx="3" class="tube"/><circle cx="42" cy="38" r="20" class="ball"/><circle cx="42" cy="112" r="20" class="ball drop"/><rect x="6" y="100" width="4" height="5" class="finger ghost"/><rect x="20" y="57" width="14" height="5" class="finger"/><text x="42" y="138">release: upper in</text></g>
+          <g transform="translate(280,10)"><rect x="20" y="0" width="44" height="120" rx="3" class="tube"/><circle cx="42" cy="38" r="20" class="ball"/><circle cx="42" cy="80" r="20" class="ball"/><rect x="20" y="100" width="14" height="5" class="finger"/><rect x="10" y="57" width="4" height="5" class="finger ghost"/><text x="42" y="138">back: next ball ready</text></g>
+        </g>
+      </svg>
+
+      <h3>5 · From tube to wheels</h3>
+      <p>The released ball falls into the launcher <b>head</b>. It drops a few millimetres, then rolls around a curved floor (the <b>elbow</b>, 48 mm radius) that turns it 90° toward the front. A short straight run delivers it into the pinch between the wheels. The entry of the head sits exactly on the head's tilt pivot, so changing the elevation never misaligns the head with the fixed tube above it.</p>
+
+      <h3>6 · Aim: swing and elevation</h3>
+      <p><b>Left/right (swing):</b> the whole turret (head, tube, hopper) turns on an M8 bolt running in two 608 skate bearings in the base lid. The swing servo (MG90S) under the bearings never carries weight. Its horn is screwed to a printed coupler whose hex socket slides over the bolt's nyloc nut and transmits only torque. Range ±35°. The <b>SWING</b> button starts or stops it. A long press cycles the patterns: <i>sweep</i> (continuous), <i>left · centre · right</i> (one position per ball) and <i>random</i>.</p>
+      <p><b>Up/down (elevation):</b> the head tilts between the yoke <b>cheeks</b> on two M5×12 bolts. They screw through the cheeks, and their plain tips turn in bores in the head. An M4 bolt with a printed thumb knob runs in an arc slot and locks it anywhere from −5° to +30°. Ticks every 5° are moulded into the cheek, with long ticks at 0°, 15° and 30°.</p>
+
+      <h3>7 · Controls and phone</h3>
+      <p>Back panel: <b>POWER</b> switch, <b>MOTORS</b> / <b>SWING</b> / <b>FEED</b> buttons, <b>SPEED</b> / <b>SPIN</b> / <b>RATE</b> knobs and a <b>READY</b> LED (blinks while the wheels spin up, steady when ready, flickers per ball). The Pico 2 W also opens a Wi-Fi network <code>PingPongThrower</code>. Browse to <code>192.168.4.1</code> to get the same controls plus swing width and sweep period on your phone. A phone setting holds until you turn that knob again.</p>
+    </div>
+
+    <!-- ===================== PARTS ===================== -->
+    <div class="tab" id="tab-parts">
+      <h2>Bill of materials</h2>
+      <div id="bom"></div>
+      <h2>Printed parts</h2>
+      <p class="hint">Download the STL (any slicer) or the Bambu A1 project (0.4 mm nozzle, 0.2 mm layers, 10 % infill, settings included). P1S / X1C projects are in <code>print/3mf/</code> (<code>make 3mf</code>). All parts print without supports.</p>
+      <div id="printed"></div>
+    </div>
+
+    <!-- ===================== WIRING ===================== -->
+    <div class="tab" id="tab-wiring">
+      <h2>Wiring</h2>
+      <p class="lead">Everything goes on one 50×70 mm perfboard: the Pico 2 WH and the DRV8833 sit in female headers, with screw terminals for the battery and motors. The panel parts are wired to the board with short leads.</p>
+      <a class="dl" href="#thrower-wiring3d" data-wiring-open>Phase 1 wiring in 3D, cable by cable</a>
+      <p class="hint">The power, Pico, driver and motor wiring of test phases 1 and 2 as real-looking parts and coloured cables, in six steps. The diagram below is the complete machine.</p>
+      <a href="thrower/docs/wiring.svg" target="_blank" rel="noopener"><img src="thrower/docs/wiring.svg" alt="Wiring diagram" class="wiring"></a>
+      <p class="hint">Click the diagram to open it full size. The full netlist is in <code>docs/wiring.md</code>.</p>
+      <table class="pins" id="pins"></table>
+    </div>
+
+    <!-- ===================== BUILD ===================== -->
+    <div class="tab" id="tab-build">
+      <h2>Assembly order</h2>
+      <p class="hint">Click a step to highlight its parts in the 3D view.</p>
+      <ol id="steps"></ol>
+    </div>
+  </aside>
+</div>

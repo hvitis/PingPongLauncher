@@ -1,6 +1,6 @@
 {
   "name": "ping-pong-launcher",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": true,
   "type": "module",
   "description": "English build guide and Three.js explorer for the supplied ping pong launcher",
@@ -8,7 +8,11 @@
     "dev": "node scripts/serve.mjs",
     "build": "node scripts/build.mjs",
     "check": "node scripts/check.mjs",
-    "test": "node tests/browser.mjs",
-    "docs": "node scripts/generate-docs.mjs"
+    "test": "node tests/browser.mjs && node tests/thrower-browser.mjs",
+    "docs": "node scripts/generate-docs.mjs",
+    "test:ci": "npm run build && OFFLINE_PREVIEW=1 SITE_ROOT=dist npm test && python3 -B -m unittest discover -s docs/thrower/firmware/tests"
+  },
+  "devDependencies": {
+    "playwright": "1.63.0"
   }
 }

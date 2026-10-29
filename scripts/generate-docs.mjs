@@ -154,10 +154,22 @@ const files = [
   'translation.md',
   'build-notes.md',
   'attribution.md',
+  'mobile01-analysis.md',
   'component-image-sources.md',
 ];
 writeZip('docs/downloads/english-build-guide.zip', [
   ...files.map((name) => [name, fs.readFileSync(`docs/${name}`)]),
+  ...['mechanism.svg', 'schematic.svg', 'pcb.svg'].map((name) => [
+    `assets/mobile01/${name}`,
+    fs.readFileSync(`docs/assets/mobile01/${name}`),
+  ]),
+  ...[
+    'mobile01-parts.csv',
+    'mobile01-connections.csv',
+    'mobile01-pcb-netlist.csv',
+    'mobile01-control-breakout.kicad_pcb',
+  ].map((name) => [`downloads/${name}`, fs.readFileSync(`docs/downloads/${name}`)]),
+  ['data/mobile01.json', fs.readFileSync('docs/data/mobile01.json')],
   ['hardware-bom.csv', fs.readFileSync('docs/downloads/hardware-bom.csv')],
   ['shopping-list.csv', fs.readFileSync('docs/downloads/shopping-list.csv')],
   ...fs

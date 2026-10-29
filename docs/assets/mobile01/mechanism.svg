@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 680" width="900" height="680"><title>Cody’s Arduino launcher mechanism</title><desc>Bucket hopper and rotary disk on a wooden frame; twin launch wheels, hinge with servo and wired Mega control box. Reconstructed from source photography, not CAD.</desc><rect width="900" height="680" rx="22" fill="#f5f7fa"/><g font-family="Arial,sans-serif" fill="#253347"><ellipse cx="445" cy="592" rx="310" ry="34" fill="#dfe4ec"/>
+<path d="M370 395 V563 M300 568 H490 M404 562 L475 592" fill="none" stroke="#c8a579" stroke-width="24" stroke-linejoin="round"/>
+<path d="M297 347 H578 V388 H297 Z" fill="#bb9567"/><path d="M345 370 H485" stroke="#927049" stroke-width="9"/>
+<path d="M433 154 H662 L634 328 H461 Z" fill="#3382d6"/><ellipse cx="547" cy="154" rx="115" ry="25" fill="#b9d8fa"/><ellipse cx="547" cy="328" rx="86" ry="16" fill="#1f60a8"/>
+<g fill="#fff" stroke="#a9bed6" stroke-width="2"><circle cx="493" cy="145" r="23"/><circle cx="539" cy="128" r="24"/><circle cx="589" cy="143" r="25"/><circle cx="624" cy="123" r="22"/><circle cx="561" cy="164" r="23"/></g>
+<ellipse cx="547" cy="336" rx="84" ry="16" fill="#63738a"/><path d="M495 335 L554 342 L595 330" fill="none" stroke="#dfe9f5" stroke-width="6"/>
+<path d="M500 350 H231" stroke="#d0d8e2" stroke-width="66"/><path d="M500 350 H231" stroke="#eef1f5" stroke-width="52"/>
+<rect x="215" y="284" width="55" height="46" rx="5" fill="#6e7b8a"/><rect x="215" y="372" width="55" height="46" rx="5" fill="#6e7b8a"/>
+<ellipse cx="243" cy="334" rx="37" ry="14" fill="#edaa52" stroke="#263341" stroke-width="10"/><ellipse cx="243" cy="368" rx="37" ry="14" fill="#edaa52" stroke="#263341" stroke-width="10"/>
+<path d="M213 350 H96 M96 350 L109 339 M96 350 L109 361" stroke="#0071e3" stroke-width="3" fill="none"/>
+<rect x="349" y="388" width="44" height="25" rx="4" fill="#27415f"/><path d="M370 388 L409 366" stroke="#6e7b8a" stroke-width="5"/>
+<rect x="367" y="360" width="21" height="27" fill="#d3b578" stroke="#806c48"/><circle cx="377" cy="370" r="3" fill="#806c48"/>
+<path d="M390 406 C450 480 569 418 616 521" fill="none" stroke="#65758b" stroke-width="4"/>
+<path d="M586 511 L737 511 L781 553 L627 553 Z" fill="#dae5f2" stroke="#8d9db1"/><path d="M627 553 H781 V585 H627 Z" fill="#bed0e6"/><path d="M586 511 L627 553 V585 L586 543 Z" fill="#a7bed8"/>
+<g fill="#253347"><ellipse cx="637" cy="527" rx="10" ry="7"/><ellipse cx="673" cy="527" rx="10" ry="7"/><ellipse cx="709" cy="527" rx="10" ry="7"/></g>
+<g stroke="#8799af" stroke-width="1.5" fill="none"><path d="M674 180 H777 V150"/><path d="M616 338 H779 V304"/><path d="M215 294 H105 V245"/><path d="M350 410 H119 V462"/><path d="M688 570 V615"/></g><text x="676" y="135" font-size="15" fill="#253347">01 / BUCKET HOPPER</text><text x="643" y="290" font-size="15" fill="#253347">02 / ROTARY FEEDER</text><text x="38" y="228" font-size="15" fill="#253347">03 / TWIN WHEELS</text><text x="36" y="484" font-size="15" fill="#253347">04 / HINGE + SERVO</text><text x="573" y="641" font-size="15" fill="#253347">05 / MEGA + CONTROL BOX</text><text x="35" y="45" font-size="15" fill="#253347">MOBILE01 / MECHANISM STUDY</text><text x="35" y="71" font-size="13" fill="#65758b">Explanatory reconstruction • no manufacturing dimensions</text></g></svg>

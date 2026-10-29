@@ -23,3 +23,16 @@ The viewer uses 101 meshes tessellated from the STEP assembly. It applies guide 
 ## Provenance after cleanup
 
 The original Chinese-named inputs are removed at the user’s request after derivative verification. [source-manifest.json](data/source-manifest.json) retains their historical names and hashes. Useful source content remains under English filenames, with translated annotations in [translation.md](translation.md). Component reference photographs, vector illustrations, and supplier photo rights are cataloged in [component-image-sources.md](component-image-sources.md).
+
+## Second launcher: Mobile01 Arduino project
+
+[codyhsu’s Mobile01 post](https://www.mobile01.com/topicdetail.php?f=696&t=5867234), published 9 August 2019, is the source for the second launcher study. Its BOM and wiring photographs were inspected on 27 October 2026. Source photographs are linked rather than bundled. No redistribution license was established. Newly drawn vectors are explanatory reconstructions; the proposed pin map and PCB placement are additions by this guide. They are not the author’s manufacturing files. See [analysis and sources](mobile01-analysis.md).
+
+
+## Third launcher: Nguyen Van Hien’s BLE robot
+
+[Nguyen Van Hien’s YouTube video "Home-made Table Tennis Robot"](https://www.youtube.com/watch?v=-pSiuAdUKP4), published 1 January 2020, is the source for the third launcher study. Its video demonstration, Fusion 360 CAD animation (`ASM v145`), and iPhone app screen were inspected on 27 October 2026. Creator contact: `phuongchiphysics@gmail.com`. Source video is linked rather than bundled. No redistribution license for original video or CAD was established. Newly drawn vectors are explanatory reconstructions; the proposed ATX power & servo distribution breakout and pin map are additions by this guide. They are not the author’s manufacturing files. See [analysis and sources](hien-analysis.md).
+
+## PingPongThrower
+
+The third project is ported from the supplied PingPongThrower project and maintained in `docs/thrower/`, retaining its OpenSCAD-derived STL meshes, MicroPython documentation, BOM, assembly data and print kits. Its bundled Three.js and addon license is retained at [thrower/web/vendor/three/LICENSE](thrower/web/vendor/three/LICENSE). Simulation performance is an estimate, not physical build validation.

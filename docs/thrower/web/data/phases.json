@@ -1,0 +1,164 @@
+{
+ "_about": "Single source for the web viewer (POC tab), docs/POC.md (tools/poc_md.py) and the A1 print zips (tools/build.py a1).",
+ "note": "Build the robot in five stages. Each stage is a complete, working machine that answers one question before you spend money and print time on the next. Nothing printed or bought is thrown away later, except the bench plate.",
+ "a1": {
+  "printer": "Bambu Lab A1",
+  "nozzle": 0.4,
+  "layer": 0.2,
+  "infill": 10,
+  "pattern": "gyroid",
+  "filament": "Bambu PETG Basic @BBL A1",
+  "supports": "off",
+  "note": "Load-bearing small parts (motor clamps, hubs, coupler, rocker, spacers) get 6 walls instead of 4, so at their size they print almost solid even at 10 % infill. Cheeks, turret and bench plate also get 6 walls, because at 10 % infill the walls are what the self-tapping screws bite into."
+ },
+ "phases": [
+  {
+   "id": 1,
+   "name": "Head",
+   "question": "Do two N20 motors with 65 mm wheels throw a ball fast, straight and with spin, on AA cells, without resetting the Pico?",
+   "summary": "The smallest possible test: print only the head. The two motors, hubs and 65 mm yellow wheels go in it, while the Pico 2 WH on its board, the DRV8833, the 4 × AA holder and the power switch lie loose on the bench, wired with flying leads. The head cannot stand on its own, so you clamp it upright by its rear half. Your phone is the remote (Wi-Fi) and you drop balls into the top of the head by hand. This is the riskiest part of the concept, so it is tested first and with the least printing.",
+   "rig": "loose",
+   "carry": null,
+   "wiring3d": "wiring3d.html",
+   "start": "Nothing yet, this is the first phase.",
+   "firmware": 1,
+   "print": [["head_left", 1], ["head_right", 1], ["motor_clamp", 2], ["wheel_hub", 3]],
+   "buy": [["E1", 1], ["E2", 3], ["E3", 1], ["E6", 1], ["E7", 4], ["E8", 1], ["E12", 2], ["E13", 1], ["E14", 1], ["E15", 2], ["E16", 1], ["E17", 1], ["E18", 3], ["E20", 1], ["E21", 2], ["M6", 4], ["M7", 4], ["M8", 4], ["L1", 2], ["L2", 2], ["F1", 1]],
+   "tools": ["Soldering iron, solder, side cutters, heat-shrink", "Multimeter (with a 10 A range for the current test)", "A bench vise with soft jaws, or two F-clamps and a scrap of wood, to hold the head", "Phone with slow-motion video (240 fps) and a tape measure", "Hex keys 2 / 2.5 mm, small screwdriver", "15–20 ping-pong balls"],
+   "wiring": ["Solder the whole power section now: battery screw terminal → KCD1 switch → +BAT rail, 470 µF at the driver, the two 1N4001 diodes to VSYS with 100 µF to GND.", "Pico 2 WH and DRV8833 sit in female headers. Motor screw terminals to AOUT1/2 (top) and BOUT1/2 (bottom), a 100 nF capacitor across each motor's tabs.", "GP2–GP5 to AIN1/AIN2/BIN1/BIN2, GP6 to EEP (nSLEEP), GP7 to ULT (nFAULT).", "The battery holder and the KCD1 switch hang on flying leads for now: battery → switch → board terminal. Heat-shrink the switch tabs, since nothing covers them yet.", "Leave room on the board for the two 3-pin servo headers (phases 3 and 4). Optional JST-XH plugs on the motor leads make the head easy to move onto the cheeks in phase 2 and the turret in phase 4."],
+   "steps": [
+    {"title": "Head and motors", "text": "Motors into the clamps (gearbox nose into the wall pocket), hubs on the shafts (set screw on the flat), then push the wheels onto the hub stubs, flats lined up. If a wheel is loose, an M2×6 self-tapper through its centre holds it. Bolt the halves together with 4 × M3×40. Set the top clamp so the gap between the tyres is the ball minus 2 mm.", "add": ["head_left", "head_right", "clamps", "motors", "hub_top", "hub_bot", "tyre_top", "tyre_bot", "rim_top", "rim_bot"]},
+    {"title": "Controller board", "text": "Solder the perfboard as in the phase 1 wiring diagram. It lies loose for now: put it on something that does not conduct (a piece of cardboard), well away from the wheels. Motor leads to the board terminals.", "add": ["loose_board", "loose_pico", "loose_driver"]},
+    {"title": "Battery and switch", "text": "Wire the battery holder to the KCD1 switch and the switch to the board terminal on flying leads, and heat-shrink the switch tabs. Switch off before you put the cells in.", "add": ["loose_battery", "loose_switch"]},
+    {"title": "Clamp the head", "text": "Clamp the head upright in the vise, or to the edge of the bench with two clamps, gripping only the rear half (behind the M5 pivot bores). The front and both wheels must stay free. Point it along an empty floor, and keep fingers and loose wires away from the tyres.", "add": []},
+    {"title": "Flash and connect", "text": "Set PHASE = 1 in firmware/config.py and copy the firmware to the Pico. Switch on, join the PingPongThrower Wi-Fi and open 192.168.4.1. Only Motors, Speed and Spin are shown. The Pico's own LED blinks while the wheels spin up and stays on when READY: then drop a ball into the opening at the top of the head.", "add": []}
+   ],
+   "tests": [
+    ["Wheel direction", "A ball pushed gently into the head is pulled in and thrown, never spat back. If not, flip TOP_REVERSED / BOT_REVERSED in config.py."],
+    ["No brown-out", "10 starts in a row at full SPEED: the Pico never resets and the phone page stays connected."],
+    ["Exit speed", "Slow-motion video past a tape measure: at least 6 m/s at full SPEED, at most 3 m/s at minimum."],
+    ["Grip", "20 hand-fed balls at 50 % SPEED: none sticks or slips between the wheels."],
+    ["Spin", "SPIN fully right dips the ball (topspin), fully left makes it float (backspin), centre flies flat."],
+    ["Current and heat", "Meter in series with the battery: both motors at full speed draw under 1.2 A steady. After 5 minutes the motors are only hand-warm."],
+    ["Hub grip", "After 100 balls both set screws are still tight and the wheels do not wobble."]
+   ],
+   "exit": "Move on when the ball leaves at a usable speed with clear spin and the controller never resets. If the speed is low, check the squeeze and the battery before anything else; the wheels are already near the largest that fit (69 mm). If balls slip, reduce the gap (ball_squeeze). Nothing printed here is wasted: the head goes straight onto the cheeks in phase 2."
+  },
+  {
+   "id": 2,
+   "name": "Throw rig",
+   "wiring3d": "wiring3d.html",
+   "question": "Hung in its real yoke, does the head throw repeatably to the same spot, and does the elevation lock hold?",
+   "summary": "The phase 1 head now hangs between the two cheeks on a flat bench plate, with the elevation lock, and the electronics are screwed down beside it. The plate's top sits exactly where the turret top will be, so every clearance is the final one. Still no feeder: you drop balls in by hand, and the phone is the remote.",
+   "rig": "bench",
+   "carry": null,
+   "start": "The head, controller board, battery holder and switch from phase 1, plus:",
+   "firmware": 2,
+   "print": [["poc_base", 1], ["cheek_left", 1], ["cheek_right", 1], ["knob_lock", 2]],
+   "buy": [["M3", 2], ["M4", 2], ["M5", 4], ["M11", 4], ["M14", 4]],
+   "tools": ["Hex keys 2.5 / 3 mm", "Double-sided tape", "A paper plate as a target and a tape measure", "15–20 ping-pong balls"],
+   "wiring": ["Same circuit as phase 1: nothing new to solder.", "Thread the switch leads through the rear-wall cut-out from the front, then press the KCD1 in, so nothing needs unsoldering.", "Tie the motor leads to a cheek with a loose loop, so the head can tilt from −5° to 30° without pulling them."],
+   "steps": [
+    {"title": "Bench plate", "text": "Print the plate. Stick 4 rubber feet under it, or clamp it to the bench through the corner holes. Its top sits exactly where the turret top will be, so every clearance is the final one.", "add": ["poc_base"]},
+    {"title": "Cheeks", "text": "Screw both cheek feet to the plate with 4 × M4×10, the same holes the turret uses later.", "add": ["cheeks"]},
+    {"title": "Controller board", "text": "Screw the phase 1 board onto the four standoffs (4 × M3×8). USB end of the Pico toward the middle so you can reach it.", "add": ["poc_board", "poc_pico", "poc_driver"]},
+    {"title": "Power", "text": "Battery holder into the corral (a strip of double-sided tape keeps it down). Thread the switch leads through the rear-wall cut-out from the front and press the KCD1 in. Switch off.", "add": ["poc_battery", "poc_switch"]},
+    {"title": "Hang the head", "text": "Unclamp the head and lower it between the cheeks. M5×12 bolts with washers through the cheeks into the head bores, then the M4 lock knobs through the arc slots. Tie the motor leads to a cheek with a loose loop.", "add": ["head_left", "head_right", "clamps", "motors", "hub_top", "hub_bot", "tyre_top", "tyre_bot", "rim_top", "rim_bot", "lock_knobs"], "from": [0, 0, 220]},
+    {"title": "Flash and connect", "text": "Set PHASE = 2 and copy config.py. The phone page is the same as in phase 1 (Motors, Speed, Spin). Lock the head at 10°, wait for READY and drop the balls in by hand.", "add": []}
+   ],
+   "tests": [
+    ["Grouping", "20 hand-fed balls at 50 % SPEED and 10° elevation: landing spots within a 30 cm circle at 2 m."],
+    ["Elevation range", "The head tilts from −5° to 30° without touching the plate, board or switch, and the motor leads never pull tight."],
+    ["Elevation lock", "Locked at 30°, 20 balls at full SPEED do not move the head off its tick mark."],
+    ["Rigid frame", "At full SPEED the cheeks do not buzz and the head has no play on its pivots."],
+    ["Range table", "Note where the ball lands at 0°, 15° and 30° at full SPEED. It helps when you set up drills later."]
+   ],
+   "exit": "Move on when the throws group tightly and the lock holds. If the head rocks on its pivots, tighten the M5 bolts a little more against their washers. If the lock slips, check that the knob seats flat on the cheek."
+  },
+  {
+   "id": 3,
+   "name": "Feed",
+   "question": "Does the escapement release exactly one ball at a time from a full hopper, at every elevation, without jams or double feeds?",
+   "summary": "Adds the feed tube with its SG90 escapement and the hopper to the phase 2 rig, still on the bench plate. The phone page now shows Feed, 1 ball and Rate. This proves the second risky mechanism while the launcher is still easy to reach.",
+   "rig": "bench",
+   "carry": 2,
+   "start": "Everything from phase 2, plus:",
+   "firmware": 3,
+   "print": [["feed_tube", 1], ["rocker", 1], ["hopper", 1]],
+   "buy": [["E5", 1], ["E19", 2], ["M9", 8], ["M13", 6]],
+   "tools": ["A small bin or basket for the hopper (cut a Ø 140 mm hole in its bottom)", "30–50 ping-pong balls"],
+   "wiring": ["Solder the two 3-pin servo headers (signal, +BAT, GND). The GP15 header gets the SG90 feed servo now. The GP14 header stays empty until phase 4.", "Servo red wire to +BAT, brown to GND, orange to GP15. The servos run at battery voltage."],
+   "steps": [
+    {"title": "Feed tube and escapement", "text": "Screw the SG90 to the tube plate and the rocker onto its horn (centred = both fingers half in). Screw the tube ears to the cheek tops with 8 × M3×20. The tube also stiffens the cheeks.", "add": ["feed_tube", "feed_servo", "rocker"]},
+    {"title": "Hopper", "text": "Slide the funnel onto the tube and screw your basket to the collar.", "add": ["hopper"]},
+    {"title": "Wire and flash", "text": "Plug the SG90 into the GP15 header. Set PHASE = 3 and copy config.py. Check that at rest the lower finger is in and holds the column. If not, adjust FEED_CENTER.", "add": []}
+   ],
+   "tests": [
+    ["Single release", "10 balls in the tube, 100 presses of 1 ball (refill as needed): no double feed and no miss."],
+    ["Full hopper", "30+ balls in the basket at the fastest rate (one every 0.8 s): 100 balls in a row with at most 1 jam."],
+    ["Every elevation", "20 balls each at −5°, 15° and 30°: every ball reaches the wheels without catching under the tube."],
+    ["Spacing", "At 0.8 s per ball, a ball never catches up with the one before it in the head."],
+    ["Servo health", "At rest the SG90 does not buzz. After 5 minutes of feeding it is only warm."],
+    ["Power under load", "Feeding at full SPEED for 200 balls: no Pico reset and no driver fault on the phone page."]
+   ],
+   "exit": "Move on when feeding is boringly reliable. If balls double-feed or wedge, tune FEED_ALPHA and FEED_RELEASE_S first, then the finger geometry (esc_pitch, esc_alpha in cad/config.scad). Re-run make check, which simulates the escapement."
+  },
+  {
+   "id": 4,
+   "name": "Aim",
+   "question": "Does the turret swing the whole launcher smoothly over ±35°, hit three spots repeatably, and stay put on the table?",
+   "summary": "The launcher moves off the bench plate onto the real base: tray, bearing lid, turret and the MG90S swing servo. The electronics move into the tray and only the power switch is fitted in the back panel. The phone page now adds sweep, L-C-R and random swing.",
+   "rig": "base",
+   "carry": null,
+   "start": "The launcher from phase 3 (cheeks, head, feed tube, hopper) and the electronics, moved over, plus:",
+   "firmware": 4,
+   "print": [["tray", 1], ["lid", 1], ["spacer_parts", 1], ["coupler", 1], ["turret", 1]],
+   "buy": [["E4", 1], ["M1", 2], ["M2", 1], ["M10", 4], ["M12", 2], ["M15", 10]],
+   "tools": ["13 mm spanner and 6 mm hex key for the M8 axle", "Three targets (paper plates) for the accuracy test"],
+   "wiring": ["Unscrew the perfboard from the bench plate and screw it onto the tray standoffs. Move the battery holder to the tray wall and the KCD1 switch into the panel cut-out.", "MG90S swing servo into the GP14 header.", "Run the 6-core cable from the board to the turret (motors and feed servo) through the arc slot, with a loose loop for ±35°.", "The button, knob and LED holes in the panel stay empty until phase 5."],
+   "steps": [
+    {"title": "Swing servo and coupler", "text": "Centre the MG90S (run the firmware once with PHASE = 4), drop it into the tray tower, screw the double horn into the coupler.", "add": ["tray", "swing_servo", "coupler"]},
+    {"title": "Electronics into the base", "text": "Board onto the tray standoffs, battery holder to the left wall (2 × M3×10), KCD1 into the panel. The other panel holes stay empty for now.", "add": ["board", "pico", "driver", "battery", "panel_switch"]},
+    {"title": "Bearings and lid", "text": "Press one 608 into each lid seat with the printed spacer between the inner races, then set the lid on the tray. Screw it down only at the end, after the cable is routed.", "add": ["lid", "bearings"]},
+    {"title": "Turret on the bearings", "text": "M8×40 through the turret, 1.5 mm shim, both bearings with the spacer, 2 mm shim, nyloc nut. Tighten until the inner races and spacer are clamped and the turret turns freely with no wobble. The bolt should stand about 1 mm out of the nut.", "add": ["turret", "bolt"]},
+    {"title": "Move the launcher", "text": "Unscrew the four cheek feet from the bench plate and screw them to the turret. The head, feed tube and hopper stay attached to the cheeks, so nothing else comes apart.", "add": ["cheeks", "head_left", "head_right", "clamps", "motors", "hub_top", "hub_bot", "tyre_top", "tyre_bot", "rim_top", "rim_bot", "lock_knobs", "feed_tube", "feed_servo", "rocker", "hopper"], "from": [0, 0, 260]},
+    {"title": "Close up and flash", "text": "Tie the turret cable loop, screw the lid on (4 × M3×12 countersunk), set PHASE = 4 and set SWING_CENTER so the head points straight ahead.", "add": []}
+   ],
+   "tests": [
+    ["Range", "Sweep ±35° for 2 minutes: no rubbing, the cable loop never pulls tight, the turret turns without wobble."],
+    ["Centre", "Swing off: the head points straight down the table within ±1° (check with a long ruler)."],
+    ["Three spots", "L-C-R pattern, 30 balls: three clear groups on the far half, each within a 25 cm circle."],
+    ["Stability", "Full SPEED, 30° elevation, full hopper, random swing for 50 balls: the base does not walk or rock."],
+    ["Coupler", "After 100 sweeps a pencil mark on the turret lines up with the lid mark again at centre."],
+    ["Settle time", "Random pattern at the fastest rate: no ball leaves while the turret is still moving."]
+   ],
+   "exit": "Move on when aiming is repeatable and the base stays put. If the base walks, add weight to the tray or switch to the stiffer Li-ion option in IMPROVEMENTS.md."
+  },
+  {
+   "id": 5,
+   "name": "Panel",
+   "question": "Can someone who has never seen the phone page run a full drill with only the buttons and knobs?",
+   "summary": "The finished robot: three buttons, three knobs and the READY LED go into the back panel. The firmware switches to the panel inputs and the real LED. The phone page keeps working as a remote, and turning a knob takes control back.",
+   "rig": "base",
+   "carry": 4,
+   "start": "Everything from phase 4, plus:",
+   "firmware": 5,
+   "print": [["knob_pot", 3]],
+   "buy": [["E9", 3], ["E10", 3], ["E11", 1]],
+   "tools": ["Wire strippers and heat-shrink for the panel leads"],
+   "wiring": ["Buttons from GP16 (MOTORS), GP17 (SWING) and GP18 (FEED) to GND. The internal pull-ups are used, so no resistors.", "LED: GP19 → 220 Ω → LED → GND.", "Pots: ends to 3V3 (pin 36) and AGND (pin 33), wipers to GP26 (SPEED), GP27 (SPIN) and GP28 (RATE)."],
+   "steps": [
+    {"title": "Panel controls", "text": "Buttons, potentiometers (flat of the shaft up) and the LED into the panel, knobs pressed on. Wire them as in the phase 5 diagram.", "add": ["panel", "panel_knobs"]},
+    {"title": "Flash", "text": "Set PHASE = 5 (the default) and copy config.py. The phone page shows all controls again and turning a knob takes over from the phone.", "add": []}
+   ],
+   "tests": [
+    ["Buttons", "MOTORS short toggles and long stops everything. SWING short toggles and long cycles the patterns. FEED short toggles and long fires one ball."],
+    ["Knobs", "Each knob covers its full range. After a phone change, turning the knob takes control back."],
+    ["READY LED", "Blinks while spinning up, steady when ready, flickers once per ball."],
+    ["Standalone drill", "A 30-minute session without the phone: 300 balls, no resets, no jams."],
+    ["Battery life", "Note the minutes from fresh NiMH cells until throws get visibly short: expect 2–4 hours of play."]
+   ],
+   "exit": "Done: this is the robot in the README. Ideas for a version 2 are in docs/IMPROVEMENTS.md."
+  }
+ ]
+}

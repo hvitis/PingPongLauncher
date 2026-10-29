@@ -1,0 +1,15 @@
+Connector,Net,Target,Note
+J1.1,GND,Mega GND,"Common ground reference across Mega, ESCs, servos, and ATX supply."
+J1.2,+5V_LOGIC,Mega 5V output,Feeds logic rail and HM-10 BLE module; isolated from high-current servo 5 V.
+J1.3,ESC_TOP_D2,Mega D2,Hardware PWM signal for top DT750 ESC (throttle / topspin bias).
+J1.4,ESC_BTM_D3,Mega D3,Hardware PWM signal for bottom DT750 ESC (throttle / backspin bias).
+J1.5,AGIT_SERVO_D4,Mega D4,PWM control signal for hopper rotary agitator disk servo.
+J1.6,GATE_SERVO_D5,Mega D5,PWM control signal for feed escapement gate servo.
+J1.7,PAN_SERVO_D6,Mega D6,PWM control signal for horizontal turntable yaw servo.
+J1.8,TILT_SERVO_D7,Mega D7,PWM control signal for vertical pitch elevation quadrant servo.
+J1.9,BLE_TX1_D18,Mega TX1 (D18),Serial data to HM-10 RX via onboard 1 kΩ / 2 kΩ resistor voltage divider.
+J1.10,BLE_RX1_D19,Mega RX1 (D19),Serial data directly from HM-10 TX (3.3 V high satisfies Mega Vih threshold).
+J2–J3,ESC_SIG,YEP 18A ESC inputs,3-pin headers for ESC signal lines (GND and signal; ESC BEC wire disconnected).
+J4–J7,SERVO_HDR,4x MG995/MG996 servos,"3-pin headers with high-current ATX +5V, GND, and independent signal line."
+J8,BLE_HDR,HM-10 BLE module,"4-pin header: GND, +5V_LOGIC, TXD, RXD (level divided)."
+J9 / PWR,ATX_INPUT,ATX 4-pin Molex,"Yellow (+12 V to ESCs), Red (+5 V to servos), Black (GND), Green (PS_ON)."

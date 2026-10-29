@@ -1,6 +1,8 @@
 # Ping Pong Launcher
 
-A build guide and static website for the supplied 3D-printed ping pong launcher. It includes English source translations, an interactive Three.js CAD viewer, a 13-step animated assembly wizard, a parts list, and printable model downloads.
+A static website with four launcher tabs: the supplied 3D-printed launcher, [codyhsu’s Arduino launcher](https://www.mobile01.com/topicdetail.php?f=696&t=5867234), PingPongThrower (Pico 2 W), and [Nguyen Van Hien’s Bluetooth Table Tennis Robot](https://www.youtube.com/watch?v=-pSiuAdUKP4).
+
+The original launcher has a complete build guide. It includes English source translations, an interactive Three.js CAD viewer, a 13-step animated assembly wizard, a parts list, and printable model downloads.
 
 ![Launcher CAD reference](docs/assets/photos/cad-reference.png)
 
@@ -73,23 +75,42 @@ npm run build        # regenerate documentation and copy the site to dist/
 
 The local server binds to `127.0.0.1` by default. The exported site has no server requirement. All Three.js modules, models, photos, and fonts are local; there are no runtime CDN requests.
 
+## Arduino launcher study
+
+Open `?launcher=mobile01` to link directly to the second tab. Arrow keys, Home and End switch tabs; the URL supports reload and browser Back/Forward. Old section links still open the printed launcher.
+
+Read [the analysis and design notes](docs/mobile01-analysis.md). The new diagrams explain the mechanism and a proposed electrical arrangement; they do not claim original CAD dimensions or verified original GPIO assignments. The KiCad download is an **unrouted placement draft**, with pads and named nets. It has no fabrication outputs and has not passed KiCad DRC or a physical build.
+
+`docs/data/mobile01.json` records the parts and proposed connection map. The matching table and CSV files are maintained alongside it. Regenerate the three SVG diagrams, PCB and pad netlist with `python3 scripts/create-mobile01-assets.py`; the normal Node-only build uses the checked-in outputs.
+
+## Bluetooth table tennis robot study
+
+Open `?launcher=hien` to link directly to the fourth tab (Nguyen Van Hien's project).
+
+Read [the technical analysis report](docs/hien-analysis.md). The tab features:
+- **Interactive mechanism exploration:** 5-step animated ball flow showing bucket gravity fill, agitator stirring, servo escapement metering, curved feed drop, DT750 twin-flywheel launch, and pan/tilt trajectory vectoring.
+- **Shot mode & spin comparison:** 4 practice drills (Service, Attack, Backspin Chop, Oscillating Swing) reconstructed from the creator's custom iOS BLE app.
+- **Synchronized BOM & Wiring tables:** 21 parts with evidence ratings, and 14 connection rows downloadable as CSVs (`docs/downloads/hien-parts.csv` and `docs/downloads/hien-connections.csv`).
+- **Vector technical diagrams:** Native SVGs for the mechanism (`docs/assets/hien/mechanism.svg`), electrical schematic with ATX split power rails and Mega GPIO assignments (`docs/assets/hien/schematic.svg`), and KiCad breakout board placement (`docs/assets/hien/pcb.svg`).
+- **Unrouted KiCad placement draft:** 85 × 60 mm dual-layer board (`docs/downloads/hien-servo-breakout.kicad_pcb`) and netlist CSV (`docs/downloads/hien-pcb-netlist.csv`). Regenerate assets using `python3 scripts/create-hien-assets.py`.
+
 ## Build the launcher
 
 Start with [the full English assembly guide](docs/assembly-guide.md). Use the website wizard to explore the CAD groups and track your checks on the current device.
 
-| Build resource | File |
-|---|---|
-| Shopping checklist | [Website-ready checklist](docs/shopping-list.md) · [CSV](docs/downloads/shopping-list.csv) |
-| Hardware and tools | [English BOM](docs/hardware-bom.md) · [CSV](docs/downloads/hardware-bom.csv) |
-| Component image sources | [Photo references and rights](docs/component-image-sources.md) |
-| Print settings, orientations, and plates | [Print guide](docs/print-guide.md) |
-| English print project | [28 objects on 10 plates](docs/downloads/launcher-english.3mf) |
-| Individual STL files | [ZIP, organized by plate](docs/downloads/launcher-stl-pack.zip) |
-| Editable CAD | [STEP assembly](docs/downloads/launcher-assembly.step) |
-| Wiring and first power-on | [DC topology and checks](docs/wiring-guide.md) |
-| English annotations and terminology | [Source translation](docs/translation.md) |
-| Offline written instructions | [Guide ZIP with reference photos](docs/downloads/english-build-guide.zip) |
-| Missing details and source differences | [Build notes](docs/build-notes.md) |
+| Build resource                           | File                                                                                       |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------ |
+| Shopping checklist                       | [Website-ready checklist](docs/shopping-list.md) · [CSV](docs/downloads/shopping-list.csv) |
+| Hardware and tools                       | [English BOM](docs/hardware-bom.md) · [CSV](docs/downloads/hardware-bom.csv)               |
+| Component image sources                  | [Photo references and rights](docs/component-image-sources.md)                             |
+| Print settings, orientations, and plates | [Print guide](docs/print-guide.md)                                                         |
+| English print project                    | [28 objects on 10 plates](docs/downloads/launcher-english.3mf)                             |
+| Individual STL files                     | [ZIP, organized by plate](docs/downloads/launcher-stl-pack.zip)                            |
+| Editable CAD                             | [STEP assembly](docs/downloads/launcher-assembly.step)                                     |
+| Wiring and first power-on                | [DC topology and checks](docs/wiring-guide.md)                                             |
+| English annotations and terminology      | [Source translation](docs/translation.md)                                                  |
+| Offline written instructions             | [Guide ZIP with reference photos](docs/downloads/english-build-guide.zip)                  |
+| Missing details and source differences   | [Build notes](docs/build-notes.md)                                                         |
 
 The source specifies two 12 V 550 motors, one 12 V / 77 rpm geared motor, three PWM controllers, four 7 × 16 × 5 mm bearings, and a 12 V / 3 A supply. These are source specifications, not a verified motor-current budget. The CAD and spreadsheet disagree on some screw lengths and tilt hardware.
 
@@ -146,7 +167,7 @@ The tools read the retained English-named CAD and 3MF. The Python exporter prese
 
 ### Optional browser checks
 
-Install `playwright` as a development dependency and a Chromium browser. Run `npm test` while the preview server is running. `BASE_URL` selects a different preview URL. `PLAYWRIGHT_MODULE` can point to an existing Playwright module. The script checks desktop/mobile layout, wizard progress, filters, the model, reduced motion, and the image fallback.
+Run `npm ci`, then `npx playwright install chromium`. Run `npm test` while the preview server is running, or `npm run test:ci` to build and test the static export without a server. `BASE_URL` selects a different preview URL. `PLAYWRIGHT_MODULE` can point to an existing Playwright module. The script checks desktop/mobile layout, wizard progress, filters, the model, reduced motion, and the image fallback.
 
 ## GitHub Pages
 
@@ -168,7 +189,7 @@ git tag v1.0.0
 git push origin v1.0.0
 ```
 
-The workflow checks and builds the tagged commit. Each tag has its own workflow concurrency group, so a later tag does not cancel an earlier tag run. The site is one shared deployment; avoid pushing release tags out of order.
+The workflow checks and builds the tagged commit, runs both browser suites against `dist/`, tests firmware logic, and creates a GitHub Release with a static-site ZIP after deployment. Each tag has its own workflow concurrency group, so a later tag does not cancel an earlier tag run. The site is one shared deployment; avoid pushing release tags out of order.
 
 All site paths are relative, so a project URL such as `/PingPongLauncher/` works. The workflow uploads only `dist/`. It does not publish development dependencies or original input folders.
 
@@ -183,3 +204,7 @@ The next useful iteration is a documented physical build: resolve fasteners, mea
 The Chinese-named input files and duplicate STEP are removed after verification, as requested. Their useful contents remain as English-named CAD, print files, media, and translations. Historical filenames and SHA-256 hashes remain in [the source manifest](docs/data/source-manifest.json).
 
 The source designer and hardware/media license are unknown. The MIT license covers newly written website and tooling code only. See [sources and rights](docs/attribution.md). Three.js retains its own MIT license. The source video audio is unchanged and has not been transcribed; English captions describe the visible mechanism.
+
+## PingPongThrower
+
+Open `?launcher=thrower` for the third tab: native simulation, five test phases, parts, wiring (including the 3D cable explorer), assembly and print downloads. The port uses isolated shadow DOM views styled with the app theme. `docs/thrower/` is the single maintained source for this project: edit its viewer modules, JSON, CAD, firmware and resources directly. Optional CAD and wiring tools are retained in `docs/thrower/tools/`. The build uses existing meshes and print files and needs no CAD tools.

@@ -1,0 +1,217 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 740" font-family="ui-sans-serif, system-ui, Helvetica, Arial, sans-serif"><rect width="1100" height="740" fill="#fff"/><rect x="470" y="190" width="150" height="450" rx="8" fill="#e9f4ec" stroke="#555" stroke-width="1.5"/>
+<text x="545.0" y="208" font-size="13" text-anchor="middle" fill="#222" font-weight="bold">Raspberry Pi Pico 2 WH</text>
+<text x="545.0" y="223" font-size="11" text-anchor="middle" fill="#666" font-weight="normal">RP2350 · Wi-Fi</text>
+<path d="M458,230 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="234" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP0</text>
+<text x="455" y="227" font-size="9" text-anchor="end" fill="#999" font-weight="normal">1</text>
+<path d="M458,250 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="254" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP1</text>
+<text x="455" y="247" font-size="9" text-anchor="end" fill="#999" font-weight="normal">2</text>
+<path d="M458,270 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="274" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GND</text>
+<text x="455" y="267" font-size="9" text-anchor="end" fill="#999" font-weight="normal">3</text>
+<path d="M458,290 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="294" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP2</text>
+<text x="455" y="287" font-size="9" text-anchor="end" fill="#999" font-weight="normal">4</text>
+<path d="M458,310 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="314" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP3</text>
+<text x="455" y="307" font-size="9" text-anchor="end" fill="#999" font-weight="normal">5</text>
+<path d="M458,330 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="334" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP4</text>
+<text x="455" y="327" font-size="9" text-anchor="end" fill="#999" font-weight="normal">6</text>
+<path d="M458,350 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="354" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP5</text>
+<text x="455" y="347" font-size="9" text-anchor="end" fill="#999" font-weight="normal">7</text>
+<path d="M458,370 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="374" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GND</text>
+<text x="455" y="367" font-size="9" text-anchor="end" fill="#999" font-weight="normal">8</text>
+<path d="M458,390 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="394" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP6</text>
+<text x="455" y="387" font-size="9" text-anchor="end" fill="#999" font-weight="normal">9</text>
+<path d="M458,410 h12" stroke="#222" stroke-width="2"/>
+<text x="476" y="414" font-size="11" text-anchor="start" fill="#222" font-weight="bold">GP7</text>
+<text x="455" y="407" font-size="9" text-anchor="end" fill="#999" font-weight="normal">10</text>
+<path d="M458,430 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="434" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP8</text>
+<text x="455" y="427" font-size="9" text-anchor="end" fill="#999" font-weight="normal">11</text>
+<path d="M458,450 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="454" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP9</text>
+<text x="455" y="447" font-size="9" text-anchor="end" fill="#999" font-weight="normal">12</text>
+<path d="M458,470 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="474" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GND</text>
+<text x="455" y="467" font-size="9" text-anchor="end" fill="#999" font-weight="normal">13</text>
+<path d="M458,490 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="494" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP10</text>
+<text x="455" y="487" font-size="9" text-anchor="end" fill="#999" font-weight="normal">14</text>
+<path d="M458,510 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="514" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP11</text>
+<text x="455" y="507" font-size="9" text-anchor="end" fill="#999" font-weight="normal">15</text>
+<path d="M458,530 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="534" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP12</text>
+<text x="455" y="527" font-size="9" text-anchor="end" fill="#999" font-weight="normal">16</text>
+<path d="M458,550 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="554" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP13</text>
+<text x="455" y="547" font-size="9" text-anchor="end" fill="#999" font-weight="normal">17</text>
+<path d="M458,570 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="574" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GND</text>
+<text x="455" y="567" font-size="9" text-anchor="end" fill="#999" font-weight="normal">18</text>
+<path d="M458,590 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="594" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP14</text>
+<text x="455" y="587" font-size="9" text-anchor="end" fill="#999" font-weight="normal">19</text>
+<path d="M458,610 h12" stroke="#bbb" stroke-width="2"/>
+<text x="476" y="614" font-size="11" text-anchor="start" fill="#bbb" font-weight="normal">GP15</text>
+<text x="455" y="607" font-size="9" text-anchor="end" fill="#999" font-weight="normal">20</text>
+<path d="M620,610 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="614" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP16</text>
+<text x="635" y="607" font-size="9" text-anchor="start" fill="#999" font-weight="normal">21</text>
+<path d="M620,590 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="594" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP17</text>
+<text x="635" y="587" font-size="9" text-anchor="start" fill="#999" font-weight="normal">22</text>
+<path d="M620,570 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="574" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GND</text>
+<text x="635" y="567" font-size="9" text-anchor="start" fill="#999" font-weight="normal">23</text>
+<path d="M620,550 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="554" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP18</text>
+<text x="635" y="547" font-size="9" text-anchor="start" fill="#999" font-weight="normal">24</text>
+<path d="M620,530 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="534" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP19</text>
+<text x="635" y="527" font-size="9" text-anchor="start" fill="#999" font-weight="normal">25</text>
+<path d="M620,510 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="514" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP20</text>
+<text x="635" y="507" font-size="9" text-anchor="start" fill="#999" font-weight="normal">26</text>
+<path d="M620,490 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="494" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP21</text>
+<text x="635" y="487" font-size="9" text-anchor="start" fill="#999" font-weight="normal">27</text>
+<path d="M620,470 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="474" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GND</text>
+<text x="635" y="467" font-size="9" text-anchor="start" fill="#999" font-weight="normal">28</text>
+<path d="M620,450 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="454" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP22</text>
+<text x="635" y="447" font-size="9" text-anchor="start" fill="#999" font-weight="normal">29</text>
+<path d="M620,430 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="434" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">RUN</text>
+<text x="635" y="427" font-size="9" text-anchor="start" fill="#999" font-weight="normal">30</text>
+<path d="M620,410 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="414" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP26</text>
+<text x="635" y="407" font-size="9" text-anchor="start" fill="#999" font-weight="normal">31</text>
+<path d="M620,390 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="394" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP27</text>
+<text x="635" y="387" font-size="9" text-anchor="start" fill="#999" font-weight="normal">32</text>
+<path d="M620,370 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="374" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">AGND</text>
+<text x="635" y="367" font-size="9" text-anchor="start" fill="#999" font-weight="normal">33</text>
+<path d="M620,350 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="354" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">GP28</text>
+<text x="635" y="347" font-size="9" text-anchor="start" fill="#999" font-weight="normal">34</text>
+<path d="M620,330 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="334" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">VREF</text>
+<text x="635" y="327" font-size="9" text-anchor="start" fill="#999" font-weight="normal">35</text>
+<path d="M620,310 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="314" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">3V3</text>
+<text x="635" y="307" font-size="9" text-anchor="start" fill="#999" font-weight="normal">36</text>
+<path d="M620,290 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="294" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">3V3_EN</text>
+<text x="635" y="287" font-size="9" text-anchor="start" fill="#999" font-weight="normal">37</text>
+<path d="M620,270 h12" stroke="#222" stroke-width="2"/>
+<text x="614" y="274" font-size="11" text-anchor="end" fill="#222" font-weight="bold">GND</text>
+<text x="635" y="267" font-size="9" text-anchor="start" fill="#999" font-weight="normal">38</text>
+<path d="M620,250 h12" stroke="#222" stroke-width="2"/>
+<text x="614" y="254" font-size="11" text-anchor="end" fill="#222" font-weight="bold">VSYS</text>
+<text x="635" y="247" font-size="9" text-anchor="start" fill="#999" font-weight="normal">39</text>
+<path d="M620,230 h12" stroke="#bbb" stroke-width="2"/>
+<text x="614" y="234" font-size="11" text-anchor="end" fill="#bbb" font-weight="normal">VBUS</text>
+<text x="635" y="227" font-size="9" text-anchor="start" fill="#999" font-weight="normal">40</text>
+<rect x="30" y="30" width="120" height="62" rx="8" fill="#f6f7f9" stroke="#555" stroke-width="1.5"/>
+<text x="90.0" y="48" font-size="13" text-anchor="middle" fill="#222" font-weight="bold">4 × AA</text>
+<text x="90.0" y="63" font-size="11" text-anchor="middle" fill="#666" font-weight="normal">4.8–6.4 V</text>
+<text x="160" y="52" font-size="13" text-anchor="start" fill="#d1342f" font-weight="bold">+</text>
+<polyline points="150,50 190,50" fill="none" stroke="#d1342f" stroke-width="2.5" stroke-linejoin="round"/>
+<rect x="190" y="34" width="86" height="36" rx="8" fill="#f6f7f9" stroke="#555" stroke-width="1.5"/>
+<text x="233.0" y="52" font-size="13" text-anchor="middle" fill="#222" font-weight="bold">POWER</text>
+<text x="233.0" y="67" font-size="11" text-anchor="middle" fill="#666" font-weight="normal">KCD1 rocker</text>
+<polyline points="276,50 300,50 300,70 1080,70" fill="none" stroke="#d1342f" stroke-width="3" stroke-linejoin="round"/>
+<text x="1080" y="62" font-size="12" text-anchor="end" fill="#d1342f" font-weight="bold">+BAT  (switched)</text>
+<polyline points="150,75 170,75 170,112" fill="none" stroke="#222" stroke-width="2.5" stroke-linejoin="round"/>
+<path d="M170,112 v8 M161,120 h18 M164,124 h12 M167,128 h6" stroke="#222" stroke-width="2" fill="none"/>
+<text x="160" y="88" font-size="13" text-anchor="start" fill="#222" font-weight="bold">−</text>
+<circle cx="410" cy="70" r="3.5" fill="#d1342f"/>
+<polyline points="410,70 410,100" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<path d="M410,100 v14 M400,114 h20 M400,120 h20 M410,120 v14" stroke="#222" stroke-width="2" fill="none"/>
+<text x="424" y="113" font-size="11" text-anchor="start" fill="#d1342f" font-weight="normal">+</text>
+<text x="424" y="126" font-size="11" text-anchor="start" fill="#222" font-weight="normal">470 µF 16 V</text>
+<path d="M410,134 v8 M401,142 h18 M404,146 h12 M407,150 h6" stroke="#222" stroke-width="2" fill="none"/>
+<circle cx="760" cy="70" r="3.5" fill="#d1342f"/>
+<polyline points="760,70 760,120" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<path d="M760,120 v7 M760,143 v7" stroke="#d1342f" stroke-width="2"/>
+<path d="M752,127 h16 l-8,12 z" fill="#222"/><path d="M752,140 h16" stroke="#222" stroke-width="2.5"/>
+<text x="773" y="139" font-size="11" text-anchor="start" fill="#222" font-weight="normal">1N4001</text>
+<polyline points="760,150 760,160" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<path d="M760,160 v7 M760,183 v7" stroke="#d1342f" stroke-width="2"/>
+<path d="M752,167 h16 l-8,12 z" fill="#222"/><path d="M752,180 h16" stroke="#222" stroke-width="2.5"/>
+<text x="773" y="179" font-size="11" text-anchor="start" fill="#222" font-weight="normal">1N4001</text>
+<polyline points="760,190 760,250 632,250" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<text x="774" y="244" font-size="11" text-anchor="start" fill="#666" font-weight="normal">≈ BAT − 1.4 V</text>
+<circle cx="760" cy="250" r="3.5" fill="#d1342f"/>
+<polyline points="760,250 830,250 830,254" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<path d="M830,254 v14 M820,268 h20 M820,274 h20 M830,274 v14" stroke="#222" stroke-width="2" fill="none"/>
+<text x="844" y="267" font-size="11" text-anchor="start" fill="#d1342f" font-weight="normal">+</text>
+<text x="844" y="280" font-size="11" text-anchor="start" fill="#222" font-weight="normal">100 µF</text>
+<path d="M830,288 v8 M821,296 h18 M824,300 h12 M827,304 h6" stroke="#222" stroke-width="2" fill="none"/>
+<polyline points="632,270 660,270 660,276" fill="none" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+<path d="M660,276 v8 M651,284 h18 M654,288 h12 M657,292 h6" stroke="#222" stroke-width="2" fill="none"/>
+<rect x="220" y="220" width="130" height="220" rx="8" fill="#f1ecf8" stroke="#555" stroke-width="1.5"/>
+<text x="285.0" y="238" font-size="13" text-anchor="middle" fill="#222" font-weight="bold">DRV8833</text>
+<text x="285.0" y="253" font-size="11" text-anchor="middle" fill="#666" font-weight="normal">dual H-bridge</text>
+<text x="344" y="294" font-size="11" text-anchor="end" fill="#222" font-weight="normal">AIN1</text>
+<polyline points="350,290 458,290" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="286" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP2</text>
+<text x="344" y="314" font-size="11" text-anchor="end" fill="#222" font-weight="normal">AIN2</text>
+<polyline points="350,310 458,310" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="306" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP3</text>
+<text x="344" y="334" font-size="11" text-anchor="end" fill="#222" font-weight="normal">BIN1</text>
+<polyline points="350,330 458,330" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="326" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP4</text>
+<text x="344" y="354" font-size="11" text-anchor="end" fill="#222" font-weight="normal">BIN2</text>
+<polyline points="350,350 458,350" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="346" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP5</text>
+<text x="344" y="394" font-size="11" text-anchor="end" fill="#222" font-weight="normal">EEP / nSLEEP</text>
+<polyline points="350,390 458,390" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="386" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP6</text>
+<text x="344" y="414" font-size="11" text-anchor="end" fill="#222" font-weight="normal">ULT / nFAULT</text>
+<polyline points="350,410 458,410" fill="none" stroke="#2a6fdb" stroke-width="2" stroke-linejoin="round"/>
+<text x="358" y="406" font-size="10" text-anchor="start" fill="#2a6fdb" font-weight="normal">GP7</text>
+<text x="330" y="272" font-size="11" text-anchor="middle" fill="#222" font-weight="normal">VM</text>
+<polyline points="330,220 330,70" fill="none" stroke="#d1342f" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="330" cy="70" r="3.5" fill="#d1342f"/>
+<text x="226" y="432" font-size="11" text-anchor="start" fill="#222" font-weight="normal">GND</text>
+<polyline points="220,428 202,428 202,436" fill="none" stroke="#222" stroke-width="2" stroke-linejoin="round"/>
+<path d="M202,436 v8 M193,444 h18 M196,448 h12 M199,452 h6" stroke="#222" stroke-width="2" fill="none"/>
+<text x="226" y="294" font-size="11" text-anchor="start" fill="#222" font-weight="normal">AOUT1</text>
+<polyline points="220,290 138,290" fill="none" stroke="#8a3fc7" stroke-width="2" stroke-linejoin="round"/>
+<text x="226" y="316" font-size="11" text-anchor="start" fill="#222" font-weight="normal">AOUT2</text>
+<polyline points="220,312 138,312" fill="none" stroke="#8a3fc7" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="120" cy="301" r="22" fill="#fff" stroke="#8a3fc7" stroke-width="2"/>
+<text x="120" y="306" font-size="15" text-anchor="middle" fill="#8a3fc7" font-weight="bold">M</text>
+<text x="90" y="300" font-size="11" text-anchor="end" fill="#222" font-weight="bold">M1 top</text>
+<text x="90" y="313" font-size="10" text-anchor="end" fill="#666" font-weight="normal">N20 + 100 nF</text>
+<text x="226" y="350" font-size="11" text-anchor="start" fill="#222" font-weight="normal">BOUT1</text>
+<polyline points="220,346 138,346" fill="none" stroke="#8a3fc7" stroke-width="2" stroke-linejoin="round"/>
+<text x="226" y="372" font-size="11" text-anchor="start" fill="#222" font-weight="normal">BOUT2</text>
+<polyline points="220,368 138,368" fill="none" stroke="#8a3fc7" stroke-width="2" stroke-linejoin="round"/>
+<circle cx="120" cy="357" r="22" fill="#fff" stroke="#8a3fc7" stroke-width="2"/>
+<text x="120" y="362" font-size="15" text-anchor="middle" fill="#8a3fc7" font-weight="bold">M</text>
+<text x="90" y="356" font-size="11" text-anchor="end" fill="#222" font-weight="bold">M2 bottom</text>
+<text x="90" y="369" font-size="10" text-anchor="end" fill="#666" font-weight="normal">N20 + 100 nF</text>
+<text x="672" y="400" font-size="12" text-anchor="start" fill="#999" font-weight="bold">Buttons, knobs and the READY LED</text>
+<text x="672" y="416" font-size="11" text-anchor="start" fill="#999" font-weight="normal">come in phase 5. Until then the phone page</text>
+<text x="672" y="430" font-size="11" text-anchor="start" fill="#999" font-weight="normal">is the remote and the Pico's on-board LED</text>
+<text x="672" y="444" font-size="11" text-anchor="start" fill="#999" font-weight="normal">shows READY.</text>
+<polyline points="760,650 786,650" fill="none" stroke="#d1342f" stroke-width="3" stroke-linejoin="round"/>
+<text x="794" y="654" font-size="11" text-anchor="start" fill="#222" font-weight="normal">battery +BAT (4.8–6.4 V)</text>
+<polyline points="760,666 786,666" fill="none" stroke="#222" stroke-width="3" stroke-linejoin="round"/>
+<text x="794" y="670" font-size="11" text-anchor="start" fill="#222" font-weight="normal">ground</text>
+<polyline points="760,682 786,682" fill="none" stroke="#2a6fdb" stroke-width="3" stroke-linejoin="round"/>
+<text x="794" y="686" font-size="11" text-anchor="start" fill="#222" font-weight="normal">logic signal</text>
+<polyline points="760,698 786,698" fill="none" stroke="#8a3fc7" stroke-width="3" stroke-linejoin="round"/>
+<text x="794" y="702" font-size="11" text-anchor="start" fill="#222" font-weight="normal">motor outputs</text>
+<text x="30" y="22" font-size="12" text-anchor="start" fill="#444" font-weight="normal">POC phase 1 (head): battery, switch, Pico and the two wheel motors, the perfboard loose on the bench. Every ⏚ is the same common ground.</text></svg>

@@ -7,14 +7,18 @@
     <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)" />
     <meta
       name="description"
-      content="Build a 3D-printed ping pong launcher. Explore the original CAD in 3D, download English print files, and follow the illustrated assembly guide."
+      content="Compare four DIY table tennis robots: an original 3D-printed build, Cody’s Arduino machine, PingPongThrower’s Pico 2 W build, and Hien’s BLE robot with brushless outrunners, with mechanism views, parts, wiring and breakout designs."
     />
-    <title>Ping Pong Launcher — A maker’s build guide</title>
+    <title>Ping Pong Launcher — Choose your build</title>
     <link rel="icon" href="assets/favicon.svg" type="image/svg+xml" />
     <link rel="stylesheet" href="styles.css" />
     <script type="importmap">
       { "imports": { "three": "./vendor/three.module.js" } }
     </script>
+    <script type="module" src="launcher-tabs.js"></script>
+    <script type="module" src="mobile01.js"></script>
+    <script type="module" src="hien.js"></script>
+    <script type="module" src="thrower.js"></script>
     <script type="module" src="app.js"></script>
   </head>
   <body>
@@ -31,543 +35,1969 @@
       <a class="header-cta" href="#downloads">Get the files <span aria-hidden="true">↗</span></a>
     </header>
     <main id="main">
-      <section class="hero wrap" id="explore">
-        <div class="hero-copy">
-          <div class="eyebrow"><span class="status-dot"></span> THE PRACTICE PROJECT / 001</div>
-          <h1>Make it.<br />Build it.<br /><em>Serve it.</em></h1>
-          <p class="hero-description">Your next practice partner,<br />built by you.</p>
-          <p class="hero-detail">
-            A 3D-printed ping pong launcher. Original CAD, English instructions, and a step-by-step
-            guide from the first print to the first ball.
-          </p>
-          <a class="button primary" href="#build"
-            >Start the build <span aria-hidden="true">↗</span></a
-          >
-          <a class="text-link" href="#how-it-works"
-            >How it works <span aria-hidden="true">↓</span></a
-          >
-          <div class="hero-specs">
-            <div><b>10</b><span>print plates</span></div>
-            <div><b>3</b><span>motor channels</span></div>
-            <div><b>12 V</b><span>source design</span></div>
-          </div>
-        </div>
-        <div class="hero-explorer">
-          <div class="viewer-topline">
-            <span><span class="status-dot"></span> ORIGINAL CAD / INTERACTIVE 3D</span
-            ><span>FQJ ASSEMBLY</span>
-          </div>
-          <div class="viewer" id="hero-viewer" aria-label="Interactive 3D launcher model">
-            <img
-              class="viewer-fallback"
-              src="assets/photos/cad-reference.png"
-              alt="Supplied CAD overview of the launcher: hopper, feed body, twin launch wheels, and base"
-            />
-            <span class="model-loading" role="status">Loading the original assembly…</span>
-            <div class="viewer-label label-hopper">01 / HOPPER</div>
-            <div class="viewer-label label-wheel">02 / TWIN WHEELS</div>
-            <div class="viewer-label label-base">03 / SPEED CONTROLS</div>
-          </div>
-          <div class="viewer-toolbar">
-            <button type="button" id="explode" aria-pressed="false">
-              ⊞ <span>Explode view</span></button
-            ><button type="button" id="rotate" aria-pressed="false">
-              ↻ <span>Auto rotate</span></button
-            ><button type="button" id="reset-view">⟲ <span>Reset</span></button>
-          </div>
-          <div class="viewer-bottom">
-            <span id="viewer-part" aria-live="polite"
-              >Drag to orbit · Scroll to zoom · Select a part</span
-            ><span class="dimension">101 CAD MESHES</span>
-          </div>
-        </div>
-      </section>
-      <div class="project-strip">
-        <div class="wrap">
-          <span>PRINT → ASSEMBLE → ADJUST → PRACTICE</span
-          ><span>DESIGNED IN CAD. EXPLAINED IN ENGLISH.</span>
-        </div>
-      </div>
-      <section class="intro-section wrap" id="how-it-works">
+      <section class="launcher-picker wrap" aria-labelledby="launcher-picker-title">
         <div>
-          <div class="eyebrow">A SMALL MACHINE. A SATISFYING BUILD.</div>
-          <h2>From a handful of parts<br />to a better practice session.</h2>
+          <p class="eyebrow">THREE WAYS TO MAKE YOUR NEXT PRACTICE PARTNER</p>
+          <h2 id="launcher-picker-title">Choose your launcher.</h2>
+          <p class="muted">Explore a build, understand the mechanism, and plan the hardware.</p>
         </div>
-        <div class="intro-text">
-          <p>
-            A hopper feeds balls into a motor-driven screw. Two rubber-covered wheels accelerate
-            each ball through the outlet. Three PWM controls adjust the two launch motors and the
-            feeder independently.
-          </p>
-          <p class="muted">
-            This guide translates the supplied Chinese source files. The assembly order is
-            reconstructed from CAD and photos; physical verification remains open.
-          </p>
-          <a class="text-link" href="build-notes.md">Read the build notes ↗</a>
+        <div class="launcher-tabs" role="tablist" aria-label="Launcher projects">
+          <button
+            type="button"
+            role="tab"
+            id="tab-fqj"
+            aria-selected="true"
+            aria-controls="launcher-fqj"
+            tabindex="0"
+            data-launcher="fqj"
+          >
+            <span class="tab-number">01</span
+            ><span
+              ><strong>The printed launcher</strong
+              ><small>Original CAD · 12 V · manual controls</small></span
+            ><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-mobile01"
+            aria-selected="false"
+            aria-controls="launcher-mobile01"
+            tabindex="-1"
+            data-launcher="mobile01"
+          >
+            <span class="tab-number">02</span
+            ><span
+              ><strong>Cody’s Arduino launcher</strong
+              ><small>Mobile01 · Mega 2560 · servo aiming</small></span
+            ><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button type="button" role="tab" id="tab-thrower" aria-selected="false" aria-controls="launcher-thrower" tabindex="-1" data-launcher="thrower">
+            <span class="tab-number">03</span><span><strong>PingPongThrower</strong><small>Pico 2 W · battery power · simulated practice</small></span><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
+          <button
+            type="button"
+            role="tab"
+            id="tab-hien"
+            aria-selected="false"
+            aria-controls="launcher-hien"
+            tabindex="-1"
+            data-launcher="hien"
+          >
+            <span class="tab-number">04</span
+            ><span
+              ><strong>Hien’s BLE robot</strong
+              ><small>YouTube · Mega 2560 · DT750 brushless · iPhone BLE</small></span
+            ><span class="tab-arrow" aria-hidden="true">↗</span>
+          </button>
         </div>
-        <div class="process-grid">
-          <article>
-            <span>01 / MAKE</span>
-            <h3>Print with a plan.</h3>
-            <p>
-              Ten original plates, English part names, and individual STL files organized by plate.
-            </p>
-          </article>
-          <article>
-            <span>02 / BUILD</span>
-            <h3>See how it fits.</h3>
-            <p>
-              Explore the actual assembly and follow a guided sequence with animated 3D part groups.
-            </p>
-          </article>
-          <article>
-            <span>03 / PRACTICE</span>
-            <h3>Start with one ball.</h3>
-            <p>Check each motor, confirm the feed path, and record a controlled first trial.</p>
-          </article>
-        </div>
-        <div class="mechanism-panel">
-          <div>
-            <div class="eyebrow">WHAT ACTUALLY THROWS THE BALL?</div>
-            <h3>Two wheels. One quick transfer of energy.</h3>
-            <p>
-              The feeder brings a ball between the rubber-covered rims. Both contact surfaces move
-              toward the exit. Friction grips and accelerates the ball; the outlet guides its path.
-            </p>
-            <p>
-              Wheel speed changes the launch. A difference between the two contact speeds can add
-              spin. Feeder speed controls when the next ball arrives.
-            </p>
-            <button class="text-link" id="mechanism-play" type="button" aria-pressed="false">
-              Play the mechanism →
-            </button>
-          </div>
-          <figure class="mechanism-diagram" id="mechanism-diagram">
-            <svg viewBox="0 0 440 280" role="img" aria-labelledby="mechanism-title mechanism-desc">
-              <title id="mechanism-title">Friction-wheel throwing mechanism</title>
-              <desc id="mechanism-desc">
-                A ball moves from the feeder through the gap between two opposing rubber-covered
-                wheels. Both inner rim surfaces move toward the outlet. This diagram illustrates the
-                principle, not CAD dimensions or operating speed.
-              </desc>
-              <defs>
-                <marker
-                  id="motion-arrow"
-                  markerWidth="7"
-                  markerHeight="7"
-                  refX="5"
-                  refY="3"
-                  orient="auto"
-                >
-                  <path d="M0 0L6 3L0 6" fill="none" stroke="#607257" />
-                </marker>
-              </defs>
-              <path d="M28 140H410" fill="none" stroke="#a8b39c" stroke-dasharray="4 5" />
-              <g class="schematic-wheel wheel-top">
-                <circle cx="210" cy="74" r="49" fill="#d4673f" stroke="#ad5639" stroke-width="7" />
-                <path d="M177 74H243M210 41V107" stroke="#f4c3a4" stroke-width="2" />
-                <circle cx="210" cy="74" r="9" fill="#294333" />
-              </g>
-              <g class="schematic-wheel wheel-bottom">
-                <circle cx="210" cy="206" r="49" fill="#d4673f" stroke="#ad5639" stroke-width="7" />
-                <path d="M177 206H243M210 173V239" stroke="#f4c3a4" stroke-width="2" />
-                <circle cx="210" cy="206" r="9" fill="#294333" />
-              </g>
-              <path
-                d="M186 122H238M186 158H238M310 140H379"
-                stroke="#607257"
-                stroke-width="2"
-                marker-end="url(#motion-arrow)"
-              />
-              <circle
-                class="schematic-ball"
-                cx="48"
-                cy="140"
-                r="15"
-                fill="#fffef8"
-                stroke="#a9b19e"
-                stroke-width="1.5"
-              />
-              <g font-family="Arial,sans-serif" font-size="10" fill="#52634b" letter-spacing="1">
-                <text x="20" y="111">FEED IN</text>
-                <text x="319" y="112">BALL OUT</text>
-                <text x="279" y="44">RUBBER RIM</text>
-              </g>
-            </svg>
-            <figcaption>Principle diagram · illustrative movement and speed</figcaption>
-          </figure>
-        </div>
+        <noscript
+          ><p>
+            Enable JavaScript to switch projects, read
+            <a href="mobile01-analysis.md">Cody's Arduino launcher analysis</a>, or
+            <a href="hien-analysis.md">Hien's BLE robot analysis</a>.
+          </p></noscript
+        >
       </section>
-      <section class="hardware-section section-pad" id="hardware">
-        <div class="wrap">
+      <div id="launcher-fqj" role="tabpanel" aria-labelledby="tab-fqj" tabindex="0">
+        <section class="hero wrap" id="explore">
+          <div class="hero-copy">
+            <div class="eyebrow"><span class="status-dot"></span> THE PRACTICE PROJECT / 001</div>
+            <h1>Make it.<br />Build it.<br /><em>Serve it.</em></h1>
+            <p class="hero-description">Your next practice partner,<br />built by you.</p>
+            <p class="hero-detail">
+              A 3D-printed ping pong launcher. Original CAD, English instructions, and a
+              step-by-step guide from the first print to the first ball.
+            </p>
+            <a class="button primary" href="#build"
+              >Start the build <span aria-hidden="true">↗</span></a
+            >
+            <a class="text-link" href="#how-it-works"
+              >How it works <span aria-hidden="true">↓</span></a
+            >
+            <div class="hero-specs">
+              <div><b>10</b><span>print plates</span></div>
+              <div><b>3</b><span>motor channels</span></div>
+              <div><b>12 V</b><span>source design</span></div>
+            </div>
+          </div>
+          <div class="hero-explorer">
+            <div class="viewer-topline">
+              <span><span class="status-dot"></span> ORIGINAL CAD / INTERACTIVE 3D</span
+              ><span>FQJ ASSEMBLY</span>
+            </div>
+            <div class="viewer" id="hero-viewer" aria-label="Interactive 3D launcher model">
+              <img
+                class="viewer-fallback"
+                src="assets/photos/cad-reference.png"
+                alt="Supplied CAD overview of the launcher: hopper, feed body, twin launch wheels, and base"
+              />
+              <span class="model-loading" role="status">Loading the original assembly…</span>
+              <div class="viewer-label label-hopper">01 / HOPPER</div>
+              <div class="viewer-label label-wheel">02 / TWIN WHEELS</div>
+              <div class="viewer-label label-base">03 / SPEED CONTROLS</div>
+            </div>
+            <div class="viewer-toolbar">
+              <button type="button" id="explode" aria-pressed="false">
+                ⊞ <span>Explode view</span></button
+              ><button type="button" id="rotate" aria-pressed="false">
+                ↻ <span>Auto rotate</span></button
+              ><button type="button" id="reset-view">⟲ <span>Reset</span></button>
+            </div>
+            <div class="viewer-bottom">
+              <span id="viewer-part" aria-live="polite"
+                >Drag to orbit · Scroll to zoom · Select a part</span
+              ><span class="dimension">101 CAD MESHES</span>
+            </div>
+          </div>
+        </section>
+        <div class="project-strip">
+          <div class="wrap">
+            <span>PRINT → ASSEMBLE → ADJUST → PRACTICE</span
+            ><span>DESIGNED IN CAD. EXPLAINED IN ENGLISH.</span>
+          </div>
+        </div>
+        <section class="intro-section wrap" id="how-it-works">
+          <div>
+            <div class="eyebrow">A SMALL MACHINE. A SATISFYING BUILD.</div>
+            <h2>From a handful of parts<br />to a better practice session.</h2>
+          </div>
+          <div class="intro-text">
+            <p>
+              A hopper feeds balls into a motor-driven screw. Two rubber-covered wheels accelerate
+              each ball through the outlet. Three PWM controls adjust the two launch motors and the
+              feeder independently.
+            </p>
+            <p class="muted">
+              This guide translates the supplied Chinese source files. The assembly order is
+              reconstructed from CAD and photos; physical verification remains open.
+            </p>
+            <a class="text-link" href="build-notes.md">Read the build notes ↗</a>
+          </div>
+          <div class="process-grid">
+            <article>
+              <span>01 / MAKE</span>
+              <h3>Print with a plan.</h3>
+              <p>
+                Ten original plates, English part names, and individual STL files organized by
+                plate.
+              </p>
+            </article>
+            <article>
+              <span>02 / BUILD</span>
+              <h3>See how it fits.</h3>
+              <p>
+                Explore the actual assembly and follow a guided sequence with animated 3D part
+                groups.
+              </p>
+            </article>
+            <article>
+              <span>03 / PRACTICE</span>
+              <h3>Start with one ball.</h3>
+              <p>Check each motor, confirm the feed path, and record a controlled first trial.</p>
+            </article>
+          </div>
+          <div class="mechanism-panel">
+            <div>
+              <div class="eyebrow">WHAT ACTUALLY THROWS THE BALL?</div>
+              <h3>Two wheels. One quick transfer of energy.</h3>
+              <p>
+                The feeder brings a ball between the rubber-covered rims. Both contact surfaces move
+                toward the exit. Friction grips and accelerates the ball; the outlet guides its
+                path.
+              </p>
+              <p>
+                Wheel speed changes the launch. A difference between the two contact speeds can add
+                spin. Feeder speed controls when the next ball arrives.
+              </p>
+              <button class="text-link" id="mechanism-play" type="button" aria-pressed="false">
+                Play the mechanism →
+              </button>
+            </div>
+            <figure class="mechanism-diagram" id="mechanism-diagram">
+              <svg
+                viewBox="0 0 440 280"
+                role="img"
+                aria-labelledby="mechanism-title mechanism-desc"
+              >
+                <title id="mechanism-title">Friction-wheel throwing mechanism</title>
+                <desc id="mechanism-desc">
+                  A ball moves from the feeder through the gap between two opposing rubber-covered
+                  wheels. Both inner rim surfaces move toward the outlet. This diagram illustrates
+                  the principle, not CAD dimensions or operating speed.
+                </desc>
+                <defs>
+                  <marker
+                    id="motion-arrow"
+                    markerWidth="7"
+                    markerHeight="7"
+                    refX="5"
+                    refY="3"
+                    orient="auto"
+                  >
+                    <path d="M0 0L6 3L0 6" fill="none" stroke="#607257" />
+                  </marker>
+                </defs>
+                <path d="M28 140H410" fill="none" stroke="#a8b39c" stroke-dasharray="4 5" />
+                <g class="schematic-wheel wheel-top">
+                  <circle
+                    cx="210"
+                    cy="74"
+                    r="49"
+                    fill="#d4673f"
+                    stroke="#ad5639"
+                    stroke-width="7"
+                  />
+                  <path d="M177 74H243M210 41V107" stroke="#f4c3a4" stroke-width="2" />
+                  <circle cx="210" cy="74" r="9" fill="#294333" />
+                </g>
+                <g class="schematic-wheel wheel-bottom">
+                  <circle
+                    cx="210"
+                    cy="206"
+                    r="49"
+                    fill="#d4673f"
+                    stroke="#ad5639"
+                    stroke-width="7"
+                  />
+                  <path d="M177 206H243M210 173V239" stroke="#f4c3a4" stroke-width="2" />
+                  <circle cx="210" cy="206" r="9" fill="#294333" />
+                </g>
+                <path
+                  d="M186 122H238M186 158H238M310 140H379"
+                  stroke="#607257"
+                  stroke-width="2"
+                  marker-end="url(#motion-arrow)"
+                />
+                <circle
+                  class="schematic-ball"
+                  cx="48"
+                  cy="140"
+                  r="15"
+                  fill="#fffef8"
+                  stroke="#a9b19e"
+                  stroke-width="1.5"
+                />
+                <g font-family="Arial,sans-serif" font-size="10" fill="#52634b" letter-spacing="1">
+                  <text x="20" y="111">FEED IN</text>
+                  <text x="319" y="112">BALL OUT</text>
+                  <text x="279" y="44">RUBBER RIM</text>
+                </g>
+              </svg>
+              <figcaption>Principle diagram · illustrative movement and speed</figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="hardware-section section-pad" id="hardware">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">01 / THE PARTS BENCH</div>
+                <h2>The shopping list for your build.</h2>
+              </div>
+              <a
+                class="button primary"
+                id="download-shopping-csv"
+                href="downloads/shopping-list.csv"
+                download
+                >Download shopping list ↓</a
+              >
+            </div>
+            <p class="section-description">
+              Tick the items you already have. This list includes the source hardware, print
+              materials, trial supplies, and additions for a complete installation. Confirm entries
+              with unresolved dimensions or ratings before buying.
+            </p>
+            <div class="notice">
+              <span aria-hidden="true">ⓘ</span>
+              <p>
+                <b>Before ordering:</b> confirm motor shafts, controller current ratings, and
+                fastener differences. The source’s 12 V / 3 A supply has no verified system current
+                budget.
+              </p>
+            </div>
+            <div class="supplier-legend">
+              <p id="supplier-checked-on" class="small muted"></p>
+              <p class="small muted">
+                Listed spec matches means the published specification matches, not that physical fit
+                is validated. Alternatives can require new mounts. Browse links open categories, not
+                confirmed substitutes. Shared kits and filament spools appear in several rows; buy
+                them once.
+              </p>
+            </div>
+            <div class="parts-tools">
+              <div class="filter-group" role="group" aria-label="Filter parts">
+                <button class="selected" data-filter="All" aria-pressed="true">All parts</button
+                ><button data-filter="Electronics" aria-pressed="false">Electronics</button
+                ><button data-filter="Fasteners" aria-pressed="false">Fasteners</button
+                ><button data-filter="Mechanical" aria-pressed="false">Mechanical</button
+                ><button data-filter="Consumables" aria-pressed="false">Consumables</button>
+              </div>
+              <label class="search-label"
+                ><span class="sr-only">Search parts</span
+                ><input id="parts-search" type="search" placeholder="Search parts…"
+              /></label>
+            </div>
+            <div class="component-view-tools">
+              <div class="component-mode-control" role="group" aria-label="Component image style">
+                <button type="button" data-component-mode="photo" aria-pressed="true">
+                  Photos
+                </button>
+                <button type="button" data-component-mode="svg" aria-pressed="false">
+                  SVG diagrams
+                </button>
+              </div>
+              <p class="small muted">
+                Select an image to compare its photo and SVG. Reference images show appearance, not
+                a verified fit. <a href="component-image-sources.md">Image sources ↗</a>
+              </p>
+            </div>
+            <div class="shopping-status">
+              <p id="shopping-progress" class="small" aria-live="polite"></p>
+              <button class="text-link" id="shopping-reset" type="button">
+                Clear gathered items ⟲
+              </button>
+            </div>
+            <div class="table-scroll">
+              <table>
+                <caption class="sr-only">
+                  Hardware, specifications, purchase quantities, and source notes
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col"><span class="sr-only">Gathered</span>✓</th>
+                    <th scope="col">PART</th>
+                    <th scope="col">SPECIFICATION / BUILD NOTE</th>
+                    <th scope="col">QTY</th>
+                    <th scope="col">BOTLAND / COMPATIBILITY</th>
+                  </tr>
+                </thead>
+                <tbody id="parts-body"></tbody>
+              </table>
+            </div>
+            <p id="parts-count" class="small muted" aria-live="polite"></p>
+            <p class="small muted">
+              <a href="shopping-list.md">Printable shopping checklist and buying notes ↗</a>
+            </p>
+            <details>
+              <summary>Tools for your workbench</summary>
+              <ul id="tool-list"></ul>
+            </details>
+          </div>
+        </section>
+        <section class="section-pad wrap" id="printing">
           <div class="section-heading">
             <div>
-              <div class="eyebrow">01 / THE PARTS BENCH</div>
-              <h2>The shopping list for your build.</h2>
+              <div class="eyebrow">02 / FROM FILE TO FILAMENT</div>
+              <h2>A place for every print.</h2>
             </div>
-            <a
-              class="button primary"
-              id="download-shopping-csv"
-              href="downloads/shopping-list.csv"
-              download
-              >Download shopping list ↓</a
+            <a class="button secondary" href="downloads/launcher-english.3mf" download
+              >English 3MF <span>↓</span></a
             >
           </div>
           <p class="section-description">
-            Tick the items you already have. This list includes the source hardware, print
-            materials, trial supplies, and additions for a complete installation. Confirm entries
-            with unresolved dimensions or ratings before buying.
+            Keep the original plate orientations and support painting. Change the printer and
+            filament profiles to match your equipment, then inspect each slice.
           </p>
-          <div class="notice">
-            <span aria-hidden="true">ⓘ</span>
+          <div class="print-settings" id="print-settings"></div>
+          <div class="plate-grid" id="plate-grid"></div>
+          <p class="small muted">
+            28 source objects · 1,422,006 triangles · no boundary edges, non-manifold edges, or
+            degenerate triangles in the exported mesh checks. Wall thickness, self-intersections,
+            balance, fit, and physical performance remain unverified.
+          </p>
+          <div class="print-note">
+            <span class="note-number">!</span>
+            <div>
+              <h3>Give the small gears their own print.</h3>
+              <p>
+                The original maker recommends a finer layer height for the bevel gears. The source
+                gives no exact value. Measure a tight shaft bore and correct the fit before
+                assembly.
+              </p>
+              <a class="text-link" href="print-guide.md">Read the full print guide ↗</a>
+            </div>
+          </div>
+        </section>
+        <section class="assembly-section section-pad" id="build">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <div class="eyebrow">03 / THE GUIDED BUILD</div>
+                <h2>One step closer to the first serve.</h2>
+              </div>
+              <button class="text-link" id="restart" type="button">Reset progress ⟲</button>
+            </div>
+            <div class="guide-progress">
+              <span id="progress-text" aria-live="polite">0 of 13 checks complete</span
+              ><span>Saved on this device</span>
+              <div class="progress-track"><div id="progress-fill"></div></div>
+            </div>
+            <div class="wizard-layout">
+              <aside>
+                <nav class="step-list" id="step-list" aria-label="Assembly steps"></nav>
+              </aside>
+              <div class="step-main">
+                <div class="step-heading">
+                  <span id="step-counter" class="eyebrow"></span>
+                  <h3 id="step-title" tabindex="-1"></h3>
+                  <p id="step-intro"></p>
+                </div>
+                <ol id="step-actions" class="action-list"></ol>
+                <div class="step-note">
+                  <b>Build note</b>
+                  <p id="step-note"></p>
+                </div>
+                <label class="completion-check"
+                  ><input type="checkbox" id="step-complete" /><span id="step-check-label"></span
+                ></label>
+                <div class="step-pagination">
+                  <button id="step-prev" class="button secondary" type="button">← Previous</button
+                  ><button id="step-next" class="button primary" type="button">Next step →</button>
+                </div>
+                <p class="small muted" id="step-source"></p>
+                <p class="small" id="guide-finish" role="status" hidden>
+                  Guide review complete. Resolve remaining build notes before routine use.
+                </p>
+              </div>
+              <div class="step-visual">
+                <div class="assembly-viewer-heading">
+                  <span class="eyebrow">ASSEMBLY EXPLORER</span
+                  ><button type="button" id="replay" class="text-link">Replay ↻</button>
+                </div>
+                <div class="viewer assembly-viewer" id="assembly-viewer">
+                  <img
+                    class="viewer-fallback"
+                    src="assets/photos/cad-reference.png"
+                    alt="CAD overview; use the reference photo and instructions for this assembly step"
+                  /><span class="model-loading" role="status">Loading assembly…</span>
+                </div>
+                <p class="small muted animation-caption" id="assembly-part" aria-live="polite">
+                  Suggested sequence · movement is illustrative
+                </p>
+                <figure class="reference-photo">
+                  <img
+                    id="step-photo"
+                    src="assets/photos/prototype.webp"
+                    alt="Original launcher prototype"
+                    loading="lazy"
+                  />
+                  <figcaption id="step-caption"></figcaption>
+                </figure>
+              </div>
+            </div>
+            <noscript
+              ><p>
+                JavaScript is needed for the 3D viewer and wizard.
+                <a href="assembly-guide.md">Read the complete English assembly guide</a>.
+              </p></noscript
+            >
+          </div>
+        </section>
+        <section class="section-pad wrap wiring-section" id="wiring">
+          <div>
+            <div class="eyebrow">04 / CONNECT WITH CARE</div>
+            <h2>Three motors.<br />Three controls.</h2>
             <p>
-              <b>Before ordering:</b> confirm motor shafts, controller current ratings, and fastener
-              differences. The source’s 12 V / 3 A supply has no verified system current budget.
+              The controllers share a 12 V DC supply. Each controller drives one motor. Confirm the
+              labels and ratings on your selected hardware.
+            </p>
+            <div class="notice">
+              <p>
+                <b>Topology only.</b> This is not a terminal-level schematic. Fuse values, connector
+                polarity, and current ratings need confirmation. Keep mains wiring inside an
+                enclosed, isolated supply.
+              </p>
+            </div>
+            <a href="wiring-guide.md" class="text-link">Wiring checks and first power-on ↗</a>
+          </div>
+          <figure class="wiring-figure">
+            <svg viewBox="0 0 600 340" role="img" aria-labelledby="wire-title wire-desc">
+              <title id="wire-title">DC wiring topology</title>
+              <desc id="wire-desc">
+                The positive 12 volt lead passes through a DC switch and suitable protection, then
+                divides into three parallel PWM controller branches. Each branch drives one motor.
+                The three controllers share the DC return.
+              </desc>
+              <g fill="none" stroke="#c85b36" stroke-width="2">
+                <path d="M110 130H185V65H310M185 130V165H310M185 165V265H310" />
+                <path d="M425 65H465M425 165H465M425 265H465" />
+              </g>
+              <g fill="none" stroke="#6d806a" stroke-width="2">
+                <path d="M110 210H155V310H290V85H310M290 185H310M290 285H310" />
+              </g>
+              <g fill="#f8f7f0" stroke="#bac3b5">
+                <rect x="15" y="100" width="100" height="140" rx="8" />
+                <rect x="310" y="40" width="115" height="55" rx="6" />
+                <rect x="310" y="140" width="115" height="55" rx="6" />
+                <rect x="310" y="240" width="115" height="55" rx="6" />
+                <circle cx="500" cy="65" r="30" />
+                <circle cx="500" cy="165" r="30" />
+                <circle cx="500" cy="265" r="30" />
+              </g>
+              <g fill="#263c30" font-family="sans-serif" font-size="13" text-anchor="middle">
+                <text x="65" y="155">12 V DC</text>
+                <text x="65" y="176">SUPPLY</text>
+                <text x="365" y="72">PWM 1</text>
+                <text x="365" y="172">PWM 2</text>
+                <text x="365" y="272">PWM 3</text>
+                <text x="500" y="70">M1</text>
+                <text x="500" y="170">M2</text>
+                <text x="500" y="270">M3</text>
+              </g>
+              <g fill="#6c7267" font-family="sans-serif" font-size="11">
+                <text x="195" y="24">DC SWITCH + PROTECTION</text>
+                <text x="468" y="113">Left wheel</text>
+                <text x="468" y="213">Right wheel</text>
+                <text x="468" y="313">Feeder</text>
+                <text x="170" y="330">Shared DC return (0 V)</text>
+              </g>
+            </svg>
+            <figcaption>
+              Functional topology · confirm all component terminals before wiring
+            </figcaption>
+          </figure>
+        </section>
+        <section class="prototype-section section-pad">
+          <div class="wrap prototype-grid">
+            <div>
+              <div class="eyebrow">FROM THE ORIGINAL WORKBENCH</div>
+              <h2>A real prototype.<br />A clearer path to yours.</h2>
+              <p>
+                The supplied photographs document the motor mounts, rubber-covered wheels, feeder
+                gear, and ball stopper. Keep them beside you during assembly.
+              </p>
+              <a href="translation.md" class="text-link">Read the source translations ↗</a>
+              <p class="small muted">
+                The source video is preserved unchanged. It is a visual reference, not a performance
+                specification.
+              </p>
+            </div>
+            <figure>
+              <video
+                controls
+                preload="metadata"
+                playsinline
+                poster="assets/photos/prototype.webp"
+                aria-label="Original launcher demonstration"
+              >
+                <source src="assets/photos/demonstration.mp4" type="video/mp4" />
+                <track
+                  kind="captions"
+                  src="assets/demonstration-en.vtt"
+                  srclang="en"
+                  label="English visual description"
+                  default
+                />
+              </video>
+              <figcaption>
+                Original maker’s demonstration · English visual description available in captions
+              </figcaption>
+            </figure>
+          </div>
+        </section>
+        <section class="section-pad wrap downloads-section" id="downloads">
+          <div class="section-heading">
+            <div>
+              <div class="eyebrow">05 / TAKE IT TO YOUR WORKBENCH</div>
+              <h2>The files. All in one place.</h2>
+            </div>
+            <span class="small muted">English filenames. Source geometry retained.</span>
+          </div>
+          <div class="download-grid">
+            <a href="downloads/launcher-english.3mf" download
+              ><span class="file-tag">3MF</span>
+              <div>
+                <h3>English print project</h3>
+                <p>28 renamed objects · original 10-plate setup</p>
+              </div>
+              <span>↓</span></a
+            ><a href="downloads/launcher-stl-pack.zip" download
+              ><span class="file-tag">ZIP</span>
+              <div>
+                <h3>Individual STL files</h3>
+                <p>Organized by plate · millimeter units</p>
+              </div>
+              <span>↓</span></a
+            ><a href="downloads/launcher-assembly.step" download
+              ><span class="file-tag">STEP</span>
+              <div>
+                <h3>Original CAD assembly</h3>
+                <p>Editable source geometry · original names</p>
+              </div>
+              <span>↓</span></a
+            ><a href="downloads/english-build-guide.zip" download
+              ><span class="file-tag">DOCS</span>
+              <div>
+                <h3>English build guide</h3>
+                <p>Assembly, printing, wiring, translation, and BOM</p>
+              </div>
+              <span>↓</span></a
+            >
+          </div>
+          <p class="small muted">
+            Also available: <a href="data/print-inventory.json">mesh inspection report</a> ·
+            <a href="data/source-manifest.json">source checksums</a>
+          </p>
+          <details>
+            <summary>Open build questions before routine use</summary>
+            <ul id="open-questions"></ul>
+          </details>
+          <details>
+            <summary>What to improve next</summary>
+            <ol>
+              <li>Complete a measured build and confirm every fastener and fit.</li>
+              <li>Add guards and verify the DC current budget and protection.</li>
+              <li>Finalize the outlet, stopper, and replaceable wheel tires.</li>
+              <li>Add measured speed feedback and repeatable practice settings.</li>
+            </ol>
+            <a class="text-link" href="future-iterations.md"
+              >Future iterations and completion evidence ↗</a
+            >
+          </details>
+        </section>
+      </div>
+      <div
+        id="launcher-mobile01"
+        role="tabpanel"
+        aria-labelledby="tab-mobile01"
+        tabindex="0"
+        hidden
+      >
+        <section class="mobile-hero wrap" id="mobile01-explore">
+          <div>
+            <p class="eyebrow"><span class="status-dot"></span> THE PRACTICE PROJECT / 002</p>
+            <h1>A little wood.<br />A little code.<br /><em>A better rally.</em></h1>
+            <p class="hero-description">Cody’s Arduino launcher.</p>
+            <p class="hero-detail">
+              A bucket hopper, twin launch wheels, and a servo-steered frame. An English hardware
+              study of codyhsu’s 2019 Mobile01 build.
+            </p>
+            <div class="mobile-actions">
+              <a class="button primary" href="#mobile01-mechanism">Explore the mechanism ↓</a
+              ><a
+                class="text-link"
+                href="https://www.mobile01.com/topicdetail.php?f=696&amp;t=5867234"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Original project ↗</a
+              >
+            </div>
+            <div class="hero-specs">
+              <div><b>Mega</b><span>2560 controller</span></div>
+              <div><b>3 + 1</b><span>DC motors + servo</span></div>
+              <div><b>IR</b><span>remote control</span></div>
+            </div>
+          </div>
+          <figure class="mobile-hero-art">
+            <img
+              src="assets/mobile01/mechanism.svg"
+              width="900"
+              height="680"
+              alt="Concept illustration of Cody’s wooden launcher: bucket hopper, rotary feeder, twin wheels, hinge and servo, with external control box"
+            />
+            <figcaption>
+              Mechanism reconstruction from source photos · not dimensioned CAD
+            </figcaption>
+          </figure>
+        </section>
+        <div class="project-strip">
+          <div class="wrap">
+            <span>READ THE SOURCE → UNDERSTAND → PROTOTYPE</span
+            ><span>2019 BUILD / ENGLISH HARDWARE STUDY</span>
+          </div>
+        </div>
+        <section class="mobile-section wrap" id="mobile01-mechanism">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">01 / THE MECHANISM</p>
+              <h2>Feed. Launch. Aim.</h2>
+            </div>
+            <p class="muted">
+              Step through the ball path. The animation explains the sequence; it does not predict
+              timing, speed, or trajectory.
             </p>
           </div>
-          <div class="supplier-legend">
-            <p id="supplier-checked-on" class="small muted"></p>
+          <div class="mobile-mechanism">
+            <figure id="mobile01-flow" class="mobile-flow" data-step="0">
+              <svg viewBox="0 0 900 310" role="img" aria-labelledby="m01-flow-title m01-flow-desc">
+                <title id="m01-flow-title">Rotary feeder and twin-wheel ball path</title>
+                <desc id="m01-flow-desc">
+                  A hopper drops a ball into a rotary feeder, a microswitch detects it in the tube,
+                  twin wheels accelerate it and the servo adjusts the aiming hinge.
+                </desc>
+                <path
+                  d="M90 55 H250 L225 135 H115 Z"
+                  fill="#d9eaff"
+                  stroke="#0071e3"
+                  stroke-width="3"
+                />
+                <circle cx="170" cy="170" r="49" fill="#cbd8e7" stroke="#65758b" stroke-width="3" />
+                <g class="m01-disk">
+                  <path d="M170 125 V215 M125 170 H215" stroke="#fff" stroke-width="9" />
+                </g>
+                <path d="M210 170 H630" stroke="#d5dbe3" stroke-width="65" />
+                <path d="M210 170 H630" stroke="#f5f5f7" stroke-width="53" />
+                <path d="M345 204 V233 H375" fill="none" stroke="#0071e3" stroke-width="4" />
+                <g class="m01-wheel">
+                  <circle cx="565" cy="111" r="41" fill="#263341" />
+                  <path d="M536 111 H594 M565 82 V140" stroke="#f4a84b" stroke-width="7" />
+                </g>
+                <g class="m01-wheel reverse">
+                  <circle cx="565" cy="229" r="41" fill="#263341" />
+                  <path d="M536 229 H594 M565 200 V258" stroke="#f4a84b" stroke-width="7" />
+                </g>
+                <path
+                  d="M660 170 H835 L820 159 M835 170 L820 181"
+                  fill="none"
+                  stroke="#0071e3"
+                  stroke-width="3"
+                />
+                <circle
+                  class="m01-ball"
+                  cx="170"
+                  cy="88"
+                  r="15"
+                  fill="#fff"
+                  stroke="#0071e3"
+                  stroke-width="3"
+                />
+                <g fill="#344154" font-family="Arial,sans-serif" font-size="17">
+                  <text x="110" y="30">01 HOPPER</text>
+                  <text x="90" y="275">02 ROTARY DISK</text>
+                  <text x="280" y="275">03 BALL SWITCH</text>
+                  <text x="500" y="30">04 TWIN WHEELS</text>
+                  <text x="680" y="215">05 SERVO AIM</text>
+                </g>
+              </svg>
+            </figure>
+            <div class="mobile-flow-controls">
+              <p class="eyebrow" id="mobile01-step-count">STEP 1 / 5</p>
+              <h3 id="mobile01-step-title" aria-live="polite">Gravity fills the feeder.</h3>
+              <p id="mobile01-step-copy">The bucket stores balls above a rotary metering disk.</p>
+              <div class="mobile-actions">
+                <button
+                  class="button secondary"
+                  type="button"
+                  id="mobile01-prev"
+                  aria-label="Previous mechanism step"
+                >
+                  ←</button
+                ><button class="button primary" type="button" id="mobile01-next">Next step →</button
+                ><button
+                  class="button secondary"
+                  type="button"
+                  id="mobile01-play"
+                  aria-pressed="false"
+                >
+                  Play sequence
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-facts">
+            <article>
+              <h3>What the source establishes</h3>
+              <p>
+                The author describes rotary feeding, ball-triggered aiming, and adjustable feed
+                rate, speed and sweep. IR modes include three placements and random aiming/speed.
+                Equal wheel speeds aim to reduce spin; the head can rotate to change its spin axis.
+              </p>
+            </article>
+            <article>
+              <h3>What remains to measure</h3>
+              <p>
+                No dimensioned CAD, motor ratings, calibrated ball speed, complete sketch, or PCB
+                fabrication files were found in the inspected post. Tire gap, feed clearances, servo
+                linkage and power budget need a physical prototype.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="mobile-section mobile-tinted" id="mobile01-parts">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">02 / PARTS & MATERIALS</p>
+                <h2>From the author’s list<br />to your workbench.</h2>
+              </div>
+              <p class="muted">
+                Transcribed from the source’s photographed BOM. “Proposed addition” rows belong to
+                this guide. Historical prices are not a current shopping budget.
+              </p>
+            </div>
+            <a class="text-link" href="downloads/mobile01-parts.csv" download
+              >Download parts CSV ↓</a
+            >
+            <div class="table-scroll">
+              <table class="mobile-table">
+                <caption class="sr-only">
+                  Mobile01 launcher parts and proposed additions
+                </caption>
+                <thead>
+                  <tr>
+                    <th scope="col">Part / evidence</th>
+                    <th scope="col">Specification and build notes</th>
+                    <th scope="col">Qty</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>
+                      <span class="part-id">M01</span><b>Controller</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Arduino Mega 2560<small
+                        >UNO was the earlier version; Mega is used for IR and sound.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M02</span><b>Motor driver</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      L293D / Adafruit Motor Shield v1 compatible<small
+                        >AFMotor.h interface; not the I²C v2 shield. Verify clone wiring.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M03</span><b>Launch motors</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      DC motor; model and voltage unspecified<small
+                        >Measure stall current before selecting a driver or supply.</small
+                      >
+                    </td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M04</span><b>Launch tires</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Tamiya 94325 large-diameter sponge tire / wheel set<small
+                        >Source names a limited-edition Mini 4WD set; fit and availability
+                        unverified.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M05</span><b>Feeder motor</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Plastic DC gearmotor, 1:220<small
+                        >Drives the rotary ball-metering disk; no rated voltage given.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M06</span><b>Aiming servo</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      MG90S metal-gear micro servo<small
+                        >Moves the hinge linkage. Verify travel and load before attaching
+                        horn.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M07</span><b>Ball detector</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Omron SS-5GL microswitch<small
+                        >Senses a ball in the feed channel; not a speed sensor.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M08</span><b>Local controls</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      B10K linear potentiometer + knob<small
+                        >Feed interval, launch speed, oscillation range.</small
+                      >
+                    </td>
+                    <td>3</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M09</span><b>Remote control</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      HX1838 receiver module + NEC IR remote<small
+                        >Check receiver-module pin order; bare receiver and module differ.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="part-id">M10</span><b>Sound</b><small>Source BOM</small></td>
+                    <td>
+                      Passive buzzer, 3–5 V<small
+                        >Proposed PCB uses an external passive buzzer driver module instead.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M11</span><b>Regulator</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      LM2596S adjustable buck module<small
+                        >Set output before connection. Input must exceed required output.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M12</span><b>Battery cells</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      18650 cells; source claims 4200 mAh<small
+                        >Unverified capacity claim. Pack topology and protection are not
+                        established.</small
+                      >
+                    </td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M13</span><b>Battery holder</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      18650 holder<small
+                        >Series/parallel wiring not specified; do not infer a charger
+                        connection.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="part-id">M14</span><b>Charger</b><small>Source BOM</small></td>
+                    <td>
+                      NYI-0850 single-cell Li-ion charger<small
+                        >Listed for individual 3.7 V nominal cells; not a documented 2S
+                        charger.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M15</span><b>Prototype board</b
+                      ><small>Source BOM</small>
+                    </td>
+                    <td>
+                      400-point solderless breadboard<small
+                        >Replace with the proposed breakout after bench verification.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td><span class="part-id">M16</span><b>Hopper</b><small>Source BOM</small></td>
+                    <td>
+                      Reused chicken bucket<small>Feeds the rotary disk under gravity.</small>
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M17</span><b>Structure</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Wood strips<small
+                        >Stand, cross feet and hopper cradle; dimensions not published.</small
+                      >
+                    </td>
+                    <td>2</td>
+                  </tr>
+                  <tr>
+                    <td><span class="part-id">M18</span><b>Pivot</b><small>Source BOM</small></td>
+                    <td>
+                      Small door hinge<small>Servo linkage steers the launcher assembly.</small>
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">M19</span><b>Feed tube</b><small>Source BOM</small>
+                    </td>
+                    <td>
+                      Reused kitchen paper tube<small
+                        >Guides balls toward the wheels; fit must be measured.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">P01</span><b>Control breakout</b
+                      ><small>Proposed addition</small>
+                    </td>
+                    <td>
+                      80 × 55 mm, 2-layer PCB placement draft<small
+                        >J1–J7, C1 100 nF, C2 10 µF; unrouted, no fabrication outputs.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">P02</span><b>Buzzer interface</b
+                      ><small>Proposed addition</small>
+                    </td>
+                    <td>
+                      5 V passive buzzer driver module, active-high signal<small
+                        >Input must accept 5 V logic and tone pulses; choose module before
+                        routing.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">P03</span><b>Bench power</b
+                      ><small>Proposed addition</small>
+                    </td>
+                    <td>
+                      Current-limited motor supply + regulated 5 V servo supply<small
+                        >Mega powered by USB for initial tests; grounds common, positive rails
+                        separate.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <span class="part-id">P04</span><b>Protection and assembly</b
+                      ><small>Proposed addition</small>
+                    </td>
+                    <td>
+                      Fuse, disconnect, wire, connectors, guards, fasteners<small
+                        >Size protection and wiring from measured current; quantities depend on
+                        build.</small
+                      >
+                    </td>
+                    <td>1</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
             <p class="small muted">
-              Listed spec matches means the published specification matches, not that physical fit
-              is validated. Alternatives can require new mounts. Browse links open categories, not
-              confirmed substitutes. Shared kits and filament spools appear in several rows; buy
-              them once.
+              The listed cell capacity is the author’s claim. Battery protection and pack topology
+              are unresolved; start with current-limited bench supplies.
             </p>
           </div>
-          <div class="parts-tools">
-            <div class="filter-group" role="group" aria-label="Filter parts">
-              <button class="selected" data-filter="All" aria-pressed="true">All parts</button
-              ><button data-filter="Electronics" aria-pressed="false">Electronics</button
-              ><button data-filter="Fasteners" aria-pressed="false">Fasteners</button
-              ><button data-filter="Mechanical" aria-pressed="false">Mechanical</button
-              ><button data-filter="Consumables" aria-pressed="false">Consumables</button>
+        </section>
+        <section class="mobile-section wrap" id="mobile01-wiring">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">03 / ELECTRICAL SCHEMATIC</p>
+              <h2>A clear path for<br />power and signals.</h2>
             </div>
-            <label class="search-label"
-              ><span class="sr-only">Search parts</span
-              ><input id="parts-search" type="search" placeholder="Search parts…"
-            /></label>
+            <p class="muted">
+              Proposed wiring for a reproducible prototype. GPIO numbers and separate motor channels
+              below are new assignments, not a transcription of unreadable image labels.
+            </p>
           </div>
-          <div class="component-view-tools">
-            <div class="component-mode-control" role="group" aria-label="Component image style">
-              <button type="button" data-component-mode="photo" aria-pressed="true">Photos</button>
-              <button type="button" data-component-mode="svg" aria-pressed="false">SVG diagrams</button>
-            </div>
-            <p class="small muted">Select an image to compare its photo and SVG. Reference images show appearance, not a verified fit. <a href="component-image-sources.md">Image sources ↗</a></p>
-          </div>
-          <div class="shopping-status">
-            <p id="shopping-progress" class="small" aria-live="polite"></p>
-            <button class="text-link" id="shopping-reset" type="button">
-              Clear gathered items ⟲
-            </button>
+          <figure class="mobile-diagram">
+            <img
+              src="assets/mobile01/schematic.svg"
+              width="1100"
+              height="820"
+              loading="lazy"
+              alt="Proposed schematic: USB-powered Mega, L293D motor shield, three motor channels, separate servo supply and control breakout with seven connectors"
+            />
+            <figcaption>
+              Proposed system schematic · named signals match the connection table and PCB draft.
+            </figcaption>
+          </figure>
+          <div class="mobile-actions">
+            <a class="text-link" href="assets/mobile01/schematic.svg" download
+              >Download schematic SVG ↓</a
+            ><a class="text-link" href="downloads/mobile01-connections.csv" download
+              >Download connection map ↓</a
+            ><a
+              class="text-link"
+              href="https://attach.mobile01.com/attach/201908/mobile01-701cd1c7b89264b9347baedd1e138310.jpg"
+              target="_blank"
+              rel="noopener noreferrer"
+              >Author’s wiring image ↗</a
+            >
           </div>
           <div class="table-scroll">
-            <table>
+            <table class="mobile-table">
               <caption class="sr-only">
-                Hardware, specifications, purchase quantities, and source notes
+                Proposed connector and pin assignments
               </caption>
               <thead>
                 <tr>
-                  <th scope="col"><span class="sr-only">Gathered</span>✓</th>
-                  <th scope="col">PART</th>
-                  <th scope="col">SPECIFICATION / BUILD NOTE</th>
-                  <th scope="col">QTY</th>
-                  <th scope="col">BOTLAND / COMPATIBILITY</th>
+                  <th scope="col">Connector / net</th>
+                  <th scope="col">Connect to</th>
+                  <th scope="col">Connection notes</th>
                 </tr>
               </thead>
-              <tbody id="parts-body"></tbody>
+              <tbody>
+                <tr>
+                  <td><b>J1.1</b><small>GND</small></td>
+                  <td>Mega GND</td>
+                  <td>Common signal ground; motor/servo returns go directly to their supply.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.2</b><small>+5V_LOGIC</small></td>
+                  <td>Mega 5V output</td>
+                  <td>
+                    Feeds pots, receiver and low-current buzzer module only; never servo or motors.
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>J1.3 → J2.2</b><small>FEED_A0</small></td>
+                  <td>Mega A0</td>
+                  <td>J2: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K feed interval pot.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.4 → J3.2</b><small>SPEED_A1</small></td>
+                  <td>Mega A1</td>
+                  <td>J3: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K launch-speed pot.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.5 → J4.2</b><small>SWEEP_A2</small></td>
+                  <td>Mega A2</td>
+                  <td>J4: 1 GND · 2 wiper · 3 +5V_LOGIC; B10K sweep-range pot.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.6 → J5.2</b><small>BALL_D22</small></td>
+                  <td>Mega D22</td>
+                  <td>J5.1 GND to switch COM; J5.2 to NO. INPUT_PULLUP; debounce in firmware.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.7 → J6.3</b><small>IR_D24</small></td>
+                  <td>Mega D24</td>
+                  <td>J6: 1 GND · 2 +5V_LOGIC · 3 receiver OUT. Verify module connector order.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.8 → J7.3</b><small>TONE_D26</small></td>
+                  <td>Mega D26</td>
+                  <td>
+                    J7: 1 GND · 2 +5V_LOGIC · 3 passive driver IN. No bare magnetic buzzer on GPIO.
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Off board</b><small>SERVO_D9</small></td>
+                  <td>Mega D9 / shield servo signal</td>
+                  <td>
+                    Servo + to external regulated 5 V, servo − to supply ground. Do not join
+                    external +5 V to shield +5 V.
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Shield M1</b><small>LAUNCH_LEFT</small></td>
+                  <td>Left launch motor</td>
+                  <td>Proposed dedicated channel; confirm forward direction at low duty.</td>
+                </tr>
+                <tr>
+                  <td><b>Shield M2</b><small>LAUNCH_RIGHT</small></td>
+                  <td>Right launch motor</td>
+                  <td>
+                    Proposed dedicated channel; opposite mechanical rotation, both surfaces propel
+                    ball outward.
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Shield M3</b><small>FEED_MOTOR</small></td>
+                  <td>Rotary feeder motor</td>
+                  <td>
+                    Proposed dedicated channel; M4 unused. Verify each motor against driver current
+                    limits.
+                  </td>
+                </tr>
+                <tr>
+                  <td><b>Off board</b><small>VMOTOR</small></td>
+                  <td>External supply → fuse → disconnect → shield EXT_PWR</td>
+                  <td>
+                    Remove shield power jumper for USB logic + external motor power. Voltage depends
+                    on measured motor ratings.
+                  </td>
+                </tr>
+              </tbody>
             </table>
           </div>
-          <p id="parts-count" class="small muted" aria-live="polite"></p>
+          <div class="mobile-facts">
+            <article>
+              <h3>Keep the motor shield’s pins free.</h3>
+              <p>
+                V1 uses D3/D5/D6/D11 for motor PWM and D4/D7/D8/D12 for the latch. D9 is the
+                proposed servo signal; D10 remains reserved for the other servo header. The controls
+                use A0–A2 and D22/D24/D26.
+              </p>
+            </article>
+            <article>
+              <h3>Check current before connecting motors.</h3>
+              <p>
+                The v1 L293D shield is specified for 0.6 A continuous per bridge, 1.2 A peak. Driver
+                heating and combined load also matter. Check startup and stall current; a heatsink
+                does not raise the chip’s electrical rating.
+              </p>
+            </article>
+          </div>
           <p class="small muted">
-            <a href="shopping-list.md">Printable shopping checklist and buying notes ↗</a>
+            References:
+            <a href="https://learn.adafruit.com/adafruit-motor-shield/faq">Adafruit v1 pin use</a> ·
+            <a href="https://learn.adafruit.com/adafruit-motor-shield/using-dc-motors"
+              >motor limits</a
+            >
+            ·
+            <a href="https://learn.adafruit.com/adafruit-motor-shield/power-requirements"
+              >separate power</a
+            >. Remove the shield power jumper with separate motor power. Route motor and servo
+            returns directly to supply ground; join logic ground there.
           </p>
-          <details>
-            <summary>Tools for your workbench</summary>
-            <ul id="tool-list"></ul>
-          </details>
-        </div>
-      </section>
-      <section class="section-pad wrap" id="printing">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">02 / FROM FILE TO FILAMENT</div>
-            <h2>A place for every print.</h2>
+        </section>
+        <section class="mobile-section mobile-tinted" id="mobile01-pcb">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">04 / PROPOSED PCB</p>
+                <h2>Replace the breadboard.<br />Keep the motor shield.</h2>
+              </div>
+              <p class="muted">
+                A small control breakout gathers the three pots, ball switch, receiver and buzzer
+                interface. The Mega, motor driver and servo power stay off board.
+              </p>
+            </div>
+            <div class="mobile-pcb-grid">
+              <figure class="mobile-diagram">
+                <img
+                  src="assets/mobile01/pcb.svg"
+                  width="900"
+                  height="640"
+                  loading="lazy"
+                  alt="80 by 55 millimetre proposed PCB component placement with J1 Mega harness, three pot headers, switch, IR and buzzer headers, two capacitors and mounting holes"
+                />
+                <figcaption>
+                  Placement draft · connectors and net assignments · no routed copper
+                </figcaption>
+              </figure>
+              <div>
+                <p class="pcb-status">PLACEMENT DRAFT / NOT FOR FABRICATION</p>
+                <h3>80 × 55 mm. Seven connectors.</h3>
+                <p>
+                  The KiCad board contains through-hole pads, named nets, a board outline and four
+                  M3 clearance holes. Its airwires still need routing. C1 (100 nF) and C2 (10 µF)
+                  decouple the logic rail.
+                </p>
+                <p>
+                  Use J1 as a wired harness to the Mega, not a stackable Arduino shield. Verify
+                  connector orientation and selected component footprints, route both layers, then
+                  run DRC and electrical review before ordering. There are no Gerbers in this draft.
+                </p>
+                <div class="mobile-downloads">
+                  <a href="downloads/mobile01-control-breakout.kicad_pcb" download
+                    >Editable KiCad board ↓</a
+                  ><a href="assets/mobile01/pcb.svg" download>Placement drawing SVG ↓</a
+                  ><a href="downloads/mobile01-pcb-netlist.csv" download>Pad-to-net map CSV ↓</a>
+                </div>
+              </div>
+            </div>
           </div>
-          <a class="button secondary" href="downloads/launcher-english.3mf" download
-            >English 3MF <span>↓</span></a
-          >
-        </div>
-        <p class="section-description">
-          Keep the original plate orientations and support painting. Change the printer and filament
-          profiles to match your equipment, then inspect each slice.
-        </p>
-        <div class="print-settings" id="print-settings"></div>
-        <div class="plate-grid" id="plate-grid"></div>
-        <p class="small muted">
-          28 source objects · 1,422,006 triangles · no boundary edges, non-manifold edges, or
-          degenerate triangles in the exported mesh checks. Wall thickness, self-intersections,
-          balance, fit, and physical performance remain unverified.
-        </p>
-        <div class="print-note">
-          <span class="note-number">!</span>
-          <div>
-            <h3>Give the small gears their own print.</h3>
-            <p>
-              The original maker recommends a finer layer height for the bevel gears. The source
-              gives no exact value. Measure a tight shaft bore and correct the fit before assembly.
-            </p>
-            <a class="text-link" href="print-guide.md">Read the full print guide ↗</a>
-          </div>
-        </div>
-      </section>
-      <section class="assembly-section section-pad" id="build">
-        <div class="wrap">
+        </section>
+        <section class="mobile-section wrap" id="mobile01-firmware">
           <div class="section-heading">
             <div>
-              <div class="eyebrow">03 / THE GUIDED BUILD</div>
-              <h2>One step closer to the first serve.</h2>
+              <p class="eyebrow">05 / FIRMWARE & SOURCE NOTES</p>
+              <h2>The timers matter.</h2>
             </div>
-            <button class="text-link" id="restart" type="button">Reset progress ⟲</button>
-          </div>
-          <div class="guide-progress">
-            <span id="progress-text" aria-live="polite">0 of 13 checks complete</span
-            ><span>Saved on this device</span>
-            <div class="progress-track"><div id="progress-fill"></div></div>
-          </div>
-          <div class="wizard-layout">
-            <aside><nav class="step-list" id="step-list" aria-label="Assembly steps"></nav></aside>
-            <div class="step-main">
-              <div class="step-heading">
-                <span id="step-counter" class="eyebrow"></span>
-                <h3 id="step-title" tabindex="-1"></h3>
-                <p id="step-intro"></p>
-              </div>
-              <ol id="step-actions" class="action-list"></ol>
-              <div class="step-note">
-                <b>Build note</b>
-                <p id="step-note"></p>
-              </div>
-              <label class="completion-check"
-                ><input type="checkbox" id="step-complete" /><span id="step-check-label"></span
-              ></label>
-              <div class="step-pagination">
-                <button id="step-prev" class="button secondary" type="button">← Previous</button
-                ><button id="step-next" class="button primary" type="button">Next step →</button>
-              </div>
-              <p class="small muted" id="step-source"></p>
-              <p class="small" id="guide-finish" role="status" hidden>
-                Guide review complete. Resolve remaining build notes before routine use.
-              </p>
-            </div>
-            <div class="step-visual">
-              <div class="assembly-viewer-heading">
-                <span class="eyebrow">ASSEMBLY EXPLORER</span
-                ><button type="button" id="replay" class="text-link">Replay ↻</button>
-              </div>
-              <div class="viewer assembly-viewer" id="assembly-viewer">
-                <img
-                  class="viewer-fallback"
-                  src="assets/photos/cad-reference.png"
-                  alt="CAD overview; use the reference photo and instructions for this assembly step"
-                /><span class="model-loading" role="status">Loading assembly…</span>
-              </div>
-              <p class="small muted animation-caption" id="assembly-part" aria-live="polite">
-                Suggested sequence · movement is illustrative
-              </p>
-              <figure class="reference-photo">
-                <img
-                  id="step-photo"
-                  src="assets/photos/prototype.webp"
-                  alt="Original launcher prototype"
-                  loading="lazy"
-                />
-                <figcaption id="step-caption"></figcaption>
-              </figure>
-            </div>
-          </div>
-          <noscript
-            ><p>
-              JavaScript is needed for the 3D viewer and wizard.
-              <a href="assembly-guide.md">Read the complete English assembly guide</a>.
-            </p></noscript
-          >
-        </div>
-      </section>
-      <section class="section-pad wrap wiring-section" id="wiring">
-        <div>
-          <div class="eyebrow">04 / CONNECT WITH CARE</div>
-          <h2>Three motors.<br />Three controls.</h2>
-          <p>
-            The controllers share a 12 V DC supply. Each controller drives one motor. Confirm the
-            labels and ratings on your selected hardware.
-          </p>
-          <div class="notice">
-            <p>
-              <b>Topology only.</b> This is not a terminal-level schematic. Fuse values, connector
-              polarity, and current ratings need confirmation. Keep mains wiring inside an enclosed,
-              isolated supply.
+            <p class="muted">
+              The author moved from UNO to Mega for more timer resources. The source gives library
+              names and edits, but no complete downloadable sketch was found.
             </p>
           </div>
-          <a href="wiring-guide.md" class="text-link">Wiring checks and first power-on ↗</a>
-        </div>
-        <figure class="wiring-figure">
-          <svg viewBox="0 0 600 340" role="img" aria-labelledby="wire-title wire-desc">
-            <title id="wire-title">DC wiring topology</title>
-            <desc id="wire-desc">
-              The positive 12 volt lead passes through a DC switch and suitable protection, then
-              divides into three parallel PWM controller branches. Each branch drives one motor. The
-              three controllers share the DC return.
-            </desc>
-            <g fill="none" stroke="#c85b36" stroke-width="2">
-              <path d="M110 130H185V65H310M185 130V165H310M185 165V265H310" />
-              <path d="M425 65H465M425 165H465M425 265H465" />
-            </g>
-            <g fill="none" stroke="#6d806a" stroke-width="2">
-              <path d="M110 210H155V310H290V85H310M290 185H310M290 285H310" />
-            </g>
-            <g fill="#f8f7f0" stroke="#bac3b5">
-              <rect x="15" y="100" width="100" height="140" rx="8" />
-              <rect x="310" y="40" width="115" height="55" rx="6" />
-              <rect x="310" y="140" width="115" height="55" rx="6" />
-              <rect x="310" y="240" width="115" height="55" rx="6" />
-              <circle cx="500" cy="65" r="30" />
-              <circle cx="500" cy="165" r="30" />
-              <circle cx="500" cy="265" r="30" />
-            </g>
-            <g fill="#263c30" font-family="sans-serif" font-size="13" text-anchor="middle">
-              <text x="65" y="155">12 V DC</text>
-              <text x="65" y="176">SUPPLY</text>
-              <text x="365" y="72">PWM 1</text>
-              <text x="365" y="172">PWM 2</text>
-              <text x="365" y="272">PWM 3</text>
-              <text x="500" y="70">M1</text>
-              <text x="500" y="170">M2</text>
-              <text x="500" y="270">M3</text>
-            </g>
-            <g fill="#6c7267" font-family="sans-serif" font-size="11">
-              <text x="195" y="24">DC SWITCH + PROTECTION</text>
-              <text x="468" y="113">Left wheel</text>
-              <text x="468" y="213">Right wheel</text>
-              <text x="468" y="313">Feeder</text>
-              <text x="170" y="330">Shared DC return (0 V)</text>
-            </g>
-          </svg>
-          <figcaption>
-            Functional topology · confirm all component terminals before wiring
-          </figcaption>
-        </figure>
-      </section>
-      <section class="prototype-section section-pad">
-        <div class="wrap prototype-grid">
+          <div class="mobile-facts">
+            <article>
+              <h3>A historical library combination</h3>
+              <p>
+                AFMotor.h (v1), Servo.h, IRremote 2.2.3 and Tone.h. The source moves IRremote to
+                Timer4 and restricts Servo to Timer5. Tone’s allocation and motor PWM still need a
+                combined test. Current IRremote versions use a different API.
+              </p>
+            </article>
+            <article>
+              <h3>Bring it up in small steps</h3>
+              <ol>
+                <li>Read pots and the debounced switch with motors disconnected.</li>
+                <li>Verify IR decoding and sound without disturbing motor PWM.</li>
+                <li>Test each motor at low duty, then servo travel without its linkage.</li>
+                <li>Fit guards; test one ball before adding automated aiming.</li>
+              </ol>
+            </article>
+          </div>
+          <div class="mobile-source-note">
+            <h3>Read the evidence.</h3>
+            <p>
+              Analysis checked 27 October 2026. Drawings are newly made explanatory reconstructions.
+              Exact original signal pins, motor voltage, battery topology and manufacturing
+              dimensions remain unverified.
+            </p>
+            <div class="mobile-actions">
+              <a class="text-link" href="mobile01-analysis.md">Full analysis & design notes ↗</a
+              ><a
+                class="text-link"
+                href="https://attach.mobile01.com/attach/201908/mobile01-648702c64fc3497936b695ff3c3013fb.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Source BOM ↗</a
+              ><a
+                class="text-link"
+                href="https://attach.mobile01.com/attach/201908/mobile01-c4314842cb29287db5d2d39f2102e488.jpg"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Source prototype photo ↗</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="launcher-thrower" role="tabpanel" aria-labelledby="tab-thrower" tabindex="0" hidden>
+        <section class="wrap mobile-section" id="thrower-explore">
+          <p class="eyebrow">PROJECT 03 · PICO 2 W</p>
+          <h1>PingPongThrower.</h1>
+          <p class="muted">Explore the battery-powered twin-wheel robot, simulate shots, and build it in five test phases. Performance figures are estimates until measured on a physical build.</p>
+          <nav class="thrower-views" aria-label="PingPongThrower views">
+            <a href="#thrower-workbench" data-thrower-view="sim">Simulate</a>
+            <a href="#thrower-workbench" data-thrower-view="poc">Test phases</a>
+            <a href="#thrower-workbench" data-thrower-view="parts">Parts</a>
+            <a href="#thrower-workbench" data-thrower-view="wiring">Wiring</a>
+            <a href="#thrower-workbench" data-thrower-view="build">Build</a>
+          </nav>
+          <p id="thrower-status" role="status">Open PingPongThrower to load the interactive model.</p>
+          <div id="thrower-workbench"></div>
+          <div id="thrower-wiring3d" hidden></div>
+        </section>
+        <section class="wrap mobile-section" id="thrower-downloads">
+          <h2>Build resources.</h2>
+          <p><a href="thrower/README.md">Full build guide</a> · <a href="thrower/docs/POC.md">Five test phases</a> · <a href="thrower/docs/wiring.md">Wiring and first power-on</a></p>
+          <p><a href="thrower/print/a1/phase1.zip" download>Phase 1 print kit</a> · <a href="thrower/print/a1/phase2.zip" download>Phase 2</a> · <a href="thrower/print/a1/phase3.zip" download>Phase 3</a> · <a href="thrower/print/a1/phase4.zip" download>Phase 4</a> · <a href="thrower/print/a1/phase5.zip" download>Phase 5</a></p>
+          <figure><img class="thrower-reference" src="thrower/docs/img/assembly.png" alt="PingPongThrower assembly reference: base, turret, twin wheels and hopper" loading="lazy"><figcaption>Source assembly reference. The model and documentation remain available when the interactive viewer cannot run.</figcaption></figure>
+        </section>
+      </div>
+      <div
+        id="launcher-hien"
+        role="tabpanel"
+        aria-labelledby="tab-hien"
+        tabindex="0"
+        hidden
+      >
+        <section class="mobile-hero wrap" id="hien-explore">
           <div>
-            <div class="eyebrow">FROM THE ORIGINAL WORKBENCH</div>
-            <h2>A real prototype.<br />A clearer path to yours.</h2>
-            <p>
-              The supplied photographs document the motor mounts, rubber-covered wheels, feeder
-              gear, and ball stopper. Keep them beside you during assembly.
+            <p class="eyebrow"><span class="status-dot"></span> THE PRACTICE PROJECT / 003</p>
+            <h1>Brushless punch.<br />Smartphone steering.<br /><em>A match-ready robot.</em></h1>
+            <p class="hero-description">Nguyen Van Hien’s BLE table tennis robot.</p>
+            <p class="hero-detail">
+              Twin DT750 outrunners, BaneBots rubber wheels, a 4-servo pan-tilt hopper gimbal, and an iPhone Bluetooth app. An English hardware study of Nguyen Van Hien’s 2020 YouTube build.
             </p>
-            <a href="translation.md" class="text-link">Read the source translations ↗</a>
-            <p class="small muted">
-              The source video is preserved unchanged. It is a visual reference, not a performance
-              specification.
-            </p>
+            <div class="mobile-actions">
+              <a class="button primary" href="#hien-mechanism">Explore the mechanism ↓</a
+              ><a
+                class="text-link"
+                href="https://www.youtube.com/watch?v=-pSiuAdUKP4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >Original YouTube video ↗</a
+              >
+            </div>
+            <div class="hero-specs">
+              <div><b>Mega</b><span>2560 controller</span></div>
+              <div><b>2 + 4</b><span>brushless + servos</span></div>
+              <div><b>BLE 4.0</b><span>iPhone control</span></div>
+            </div>
           </div>
-          <figure>
-            <video
-              controls
-              preload="metadata"
-              playsinline
-              poster="assets/photos/prototype.webp"
-              aria-label="Original launcher demonstration"
-            >
-              <source src="assets/photos/demonstration.mp4" type="video/mp4" />
-              <track
-                kind="captions"
-                src="assets/demonstration-en.vtt"
-                srclang="en"
-                label="English visual description"
-                default
-              />
-            </video>
+          <figure class="mobile-hero-art">
+            <img
+              src="assets/hien/mechanism.svg"
+              width="900"
+              height="680"
+              alt="Concept illustration of Nguyen Van Hien's table tennis robot: wooden base box with ATX power supply and Arduino Mega, lazy susan turntable bearing, vertical pan bracket, elevation tilt quadrant, bucket hopper with agitator, curved feed tube, and twin DT750 brushless launch wheels"
+            />
             <figcaption>
-              Original maker’s demonstration · English visual description available in captions
+              Mechanism reconstruction from YouTube demonstration and Fusion 360 CAD animation (ASM v145) · not original manufacturing CAD
             </figcaption>
           </figure>
-        </div>
-      </section>
-      <section class="section-pad wrap downloads-section" id="downloads">
-        <div class="section-heading">
-          <div>
-            <div class="eyebrow">05 / TAKE IT TO YOUR WORKBENCH</div>
-            <h2>The files. All in one place.</h2>
+        </section>
+        <div class="project-strip">
+          <div class="wrap">
+            <span>READ THE SOURCE → UNDERSTAND → PROTOTYPE</span
+            ><span>2020 YOUTUBE BUILD / ENGLISH HARDWARE STUDY</span>
           </div>
-          <span class="small muted">English filenames. Source geometry retained.</span>
         </div>
-        <div class="download-grid">
-          <a href="downloads/launcher-english.3mf" download
-            ><span class="file-tag">3MF</span>
+        <section class="mobile-section wrap" id="hien-mechanism">
+          <div class="section-heading">
             <div>
-              <h3>English print project</h3>
-              <p>28 renamed objects · original 10-plate setup</p>
+              <p class="eyebrow">01 / THE MECHANISM</p>
+              <h2>Agitate. Meter. Vector.</h2>
             </div>
-            <span>↓</span></a
-          ><a href="downloads/launcher-stl-pack.zip" download
-            ><span class="file-tag">ZIP</span>
+            <p class="muted">
+              Step through the ball path. The animation explains the sequence; it does not predict timing, speed, or trajectory.
+            </p>
+          </div>
+          <div class="mobile-mechanism">
+            <figure id="hien-flow" class="mobile-flow" data-step="0">
+              <svg viewBox="0 0 900 310" role="img" aria-labelledby="hien-flow-title hien-flow-desc">
+                <title id="hien-flow-title">Agitator, escapement, and dual brushless flywheel path</title>
+                <desc id="hien-flow-desc">
+                  Hopper stores balls, an agitator stirs them, an escapement gate meters one ball into the curved tube, and counter-rotating DT750 flywheels launch it with servo pan-tilt aiming.
+                </desc>
+                <!-- Hopper bucket -->
+                <path d="M80 40 H220 L195 120 H105 Z" fill="#d9eaff" stroke="#0071e3" stroke-width="3" />
+                <!-- Agitator spiral disk -->
+                <g class="hien-agitator">
+                  <circle cx="150" cy="120" r="32" fill="#cbd8e7" stroke="#65758b" stroke-width="2" />
+                  <path d="M150 95 C165 95 175 105 175 120 C175 135 135 135 135 120" fill="none" stroke="#0071e3" stroke-width="4" stroke-linecap="round" />
+                </g>
+                <!-- Escapement gate servo -->
+                <rect x="180" y="135" width="22" height="16" rx="3" fill="#1e293b" />
+                <path d="M170 145 H195" stroke="#f59e0b" stroke-width="4" />
+                <!-- Curved feed throat -->
+                <path d="M150 140 Q150 200 230 205" fill="none" stroke="#d5dbe3" stroke-width="54" stroke-linecap="round" />
+                <path d="M150 140 Q150 200 230 205" fill="none" stroke="#f5f5f7" stroke-width="42" stroke-linecap="round" />
+                <!-- Launch barrel -->
+                <path d="M220 205 H600" stroke="#d5dbe3" stroke-width="54" stroke-linecap="round" />
+                <path d="M220 205 H600" stroke="#f5f5f7" stroke-width="42" stroke-linecap="round" />
+                <!-- Top Flywheel & DT750 motor -->
+                <g class="hien-flywheel">
+                  <circle cx="535" cy="145" r="38" fill="#263341" />
+                  <circle cx="535" cy="145" r="34" fill="#ff7a00" />
+                  <circle cx="535" cy="145" r="14" fill="#64748b" />
+                  <path d="M515 145 H555 M535 125 V165" stroke="#d97706" stroke-width="5" />
+                </g>
+                <!-- Bottom Flywheel & DT750 motor -->
+                <g class="hien-flywheel reverse">
+                  <circle cx="535" cy="265" r="38" fill="#263341" />
+                  <circle cx="535" cy="265" r="34" fill="#ff7a00" />
+                  <circle cx="535" cy="265" r="14" fill="#64748b" />
+                  <path d="M515 265 H555 M535 245 V285" stroke="#d97706" stroke-width="5" />
+                </g>
+                <!-- Pan-tilt directional exit arrow -->
+                <path d="M630 205 H820 L805 194 M820 205 L805 216" fill="none" stroke="#0071e3" stroke-width="3" />
+                <!-- Ping pong ball -->
+                <circle class="hien-ball" cx="150" cy="70" r="15" fill="#ff7a00" stroke="#d65a00" stroke-width="2" />
+                <!-- Stage labels -->
+                <g fill="#344154" font-family="Arial,sans-serif" font-size="16" font-weight="bold">
+                  <text x="95" y="25">01 HOPPER</text>
+                  <text x="50" y="275">02 GATE SERVO</text>
+                  <text x="250" y="275">03 CURVED TUBE</text>
+                  <text x="470" y="55">04 DUAL DT750 FLYWHEELS</text>
+                  <text x="680" y="250">05 PAN-TILT AIM</text>
+                </g>
+              </svg>
+            </figure>
+            <div class="mobile-flow-controls">
+              <p class="eyebrow" id="hien-step-count">STEP 1 / 5</p>
+              <h3 id="hien-step-title" aria-live="polite">Gravity fills the hopper.</h3>
+              <p id="hien-step-copy">The translucent bucket holds practice balls above the intake throat. An agitator disk stirred by the first servo prevents ball bridging.</p>
+              <div class="mobile-actions">
+                <button
+                  class="button secondary"
+                  type="button"
+                  id="hien-prev"
+                  aria-label="Previous mechanism step"
+                >
+                  ←</button
+                ><button class="button primary" type="button" id="hien-next">Next step →</button
+                ><button
+                  class="button secondary"
+                  type="button"
+                  id="hien-play"
+                  aria-pressed="false"
+                >
+                  Play sequence
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="mobile-facts">
+            <article>
+              <h3>What the source establishes</h3>
+              <p>
+                Nguyen Van Hien documented hexTronik DT750 750KV brushless motors, HobbyKing YEP 18A ESCs, BaneBots 2-7/8" wheels with 4 mm hex hubs, 4x MG995/MG996 servos, an ATX 250W power supply, Arduino Mega 2560, HM-10 BLE, and a lazy susan turntable bearing. Fusion 360 assembly ASM v145 confirms the 3D-printed curved throat and motor brackets.
+              </p>
+            </article>
+            <article>
+              <h3>What remains to measure</h3>
+              <p>
+                The author showcased the CAD model in video but did not publish open-source STL/STEP files or raw sketch code. Wheel compression gap (~36–38 mm for 40 mm balls), feed clearances, and exact wooden box mounting brackets must be measured on a physical prototype.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="mobile-section mobile-tinted" id="hien-modes">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">02 / PRACTICE MODES & SPIN</p>
+                <h2>From defensive chops<br />to direct attack.</h2>
+              </div>
+              <p class="muted">
+                The author programmed distinct practice drills selectable over Bluetooth from his iPhone app.
+              </p>
+            </div>
+            <div class="hien-modes-grid">
+              <div class="hien-mode-list" role="tablist" aria-label="Practice shot modes">
+                <button type="button" class="hien-mode-btn active" data-hien-mode="service" aria-pressed="true">
+                  <span>Service Mode</span><span>↘</span>
+                </button>
+                <button type="button" class="hien-mode-btn" data-hien-mode="attack" aria-pressed="false">
+                  <span>Attack Mode</span><span>→</span>
+                </button>
+                <button type="button" class="hien-mode-btn" data-hien-mode="backspin" aria-pressed="false">
+                  <span>Backspin Chop</span><span>↗</span>
+                </button>
+                <button type="button" class="hien-mode-btn" data-hien-mode="swing" aria-pressed="false">
+                  <span>Oscillating Swing</span><span>↔</span>
+                </button>
+              </div>
+              <div class="hien-mode-card">
+                <h3 id="hien-mode-title">Service Mode</h3>
+                <div class="hien-mode-specs">
+                  <div>
+                    <b>Elevation angle</b>
+                    <span id="hien-mode-aim">Downward pitch (-12°)</span>
+                  </div>
+                  <div>
+                    <b>Flywheel RPM differential</b>
+                    <span id="hien-mode-spin">Moderate topspin (top wheel 3800 RPM, bottom 3200 RPM)</span>
+                  </div>
+                </div>
+                <p id="hien-mode-traj" class="muted">
+                  Ball strikes the near table half first, clears the net, and lands deep in the opponent court.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="mobile-section wrap" id="hien-parts">
+          <div class="section-heading">
             <div>
-              <h3>Individual STL files</h3>
-              <p>Organized by plate · millimeter units</p>
+              <p class="eyebrow">03 / PARTS & MATERIALS</p>
+              <h2>From the author’s list<br />to your workbench.</h2>
             </div>
-            <span>↓</span></a
-          ><a href="downloads/launcher-assembly.step" download
-            ><span class="file-tag">STEP</span>
+            <p class="muted">
+              Transcribed from Nguyen Van Hien’s video description, subtitles, and CAD breakdown. “Proposed addition” rows belong to this guide.
+            </p>
+          </div>
+          <a class="text-link" href="downloads/hien-parts.csv" download>Download parts CSV ↓</a>
+          <div class="table-scroll">
+            <table class="mobile-table" id="hien-parts-table">
+              <caption class="sr-only">
+                Nguyen Van Hien robot parts and proposed additions
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Part / evidence</th>
+                  <th scope="col">Specification and build notes</th>
+                  <th scope="col">Qty</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="part-id">H01</span><b>Launch motors</b><small>Source description</small></td>
+                  <td>hexTronik DT750 750KV Brushless Outrunner<small>Twin 3-phase outrunners direct-drive the launch wheels; high torque and speed.</small></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H02</span><b>Speed controllers</b><small>Source description</small></td>
+                  <td>HobbyKing YEP 18A (2~4S) SBEC Brushless ESC<small>18 A continuous brushless ESCs; powered from ATX 12 V high-current rail.</small></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H03</span><b>Launch wheels</b><small>Source description</small></td>
+                  <td>BaneBots 2-7/8" orange rubber wheels (RB-Ban-91)<small>40A middle-soft shore durometer elastomer tire grips the 40 mm ball.</small></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H04</span><b>Wheel mounts</b><small>Source description</small></td>
+                  <td>BaneBots 1/2" hex hub with 4 mm bore<small>Couples the DT750 4 mm motor shaft to the BaneBots 1/2" hex wheel bore.</small></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H05</span><b>Launch barrel & mounts</b><small>Source CAD</small></td>
+                  <td>3D-printed barrel and motor tabs (canon v54, motor_mount_tab_ext v58)<small>Autodesk Fusion 360 assembly ASM v145; holds twin motors with wheel cutouts.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H06</span><b>Hopper container</b><small>Source video</small></td>
+                  <td>Translucent plastic bucket (cup v2)<small>Bulk ball container mounted above the rotary agitation and feed throat.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H07</span><b>Feeder agitator servo</b><small>Source description</small></td>
+                  <td>TowerPro MG995 / MG996 metal-gear servo<small>Rotates the bottom agitator disk (pusher_with_servo v12) to prevent bridging.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H08</span><b>Feeder gate servo</b><small>Source description</small></td>
+                  <td>TowerPro MG995 / MG996 metal-gear servo<small>Actuates the escapement gate (feed_base_with_servo v52) to meter balls.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H09</span><b>Feed throat</b><small>Source CAD</small></td>
+                  <td>3D-printed curved feed tube (feed_curve v105)<small>Curves balls down by gravity from the hopper bottom into the launch barrel.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H10</span><b>Turntable bearing</b><small>Source description</small></td>
+                  <td>120 mm Aluminum Lazy Susan rotating plate (Amazon B07F3VHGKX)<small>Circular ball-bearing ring supports robot weight and enables 360° pan rotation.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H11</span><b>Pan / yaw servo</b><small>Source description</small></td>
+                  <td>TowerPro MG995 / MG996 metal-gear servo<small>Mounted to vertical base bracket (base_leg v15); sweeps launcher horizontally.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H12</span><b>Tilt / elevation servo</b><small>Source description</small></td>
+                  <td>TowerPro MG995 / MG996 metal-gear servo<small>Acts on circular quadrant horn (hand_servo v64) to control pitch angle.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H13</span><b>Controller</b><small>Source description</small></td>
+                  <td>Arduino Mega 2560 Card<small>Generates 6 independent servo/ESC PWM signals and handles BLE hardware serial.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H14</span><b>Bluetooth module</b><small>Source description</small></td>
+                  <td>HM-10 Bluetooth Low Energy (BLE 4.0) module<small>Enables wireless command link from custom iOS iPhone app (Ping Robot).</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H15</span><b>Power supply</b><small>Source description</small></td>
+                  <td>250W PC ATX computer power supply<small>Provides heavy 12 V rail for brushless ESCs and 5 V rail for the 4 servos.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H16</span><b>Base enclosure</b><small>Source description</small></td>
+                  <td>Custom wooden box (box v5)<small>Houses ATX PSU, Arduino Mega, ESCs, wiring harness, and turntable mount.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">H17</span><b>Power switch</b><small>Source video</small></td>
+                  <td>Green illuminated panel pushbutton switch<small>Top deck switch pulls ATX PS_ON green wire to ground to turn on DC rails.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">P01</span><b>Power & servo breakout</b><small>Proposed addition</small></td>
+                  <td>85 × 60 mm, 2-layer distribution PCB placement draft<small>J1–J9, ATX Molex input, C1 1000 µF, C2 470 µF, C3 100 nF; unrouted draft.</small></td>
+                  <td>1</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">P02</span><b>BLE level divider</b><small>Proposed addition</small></td>
+                  <td>1 kΩ and 2 kΩ 1/4W metal film resistors<small>Protects HM-10 3.3 V RX input from Arduino Mega 5 V TX1 output signal.</small></td>
+                  <td>2</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">P03</span><b>Rail filter capacitors</b><small>Proposed addition</small></td>
+                  <td>1000 µF 16V, 470 µF 6.3V electrolytic, 100 nF ceramic<small>Smooths 12 V brushless ESC switching noise and 5 V servo stall surges.</small></td>
+                  <td>3</td>
+                </tr>
+                <tr>
+                  <td><span class="part-id">P04</span><b>Wiring harness & terminals</b><small>Proposed addition</small></td>
+                  <td>10-pin Mega harness, Molex connector, 3-pin headers, 3.5 mm bullets<small>Organized clean wiring between wooden base electronics and moving gimbal.</small></td>
+                  <td>1</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        <section class="mobile-section wrap" id="hien-wiring">
+          <div class="section-heading">
             <div>
-              <h3>Original CAD assembly</h3>
-              <p>Editable source geometry · original names</p>
+              <p class="eyebrow">04 / ELECTRICAL SCHEMATIC</p>
+              <h2>High-current ATX power<br />and clean signals.</h2>
             </div>
-            <span>↓</span></a
-          ><a href="downloads/english-build-guide.zip" download
-            ><span class="file-tag">DOCS</span>
+            <p class="muted">
+              Proposed wiring separating high-current 12 V ESC rails and 5 V servo rails from Arduino logic.
+            </p>
+          </div>
+          <figure class="mobile-diagram">
+            <img
+              src="assets/hien/schematic.svg"
+              width="1100"
+              height="820"
+              loading="lazy"
+              alt="Proposed schematic for Hien's ping pong robot: 250W ATX supply, Arduino Mega 2560 pin map, twin YEP 18A brushless ESCs, 4 servos and HM-10 BLE module"
+            />
+            <figcaption>
+              Proposed system schematic · separate ATX high-current rails and Arduino Mega GPIO pinout.
+            </figcaption>
+          </figure>
+          <div class="mobile-actions">
+            <a class="text-link" href="assets/hien/schematic.svg" download>Download schematic SVG ↓</a
+            ><a class="text-link" href="downloads/hien-connections.csv" download>Download connection map ↓</a
+            ><a
+              class="text-link"
+              href="https://www.youtube.com/watch?v=-pSiuAdUKP4"
+              target="_blank"
+              rel="noopener noreferrer"
+              >YouTube video breakdown ↗</a
+            >
+          </div>
+          <div class="table-scroll">
+            <table class="mobile-table">
+              <caption class="sr-only">
+                Proposed connector and pin assignments for Hien's robot
+              </caption>
+              <thead>
+                <tr>
+                  <th scope="col">Connector / net</th>
+                  <th scope="col">Connect to</th>
+                  <th scope="col">Connection notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><b>J1.1</b><small>GND</small></td>
+                  <td>Mega GND</td>
+                  <td>Common ground reference across Mega, ESCs, servos, and ATX supply.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.2</b><small>+5V_LOGIC</small></td>
+                  <td>Mega 5V output</td>
+                  <td>Feeds logic rail and HM-10 BLE module; isolated from high-current servo 5 V.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.3</b><small>ESC_TOP_D2</small></td>
+                  <td>Mega D2</td>
+                  <td>Hardware PWM signal for top DT750 ESC (throttle / topspin bias).</td>
+                </tr>
+                <tr>
+                  <td><b>J1.4</b><small>ESC_BTM_D3</small></td>
+                  <td>Mega D3</td>
+                  <td>Hardware PWM signal for bottom DT750 ESC (throttle / backspin bias).</td>
+                </tr>
+                <tr>
+                  <td><b>J1.5</b><small>AGIT_SERVO_D4</small></td>
+                  <td>Mega D4</td>
+                  <td>PWM control signal for hopper rotary agitator disk servo.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.6</b><small>GATE_SERVO_D5</small></td>
+                  <td>Mega D5</td>
+                  <td>PWM control signal for feed escapement gate servo.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.7</b><small>PAN_SERVO_D6</small></td>
+                  <td>Mega D6</td>
+                  <td>PWM control signal for horizontal turntable yaw servo.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.8</b><small>TILT_SERVO_D7</small></td>
+                  <td>Mega D7</td>
+                  <td>PWM control signal for vertical pitch elevation quadrant servo.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.9</b><small>BLE_TX1_D18</small></td>
+                  <td>Mega TX1 (D18)</td>
+                  <td>Serial data to HM-10 RX via onboard 1 kΩ / 2 kΩ resistor voltage divider.</td>
+                </tr>
+                <tr>
+                  <td><b>J1.10</b><small>BLE_RX1_D19</small></td>
+                  <td>Mega RX1 (D19)</td>
+                  <td>Serial data directly from HM-10 TX (3.3 V high satisfies Mega Vih threshold).</td>
+                </tr>
+                <tr>
+                  <td><b>J2–J3</b><small>ESC_SIG</small></td>
+                  <td>YEP 18A ESC inputs</td>
+                  <td>3-pin headers for ESC signal lines (GND and signal; ESC BEC wire disconnected).</td>
+                </tr>
+                <tr>
+                  <td><b>J4–J7</b><small>SERVO_HDR</small></td>
+                  <td>4x MG995/MG996 servos</td>
+                  <td>3-pin headers with high-current ATX +5V, GND, and independent signal line.</td>
+                </tr>
+                <tr>
+                  <td><b>J8</b><small>BLE_HDR</small></td>
+                  <td>HM-10 BLE module</td>
+                  <td>4-pin header: GND, +5V_LOGIC, TXD, RXD (level divided).</td>
+                </tr>
+                <tr>
+                  <td><b>J9 / PWR</b><small>ATX_INPUT</small></td>
+                  <td>ATX 4-pin Molex</td>
+                  <td>Yellow (+12 V to ESCs), Red (+5 V to servos), Black (GND), Green (PS_ON).</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="mobile-facts">
+            <article>
+              <h3>Dedicated ATX high-current rails</h3>
+              <p>
+                Four MG995/MG996 servos moving together demand 5–8 A peak stall current. The 250W ATX supply’s red wire delivers 20 A at 5 V, completely preventing microcontroller reset. ESCs draw up to 15 A peak from the separate 12 V yellow rail.
+              </p>
+            </article>
+            <article>
+              <h3>HM-10 3.3V logic level protection</h3>
+              <p>
+                The HM-10 transceiver runs at 3.3 V. While the Mega safely reads 3.3 V on RX1, the Mega’s 5 V TX1 output will damage the HM-10 RX line over time without a 1 kΩ / 2 kΩ resistor voltage divider.
+              </p>
+            </article>
+          </div>
+        </section>
+        <section class="mobile-section mobile-tinted" id="hien-pcb">
+          <div class="wrap">
+            <div class="section-heading">
+              <div>
+                <p class="eyebrow">05 / PROPOSED DISTRIBUTION BREAKOUT</p>
+                <h2>A rugged power hub<br />for the wooden base.</h2>
+              </div>
+              <p class="muted">
+                An 85 × 60 mm distribution PCB that consolidates ATX power, 4 servo outputs, 2 ESC signals, and HM-10 BLE onto an Arduino Mega ribbon harness.
+              </p>
+            </div>
+            <div class="mobile-pcb-grid">
+              <figure class="mobile-diagram">
+                <img
+                  src="assets/hien/pcb.svg"
+                  width="900"
+                  height="650"
+                  loading="lazy"
+                  alt="85 by 60 millimetre proposed power and servo distribution PCB placement draft with J1 Mega harness, 2 ESC headers, 4 servo headers, HM-10 BLE header, ATX Molex power connector and filter capacitors"
+                />
+                <figcaption>
+                  Placement draft · connectors and net assignments · no routed copper
+                </figcaption>
+              </figure>
+              <div>
+                <p class="pcb-status">PLACEMENT DRAFT / NOT FOR FABRICATION</p>
+                <h3>85 × 60 mm. Dedicated ATX distribution.</h3>
+                <p>
+                  The KiCad board contains through-hole pads, net assignments, an 85 × 60 mm outline, and four M3 mounting holes. High-current traces for 12 V and 5 V still require routing in KiCad with adequate copper width (≥2.5 mm).
+                </p>
+                <p>
+                  C1 (1000 µF / 16V) absorbs brushless ESC inductive switching spikes, C2 (470 µF / 6.3V) buffers servo stall surges, and C3 (100 nF) bypasses logic noise. The onboard level shifter safeguards the HM-10 Bluetooth module.
+                </p>
+                <div class="mobile-downloads">
+                  <a href="downloads/hien-servo-breakout.kicad_pcb" download>Editable KiCad board ↓</a
+                  ><a href="assets/hien/pcb.svg" download>Placement drawing SVG ↓</a
+                  ><a href="downloads/hien-pcb-netlist.csv" download>Pad-to-net map CSV ↓</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section class="mobile-section wrap" id="hien-firmware">
+          <div class="section-heading">
             <div>
-              <h3>English build guide</h3>
-              <p>Assembly, printing, wiring, translation, and BOM</p>
+              <p class="eyebrow">06 / FIRMWARE & BLUETOOTH CONTROL</p>
+              <h2>Smartphone steering over Bluetooth LE.</h2>
             </div>
-            <span>↓</span></a
-          >
-        </div>
-        <p class="small muted">
-          Also available: <a href="data/print-inventory.json">mesh inspection report</a> ·
-          <a href="data/source-manifest.json">source checksums</a>
-        </p>
-        <details>
-          <summary>Open build questions before routine use</summary>
-          <ul id="open-questions"></ul>
-        </details>
-        <details>
-          <summary>What to improve next</summary>
-          <ol>
-            <li>Complete a measured build and confirm every fastener and fit.</li>
-            <li>Add guards and verify the DC current budget and protection.</li>
-            <li>Finalize the outlet, stopper, and replaceable wheel tires.</li>
-            <li>Add measured speed feedback and repeatable practice settings.</li>
-          </ol>
-          <a class="text-link" href="future-iterations.md"
-            >Future iterations and completion evidence ↗</a
-          >
-        </details>
-      </section>
+            <p class="muted">
+              The author created a custom iOS app ("Ping Robot") communicating with the Arduino Mega via the HM-10 BLE transceiver.
+            </p>
+          </div>
+          <div class="mobile-facts">
+            <article>
+              <h3>Reconstructed serial command protocol</h3>
+              <p>
+                As documented in the iPhone demonstration, the Mega parses serial command strings including:
+                <code>Feeder speed 1..3</code> (agitator/gate timing),
+                <code>Banebot speed 20..60</code> (ESC throttle PWM), and
+                <code>Ball gun ON</code>. Pan-tilt angles adjust via servo write microseconds.
+              </p>
+            </article>
+            <article>
+              <h3>Safe prototype bring-up checklist</h3>
+              <ol>
+                <li>Verify ATX 12 V and 5 V rail voltages with a multimeter before connecting electronics.</li>
+                <li>Sweep servos through software limits with horns detached to avoid stripping gears against endstops.</li>
+                <li>Test ESC throttle calibration (1000–2000 µs) with launch wheels removed.</li>
+                <li>Verify BLE 9600 baud communication and emergency stop before loading balls.</li>
+              </ol>
+            </article>
+          </div>
+          <div class="mobile-source-note">
+            <h3>Read the evidence.</h3>
+            <p>
+              Analysis checked 27 October 2026. Diagrams and breakout board are newly made explanatory reconstructions. Exact original CAD dimensions, wheel compression gap, and full Arduino firmware remain unreleased by the original author.
+            </p>
+            <div class="mobile-actions">
+              <a class="text-link" href="hien-analysis.md">Full analysis & design notes ↗</a
+              ><a
+                class="text-link"
+                href="https://www.youtube.com/watch?v=-pSiuAdUKP4"
+                target="_blank"
+                rel="noopener noreferrer"
+                >YouTube demonstration ↗</a
+              >
+            </div>
+          </div>
+        </section>
+      </div>
     </main>
-    <dialog id="component-dialog" class="component-dialog" aria-labelledby="component-dialog-title" aria-describedby="component-dialog-note">
+    <dialog
+      id="component-dialog"
+      class="component-dialog"
+      aria-labelledby="component-dialog-title"
+      aria-describedby="component-dialog-note"
+    >
       <div class="component-dialog-heading">
-        <div><p class="eyebrow" id="component-dialog-id"></p><h2 id="component-dialog-title"></h2></div>
-        <button type="button" id="component-dialog-close" class="component-dialog-close" aria-label="Close component images" autofocus>×</button>
+        <div>
+          <p class="eyebrow" id="component-dialog-id"></p>
+          <h2 id="component-dialog-title"></h2>
+        </div>
+        <button
+          type="button"
+          id="component-dialog-close"
+          class="component-dialog-close"
+          aria-label="Close component images"
+          autofocus
+        >
+          ×
+        </button>
       </div>
       <div class="component-comparison">
-        <figure><img id="component-dialog-photo" width="600" height="450" alt="Component source photograph" decoding="async"><figcaption>Source photograph</figcaption></figure>
-        <figure><img id="component-dialog-svg" width="600" height="450" alt="Component SVG appearance illustration" decoding="async"><figcaption>SVG appearance illustration · not to scale</figcaption></figure>
+        <figure>
+          <img
+            id="component-dialog-photo"
+            width="600"
+            height="450"
+            alt="Component source photograph"
+            decoding="async"
+          />
+          <figcaption>Source photograph</figcaption>
+        </figure>
+        <figure>
+          <img
+            id="component-dialog-svg"
+            width="600"
+            height="450"
+            alt="Component SVG appearance illustration"
+            decoding="async"
+          />
+          <figcaption>SVG appearance illustration · not to scale</figcaption>
+        </figure>
       </div>
       <p id="component-dialog-note" class="component-dialog-note"></p>
       <p id="component-dialog-observations" class="small muted"></p>
-      <div class="component-dialog-links"><a id="component-photo-source" class="text-link" target="_blank" rel="noopener noreferrer">Photo source ↗</a><a id="component-svg-download" class="text-link" download>Download SVG ↓</a></div>
+      <div class="component-dialog-links">
+        <a id="component-photo-source" class="text-link" target="_blank" rel="noopener noreferrer"
+          >Photo source ↗</a
+        ><a id="component-svg-download" class="text-link" download>Download SVG ↓</a>
+      </div>
       <p id="component-photo-credit" class="small muted"></p>
     </dialog>
     <footer>

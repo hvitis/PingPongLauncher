@@ -20,8 +20,26 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Generate documentation, check, and package static site
-        run: make build
+          cache: npm
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Build static export and run content, browser and firmware tests
+        run: npm run test:ci
+      - name: Package downloadable static site
+        run: cd dist && zip -qr ../ping-pong-launcher-static.zip .
+      - uses: actions/upload-artifact@v4
+        with:
+          name: static-site-zip
+          path: ping-pong-launcher-static.zip
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: browser-test-results
+          path: test-results
+          if-no-files-found: ignore
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v4
         with:
@@ -39,3 +57,19 @@ jobs:
       - name: Publish static site
         id: deployment
         uses: actions/deploy-pages@v4
+  release:
+    if: startsWith(github.ref, 'refs/tags/')
+    needs: deploy
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@v4
+        with:
+          name: static-site-zip
+      - name: Create release with tested static website
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+          RELEASE_TAG: ${{ github.ref_name }}
+        run: gh release create "$RELEASE_TAG" ping-pong-launcher-static.zip --verify-tag --generate-notes --title "$RELEASE_TAG"

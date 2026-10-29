@@ -1,0 +1,291 @@
+{
+  "id": "hien",
+  "title": "Hien’s BLE robot",
+  "author": "Nguyen Van Hien",
+  "published": "2020-01-01",
+  "checkedOn": "2026-10-27",
+  "source": "https://www.youtube.com/watch?v=-pSiuAdUKP4",
+  "status": "Video analysis and proposed power/servo distribution; not original CAD release",
+  "parts": [
+    {
+      "id": "H01",
+      "name": "Launch motors",
+      "spec": "hexTronik DT750 750KV Brushless Outrunner",
+      "quantity": 2,
+      "evidence": "Source description",
+      "note": "Twin 3-phase outrunners direct-drive the launch wheels; high torque and speed."
+    },
+    {
+      "id": "H02",
+      "name": "Speed controllers",
+      "spec": "HobbyKing YEP 18A (2~4S) SBEC Brushless ESC",
+      "quantity": 2,
+      "evidence": "Source description",
+      "note": "18 A continuous brushless ESCs; powered from ATX 12 V high-current rail."
+    },
+    {
+      "id": "H03",
+      "name": "Launch wheels",
+      "spec": "BaneBots 2-7/8\" orange rubber wheels (RB-Ban-91)",
+      "quantity": 2,
+      "evidence": "Source description",
+      "note": "40A middle-soft shore durometer elastomer tire grips the 40 mm ball."
+    },
+    {
+      "id": "H04",
+      "name": "Wheel mounts",
+      "spec": "BaneBots 1/2\" hex hub with 4 mm bore",
+      "quantity": 2,
+      "evidence": "Source description",
+      "note": "Couples the DT750 4 mm motor shaft to the BaneBots 1/2\" hex wheel bore."
+    },
+    {
+      "id": "H05",
+      "name": "Launch barrel & mounts",
+      "spec": "3D-printed barrel and motor tabs (canon v54, motor_mount_tab_ext v58)",
+      "quantity": 1,
+      "evidence": "Source CAD",
+      "note": "Autodesk Fusion 360 assembly ASM v145; holds twin motors with wheel cutouts."
+    },
+    {
+      "id": "H06",
+      "name": "Hopper container",
+      "spec": "Translucent plastic bucket (cup v2)",
+      "quantity": 1,
+      "evidence": "Source video",
+      "note": "Bulk ball container mounted above the rotary agitation and feed throat."
+    },
+    {
+      "id": "H07",
+      "name": "Feeder agitator servo",
+      "spec": "TowerPro MG995 / MG996 metal-gear servo",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Rotates the bottom agitator disk (pusher_with_servo v12) to prevent bridging."
+    },
+    {
+      "id": "H08",
+      "name": "Feeder gate servo",
+      "spec": "TowerPro MG995 / MG996 metal-gear servo",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Actuates the escapement gate (feed_base_with_servo v52) to meter balls."
+    },
+    {
+      "id": "H09",
+      "name": "Feed throat",
+      "spec": "3D-printed curved feed tube (feed_curve v105)",
+      "quantity": 1,
+      "evidence": "Source CAD",
+      "note": "Curves balls down by gravity from the hopper bottom into the launch barrel."
+    },
+    {
+      "id": "H10",
+      "name": "Turntable bearing",
+      "spec": "120 mm Aluminum Lazy Susan rotating plate (Amazon B07F3VHGKX)",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Circular ball-bearing ring supports robot weight and enables 360° pan rotation."
+    },
+    {
+      "id": "H11",
+      "name": "Pan / yaw servo",
+      "spec": "TowerPro MG995 / MG996 metal-gear servo",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Mounted to vertical base bracket (base_leg v15); sweeps launcher horizontally."
+    },
+    {
+      "id": "H12",
+      "name": "Tilt / elevation servo",
+      "spec": "TowerPro MG995 / MG996 metal-gear servo",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Acts on circular quadrant horn (hand_servo v64) to control pitch angle."
+    },
+    {
+      "id": "H13",
+      "name": "Controller",
+      "spec": "Arduino Mega 2560 Card",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Generates 6 independent servo/ESC PWM signals and handles BLE hardware serial."
+    },
+    {
+      "id": "H14",
+      "name": "Bluetooth module",
+      "spec": "HM-10 Bluetooth Low Energy (BLE 4.0) module",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Enables wireless command link from custom iOS iPhone app (Ping Robot)."
+    },
+    {
+      "id": "H15",
+      "name": "Power supply",
+      "spec": "250W PC ATX computer power supply",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Provides heavy 12 V rail for brushless ESCs and 5 V rail for the 4 servos."
+    },
+    {
+      "id": "H16",
+      "name": "Base enclosure",
+      "spec": "Custom wooden box (box v5)",
+      "quantity": 1,
+      "evidence": "Source description",
+      "note": "Houses ATX PSU, Arduino Mega, ESCs, wiring harness, and turntable mount."
+    },
+    {
+      "id": "H17",
+      "name": "Power switch",
+      "spec": "Green illuminated panel pushbutton switch",
+      "quantity": 1,
+      "evidence": "Source video",
+      "note": "Top deck switch pulls ATX PS_ON green wire to ground to turn on DC rails."
+    },
+    {
+      "id": "P01",
+      "name": "Power & servo breakout",
+      "spec": "85 × 60 mm, 2-layer distribution PCB placement draft",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "J1–J9, ATX Molex input, C1 1000 µF, C2 470 µF, C3 100 nF; unrouted draft."
+    },
+    {
+      "id": "P02",
+      "name": "BLE level divider",
+      "spec": "1 kΩ and 2 kΩ 1/4W metal film resistors",
+      "quantity": 2,
+      "evidence": "Proposed addition",
+      "note": "Protects HM-10 3.3 V RX input from Arduino Mega 5 V TX1 output signal."
+    },
+    {
+      "id": "P03",
+      "name": "Rail filter capacitors",
+      "spec": "1000 µF 16V, 470 µF 6.3V electrolytic, 100 nF ceramic",
+      "quantity": 3,
+      "evidence": "Proposed addition",
+      "note": "Smooths 12 V brushless ESC switching noise and 5 V servo stall surges."
+    },
+    {
+      "id": "P04",
+      "name": "Wiring harness & terminals",
+      "spec": "10-pin Mega harness, Molex connector, 3-pin headers, 3.5 mm bullets",
+      "quantity": 1,
+      "evidence": "Proposed addition",
+      "note": "Organized clean wiring between wooden base electronics and moving gimbal."
+    }
+  ],
+  "connections": [
+    {
+      "connector": "J1.1",
+      "net": "GND",
+      "target": "Mega GND",
+      "note": "Common ground reference across Mega, ESCs, servos, and ATX supply."
+    },
+    {
+      "connector": "J1.2",
+      "net": "+5V_LOGIC",
+      "target": "Mega 5V output",
+      "note": "Feeds logic rail and HM-10 BLE module; isolated from high-current servo 5 V."
+    },
+    {
+      "connector": "J1.3",
+      "net": "ESC_TOP_D2",
+      "target": "Mega D2",
+      "note": "Hardware PWM signal for top DT750 ESC (throttle / topspin bias)."
+    },
+    {
+      "connector": "J1.4",
+      "net": "ESC_BTM_D3",
+      "target": "Mega D3",
+      "note": "Hardware PWM signal for bottom DT750 ESC (throttle / backspin bias)."
+    },
+    {
+      "connector": "J1.5",
+      "net": "AGIT_SERVO_D4",
+      "target": "Mega D4",
+      "note": "PWM control signal for hopper rotary agitator disk servo."
+    },
+    {
+      "connector": "J1.6",
+      "net": "GATE_SERVO_D5",
+      "target": "Mega D5",
+      "note": "PWM control signal for feed escapement gate servo."
+    },
+    {
+      "connector": "J1.7",
+      "net": "PAN_SERVO_D6",
+      "target": "Mega D6",
+      "note": "PWM control signal for horizontal turntable yaw servo."
+    },
+    {
+      "connector": "J1.8",
+      "net": "TILT_SERVO_D7",
+      "target": "Mega D7",
+      "note": "PWM control signal for vertical pitch elevation quadrant servo."
+    },
+    {
+      "connector": "J1.9",
+      "net": "BLE_TX1_D18",
+      "target": "Mega TX1 (D18)",
+      "note": "Serial data to HM-10 RX via onboard 1 kΩ / 2 kΩ resistor voltage divider."
+    },
+    {
+      "connector": "J1.10",
+      "net": "BLE_RX1_D19",
+      "target": "Mega RX1 (D19)",
+      "note": "Serial data directly from HM-10 TX (3.3 V high satisfies Mega Vih threshold)."
+    },
+    {
+      "connector": "J2–J3",
+      "net": "ESC_SIG",
+      "target": "YEP 18A ESC inputs",
+      "note": "3-pin headers for ESC signal lines (GND and signal; ESC BEC wire disconnected)."
+    },
+    {
+      "connector": "J4–J7",
+      "net": "SERVO_HDR",
+      "target": "4x MG995/MG996 servos",
+      "note": "3-pin headers with high-current ATX +5V, GND, and independent signal line."
+    },
+    {
+      "connector": "J8",
+      "net": "BLE_HDR",
+      "target": "HM-10 BLE module",
+      "note": "4-pin header: GND, +5V_LOGIC, TXD, RXD (level divided)."
+    },
+    {
+      "connector": "J9 / PWR",
+      "net": "ATX_INPUT",
+      "target": "ATX 4-pin Molex",
+      "note": "Yellow (+12 V to ESCs), Red (+5 V to servos), Black (GND), Green (PS_ON)."
+    }
+  ],
+  "modes": [
+    {
+      "name": "Service",
+      "aim": "Downward pitch (-10° to -15°)",
+      "spin": "Medium topspin / sidespin",
+      "behavior": "Ball bounces on the launcher’s near table half before clearing the net into opponent’s court."
+    },
+    {
+      "name": "Attack",
+      "aim": "Flat to slight upward pitch (0° to +8°)",
+      "spin": "Heavy topspin",
+      "behavior": "High velocity offensive drive flying straight over the net to target corners."
+    },
+    {
+      "name": "Topspin vs Backspin",
+      "aim": "Adjustable elevation",
+      "spin": "Differential wheel RPM",
+      "behavior": "Top wheel faster produces diving topspin; bottom wheel faster produces floating backspin."
+    },
+    {
+      "name": "Swing / Random",
+      "aim": "Horizontal pan (-25° to +25°)",
+      "spin": "Variable direction",
+      "behavior": "Turntable servo oscillates or randomly targets forehand and backhand zones."
+    }
+  ]
+}

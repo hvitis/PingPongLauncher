@@ -1,0 +1,522 @@
+{
+ "dims": {
+  "pivot": [
+   0,
+   0,
+   245.018
+  ],
+  "wheel_top": [
+   0,
+   68,
+   240.518
+  ],
+  "wheel_bot": [
+   0,
+   68,
+   137.518
+  ],
+  "pinch": [
+   0,
+   68,
+   189.018
+  ],
+  "elbow_c": [
+   0,
+   48,
+   237.018
+  ],
+  "elbow_r": 48,
+  "drop_len": 8,
+  "rocker_axis": [
+   0,
+   -31.5,
+   295.018
+  ],
+  "finger_z": [
+   280.018,
+   310.018
+  ],
+  "tube_bot_z": 264.018,
+  "tube_top_z": 364.018,
+  "tube_ir": 21,
+  "hopper_slope": 50,
+  "hopper_top_r": 72,
+  "esc_alpha": 18,
+  "esc_tip_dy": 14.5783,
+  "ball1_z": 299.912,
+  "finger_h": 5,
+  "base": [
+   190,
+   170,
+   85
+  ],
+  "pitch_range": [
+   -5,
+   30
+  ],
+  "yaw_max": 35,
+  "ball_d": 40,
+  "gap": 38,
+  "wheel_d": 65,
+  "wheel_w": 26,
+  "lid_top": 85,
+  "poc_bot_z": 86.5,
+  "loose_z": 100.018,
+  "poc_size": [
+   190,
+   220
+  ],
+  "hopper_top_z": 438.797
+ },
+ "meshes": [
+  {
+   "file": "models/tray.stl",
+   "group": "base",
+   "color": "#3b4252",
+   "opacity": 1.0,
+   "label": "Base tray (printed)"
+  },
+  {
+   "file": "models/lid.stl",
+   "group": "base",
+   "color": "#4c566a",
+   "opacity": 1.0,
+   "label": "Base lid with 2\u00d7608 bearing boss (printed)"
+  },
+  {
+   "file": "models/swing_servo.stl",
+   "group": "base",
+   "color": "#2f6fde",
+   "opacity": 1.0,
+   "label": "Swing servo MG90S"
+  },
+  {
+   "file": "models/bearings.stl",
+   "group": "base",
+   "color": "#c0c6cf",
+   "opacity": 1.0,
+   "label": "608ZZ bearings \u00d72"
+  },
+  {
+   "file": "models/battery.stl",
+   "group": "base",
+   "color": "#1d1d1f",
+   "opacity": 1.0,
+   "label": "4\u00d7AA battery holder"
+  },
+  {
+   "file": "models/board.stl",
+   "group": "base",
+   "color": "#1f7a3a",
+   "opacity": 1.0,
+   "label": "Perfboard 50\u00d770"
+  },
+  {
+   "file": "models/pico.stl",
+   "group": "base",
+   "color": "#2fae5f",
+   "opacity": 1.0,
+   "label": "Raspberry Pi Pico 2 WH"
+  },
+  {
+   "file": "models/driver.stl",
+   "group": "base",
+   "color": "#c0392b",
+   "opacity": 1.0,
+   "label": "DRV8833 motor driver"
+  },
+  {
+   "file": "models/panel.stl",
+   "group": "base",
+   "color": "#9aa0a6",
+   "opacity": 1.0,
+   "label": "Panel: buttons, pots, LED"
+  },
+  {
+   "file": "models/panel_switch.stl",
+   "group": "base",
+   "color": "#202124",
+   "opacity": 1.0,
+   "label": "Power switch KCD1"
+  },
+  {
+   "file": "models/panel_knobs.stl",
+   "group": "base",
+   "color": "#202124",
+   "opacity": 1.0,
+   "label": "Pot knobs (printed)"
+  },
+  {
+   "file": "models/coupler.stl",
+   "group": "yaw",
+   "color": "#f2b705",
+   "opacity": 1.0,
+   "label": "Servo coupler (printed)"
+  },
+  {
+   "file": "models/bolt.stl",
+   "group": "yaw",
+   "color": "#c0c6cf",
+   "opacity": 1.0,
+   "label": "M8\u00d740 bolt + nyloc"
+  },
+  {
+   "file": "models/turret.stl",
+   "group": "yaw",
+   "color": "#3d7ea6",
+   "opacity": 1.0,
+   "label": "Turret plate (printed)"
+  },
+  {
+   "file": "models/cheeks.stl",
+   "group": "yaw",
+   "color": "#356f93",
+   "opacity": 1.0,
+   "label": "Yoke cheeks (printed)"
+  },
+  {
+   "file": "models/feed_tube.stl",
+   "group": "yaw",
+   "color": "#9ec5e8",
+   "opacity": 0.55,
+   "label": "Feed tube (printed)"
+  },
+  {
+   "file": "models/hopper.stl",
+   "group": "yaw",
+   "color": "#bcdcf5",
+   "opacity": 0.45,
+   "label": "Hopper funnel / basket adapter (printed)"
+  },
+  {
+   "file": "models/feed_servo.stl",
+   "group": "yaw",
+   "color": "#2f6fde",
+   "opacity": 1.0,
+   "label": "Feed servo SG90"
+  },
+  {
+   "file": "models/rocker.stl",
+   "group": "rocker",
+   "color": "#f2b705",
+   "opacity": 1.0,
+   "label": "Escapement rocker (printed)"
+  },
+  {
+   "file": "models/head_left.stl",
+   "group": "pitch",
+   "color": "#e4572e",
+   "opacity": 1.0,
+   "label": "Head, left half (printed)"
+  },
+  {
+   "file": "models/head_right.stl",
+   "group": "pitch",
+   "color": "#e4572e",
+   "opacity": 0.92,
+   "label": "Head, right half (printed)"
+  },
+  {
+   "file": "models/clamps.stl",
+   "group": "pitch",
+   "color": "#f2b705",
+   "opacity": 1.0,
+   "label": "Motor clamps (printed)"
+  },
+  {
+   "file": "models/motors.stl",
+   "group": "pitch",
+   "color": "#c0c6cf",
+   "opacity": 1.0,
+   "label": "N20 6 V 3000 rpm motors"
+  },
+  {
+   "file": "models/lock_knobs.stl",
+   "group": "pitch",
+   "color": "#202124",
+   "opacity": 1.0,
+   "label": "Elevation lock knobs (printed)"
+  },
+  {
+   "file": "models/hub_top.stl",
+   "group": "wheel_top",
+   "color": "#f5f5f5",
+   "opacity": 1.0,
+   "label": "Wheel hub (printed)"
+  },
+  {
+   "file": "models/tyre_top.stl",
+   "group": "wheel_top",
+   "color": "#151515",
+   "opacity": 1.0,
+   "label": "Wheel tyre (rubber)"
+  },
+  {
+   "file": "models/rim_top.stl",
+   "group": "wheel_top",
+   "color": "#ffd400",
+   "opacity": 1.0,
+   "label": "Wheel rim"
+  },
+  {
+   "file": "models/hub_bot.stl",
+   "group": "wheel_bot",
+   "color": "#f5f5f5",
+   "opacity": 1.0,
+   "label": "Wheel hub (printed)"
+  },
+  {
+   "file": "models/tyre_bot.stl",
+   "group": "wheel_bot",
+   "color": "#151515",
+   "opacity": 1.0,
+   "label": "Wheel tyre (rubber)"
+  },
+  {
+   "file": "models/rim_bot.stl",
+   "group": "wheel_bot",
+   "color": "#ffd400",
+   "opacity": 1.0,
+   "label": "Wheel rim"
+  },
+  {
+   "file": "models/balls.stl",
+   "group": "ball",
+   "color": "#ff8c1a",
+   "opacity": 1.0,
+   "label": "Ping-pong ball"
+  },
+  {
+   "file": "models/poc_base.stl",
+   "group": "base",
+   "color": "#5b6372",
+   "opacity": 1.0,
+   "label": "POC bench plate (printed)"
+  },
+  {
+   "file": "models/poc_board.stl",
+   "group": "base",
+   "color": "#1f7a3a",
+   "opacity": 1.0,
+   "label": "Perfboard 50\u00d770"
+  },
+  {
+   "file": "models/poc_pico.stl",
+   "group": "base",
+   "color": "#2fae5f",
+   "opacity": 1.0,
+   "label": "Raspberry Pi Pico 2 WH"
+  },
+  {
+   "file": "models/poc_driver.stl",
+   "group": "base",
+   "color": "#c0392b",
+   "opacity": 1.0,
+   "label": "DRV8833 motor driver"
+  },
+  {
+   "file": "models/poc_battery.stl",
+   "group": "base",
+   "color": "#1d1d1f",
+   "opacity": 1.0,
+   "label": "4\u00d7AA battery holder"
+  },
+  {
+   "file": "models/poc_switch.stl",
+   "group": "base",
+   "color": "#202124",
+   "opacity": 1.0,
+   "label": "Power switch KCD1"
+  },
+  {
+   "file": "models/loose_board.stl",
+   "group": "base",
+   "color": "#1f7a3a",
+   "opacity": 1.0,
+   "label": "Perfboard 50\u00d770 (loose)"
+  },
+  {
+   "file": "models/loose_pico.stl",
+   "group": "base",
+   "color": "#2fae5f",
+   "opacity": 1.0,
+   "label": "Raspberry Pi Pico 2 WH"
+  },
+  {
+   "file": "models/loose_driver.stl",
+   "group": "base",
+   "color": "#c0392b",
+   "opacity": 1.0,
+   "label": "DRV8833 motor driver"
+  },
+  {
+   "file": "models/loose_battery.stl",
+   "group": "base",
+   "color": "#1d1d1f",
+   "opacity": 1.0,
+   "label": "4\u00d7AA battery holder (loose)"
+  },
+  {
+   "file": "models/loose_switch.stl",
+   "group": "base",
+   "color": "#202124",
+   "opacity": 1.0,
+   "label": "Power switch KCD1 (loose)"
+  }
+ ],
+ "printed": [
+  {
+   "part": "tray",
+   "qty": 1,
+   "notes": "Base box. As exported (floor down). 4 walls, 15 % gyroid. Brim optional.",
+   "stl": "print/stl/tray.stl",
+   "a1": "print/a1/tray.3mf",
+   "orientation": "Base box.",
+   "a1_walls": 4
+  },
+  {
+   "part": "lid",
+   "qty": 1,
+   "notes": "Base lid, printed upside down (bearing boss up). 4 walls, 20 % gyroid.",
+   "stl": "print/stl/lid.stl",
+   "a1": "print/a1/lid.3mf",
+   "orientation": "Base lid, printed upside down (bearing boss up).",
+   "a1_walls": 4
+  },
+  {
+   "part": "spacer_parts",
+   "qty": 1,
+   "notes": "Bearing spacer + 2 inner-race shims (3 rings, one plate). 100 % infill.",
+   "stl": "print/stl/spacer_parts.stl",
+   "a1": "print/a1/spacer_parts.3mf",
+   "orientation": "Bearing spacer + 2 inner-race shims (3 rings, one plate).",
+   "a1_walls": 6
+  },
+  {
+   "part": "coupler",
+   "qty": 1,
+   "notes": "Servo-to-nut coupler. 6 walls, 60 % infill.",
+   "stl": "print/stl/coupler.stl",
+   "a1": "print/a1/coupler.3mf",
+   "orientation": "Servo-to-nut coupler.",
+   "a1_walls": 6
+  },
+  {
+   "part": "turret",
+   "qty": 1,
+   "notes": "Turret plate. 4 walls, 25 % gyroid.",
+   "stl": "print/stl/turret.stl",
+   "a1": "print/a1/turret.3mf",
+   "orientation": "Turret plate.",
+   "a1_walls": 6
+  },
+  {
+   "part": "cheek_left",
+   "qty": 1,
+   "notes": "Yoke cheek, lies on its outer face. 4 walls, 25 % gyroid.",
+   "stl": "print/stl/cheek_left.stl",
+   "a1": "print/a1/cheek_left.3mf",
+   "orientation": "Yoke cheek, lies on its outer face.",
+   "a1_walls": 6
+  },
+  {
+   "part": "cheek_right",
+   "qty": 1,
+   "notes": "Yoke cheek (mirror of the left). 4 walls, 25 % gyroid.",
+   "stl": "print/stl/cheek_right.stl",
+   "a1": "print/a1/cheek_right.3mf",
+   "orientation": "Yoke cheek (mirror of the left).",
+   "a1_walls": 6
+  },
+  {
+   "part": "head_left",
+   "qty": 1,
+   "notes": "Launcher head half, lies on its outer wall. 4 walls, 20 % gyroid.",
+   "stl": "print/stl/head_left.stl",
+   "a1": "print/a1/head_left.3mf",
+   "orientation": "Launcher head half, lies on its outer wall.",
+   "a1_walls": 4
+  },
+  {
+   "part": "head_right",
+   "qty": 1,
+   "notes": "Launcher head half with the motor pockets. 4 walls, 20 % gyroid.",
+   "stl": "print/stl/head_right.stl",
+   "a1": "print/a1/head_right.3mf",
+   "orientation": "Launcher head half with the motor pockets.",
+   "a1_walls": 4
+  },
+  {
+   "part": "motor_clamp",
+   "qty": 2,
+   "notes": "N20 clamp, flange down. 6 walls, 60 % infill.",
+   "stl": "print/stl/motor_clamp.stl",
+   "a1": "print/a1/motor_clamp.3mf",
+   "orientation": "N20 clamp, flange down.",
+   "a1_walls": 6
+  },
+  {
+   "part": "wheel_hub",
+   "qty": 3,
+   "notes": "N20 D-shaft to wheel hub (TT-shaft stub, or LEGO cross with wheel_type = \"lego\"), lies on its side (1 spare). 0.12 mm layers, 100 % infill.",
+   "stl": "print/stl/wheel_hub.stl",
+   "a1": "print/a1/wheel_hub.3mf",
+   "orientation": "N20 D-shaft to wheel hub (TT-shaft stub, or LEGO cross with wheel_type = \"lego\"), lies on its side (1 spare).",
+   "a1_walls": 6
+  },
+  {
+   "part": "feed_tube",
+   "qty": 1,
+   "notes": "Feed tube with ears and servo plate, upright. 4 walls, 20 % gyroid.",
+   "stl": "print/stl/feed_tube.stl",
+   "a1": "print/a1/feed_tube.3mf",
+   "orientation": "Feed tube with ears and servo plate, upright.",
+   "a1_walls": 4
+  },
+  {
+   "part": "rocker",
+   "qty": 1,
+   "notes": "Escapement rocker, flat, horn recess up. 6 walls, 60 % infill.",
+   "stl": "print/stl/rocker.stl",
+   "a1": "print/a1/rocker.3mf",
+   "orientation": "Escapement rocker, flat, horn recess up.",
+   "a1_walls": 6
+  },
+  {
+   "part": "hopper",
+   "qty": 1,
+   "notes": "Basket adapter funnel, printed upside down (collar on the bed). 3 walls, 15 %.",
+   "stl": "print/stl/hopper.stl",
+   "a1": "print/a1/hopper.3mf",
+   "orientation": "Basket adapter funnel, printed upside down (collar on the bed).",
+   "a1_walls": 3
+  },
+  {
+   "part": "knob_pot",
+   "qty": 3,
+   "notes": "Potentiometer knob (6 mm D-shaft). 3 walls, 20 %.",
+   "stl": "print/stl/knob_pot.stl",
+   "a1": "print/a1/knob_pot.3mf",
+   "orientation": "Potentiometer knob (6 mm D-shaft).",
+   "a1_walls": 3
+  },
+  {
+   "part": "knob_lock",
+   "qty": 2,
+   "notes": "Elevation lock knob, press an M4\u00d720 hex bolt in. 4 walls, 40 %.",
+   "stl": "print/stl/knob_lock.stl",
+   "a1": "print/a1/knob_lock.3mf",
+   "orientation": "Elevation lock knob, press an M4\u00d720 hex bolt in.",
+   "a1_walls": 5
+  },
+  {
+   "part": "poc_base",
+   "qty": 1,
+   "notes": "Bench plate for POC test phases 2\u20133, flat. 4 walls, 15 % gyroid.",
+   "stl": "print/stl/poc_base.stl",
+   "a1": "print/a1/poc_base.3mf",
+   "orientation": "Bench plate for POC test phases 2\u20133, flat.",
+   "a1_walls": 6
+  }
+ ]
+}

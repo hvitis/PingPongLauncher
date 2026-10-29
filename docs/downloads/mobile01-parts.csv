@@ -1,0 +1,24 @@
+ID,Part,Specification,Quantity,Evidence,Notes
+M01,Controller,Arduino Mega 2560,1,Source BOM,UNO was the earlier version; Mega is used for IR and sound.
+M02,Motor driver,L293D / Adafruit Motor Shield v1 compatible,1,Source BOM,AFMotor.h interface; not the I²C v2 shield. Verify clone wiring.
+M03,Launch motors,DC motor; model and voltage unspecified,2,Source BOM,Measure stall current before selecting a driver or supply.
+M04,Launch tires,Tamiya 94325 large-diameter sponge tire / wheel set,1,Source BOM,Source names a limited-edition Mini 4WD set; fit and availability unverified.
+M05,Feeder motor,"Plastic DC gearmotor, 1:220",1,Source BOM,Drives the rotary ball-metering disk; no rated voltage given.
+M06,Aiming servo,MG90S metal-gear micro servo,1,Source BOM,Moves the hinge linkage. Verify travel and load before attaching horn.
+M07,Ball detector,Omron SS-5GL microswitch,1,Source BOM,Senses a ball in the feed channel; not a speed sensor.
+M08,Local controls,B10K linear potentiometer + knob,3,Source BOM,"Feed interval, launch speed, oscillation range."
+M09,Remote control,HX1838 receiver module + NEC IR remote,1,Source BOM,Check receiver-module pin order; bare receiver and module differ.
+M10,Sound,"Passive buzzer, 3–5 V",1,Source BOM,Proposed PCB uses an external passive buzzer driver module instead.
+M11,Regulator,LM2596S adjustable buck module,1,Source BOM,Set output before connection. Input must exceed required output.
+M12,Battery cells,18650 cells; source claims 4200 mAh,2,Source BOM,Unverified capacity claim. Pack topology and protection are not established.
+M13,Battery holder,18650 holder,1,Source BOM,Series/parallel wiring not specified; do not infer a charger connection.
+M14,Charger,NYI-0850 single-cell Li-ion charger,1,Source BOM,Listed for individual 3.7 V nominal cells; not a documented 2S charger.
+M15,Prototype board,400-point solderless breadboard,1,Source BOM,Replace with the proposed breakout after bench verification.
+M16,Hopper,Reused chicken bucket,1,Source BOM,Feeds the rotary disk under gravity.
+M17,Structure,Wood strips,2,Source BOM,"Stand, cross feet and hopper cradle; dimensions not published."
+M18,Pivot,Small door hinge,1,Source BOM,Servo linkage steers the launcher assembly.
+M19,Feed tube,Reused kitchen paper tube,1,Source BOM,Guides balls toward the wheels; fit must be measured.
+P01,Control breakout,"80 × 55 mm, 2-layer PCB placement draft",1,Proposed addition,"J1–J7, C1 100 nF, C2 10 µF; unrouted, no fabrication outputs."
+P02,Buzzer interface,"5 V passive buzzer driver module, active-high signal",1,Proposed addition,Input must accept 5 V logic and tone pulses; choose module before routing.
+P03,Bench power,Current-limited motor supply + regulated 5 V servo supply,1,Proposed addition,"Mega powered by USB for initial tests; grounds common, positive rails separate."
+P04,Protection and assembly,"Fuse, disconnect, wire, connectors, guards, fasteners",1,Proposed addition,Size protection and wiring from measured current; quantities depend on build.

@@ -1,0 +1,22 @@
+ID,Name,Specification,Qty,Evidence,Note
+H01,Launch motors,hexTronik DT750 750KV Brushless Outrunner,2,Source description,Twin 3-phase outrunners direct-drive the launch wheels; high torque and speed.
+H02,Speed controllers,HobbyKing YEP 18A (2~4S) SBEC Brushless ESC,2,Source description,18 A continuous brushless ESCs; powered from ATX 12 V high-current rail.
+H03,Launch wheels,"BaneBots 2-7/8"" orange rubber wheels (RB-Ban-91)",2,Source description,40A middle-soft shore durometer elastomer tire grips the 40 mm ball.
+H04,Wheel mounts,"BaneBots 1/2"" hex hub with 4 mm bore",2,Source description,"Couples the DT750 4 mm motor shaft to the BaneBots 1/2"" hex wheel bore."
+H05,Launch barrel & mounts,"3D-printed barrel and motor tabs (canon v54, motor_mount_tab_ext v58)",1,Source CAD,Autodesk Fusion 360 assembly ASM v145; holds twin motors with wheel cutouts.
+H06,Hopper container,Translucent plastic bucket (cup v2),1,Source video,Bulk ball container mounted above the rotary agitation and feed throat.
+H07,Feeder agitator servo,TowerPro MG995 / MG996 metal-gear servo,1,Source description,Rotates the bottom agitator disk (pusher_with_servo v12) to prevent bridging.
+H08,Feeder gate servo,TowerPro MG995 / MG996 metal-gear servo,1,Source description,Actuates the escapement gate (feed_base_with_servo v52) to meter balls.
+H09,Feed throat,3D-printed curved feed tube (feed_curve v105),1,Source CAD,Curves balls down by gravity from the hopper bottom into the launch barrel.
+H10,Turntable bearing,120 mm Aluminum Lazy Susan rotating plate (Amazon B07F3VHGKX),1,Source description,Circular ball-bearing ring supports robot weight and enables 360° pan rotation.
+H11,Pan / yaw servo,TowerPro MG995 / MG996 metal-gear servo,1,Source description,Mounted to vertical base bracket (base_leg v15); sweeps launcher horizontally.
+H12,Tilt / elevation servo,TowerPro MG995 / MG996 metal-gear servo,1,Source description,Acts on circular quadrant horn (hand_servo v64) to control pitch angle.
+H13,Controller,Arduino Mega 2560 Card,1,Source description,Generates 6 independent servo/ESC PWM signals and handles BLE hardware serial.
+H14,Bluetooth module,HM-10 Bluetooth Low Energy (BLE 4.0) module,1,Source description,Enables wireless command link from custom iOS iPhone app (Ping Robot).
+H15,Power supply,250W PC ATX computer power supply,1,Source description,Provides heavy 12 V rail for brushless ESCs and 5 V rail for the 4 servos.
+H16,Base enclosure,Custom wooden box (box v5),1,Source description,"Houses ATX PSU, Arduino Mega, ESCs, wiring harness, and turntable mount."
+H17,Power switch,Green illuminated panel pushbutton switch,1,Source video,Top deck switch pulls ATX PS_ON green wire to ground to turn on DC rails.
+P01,Power & servo breakout,"85 × 60 mm, 2-layer distribution PCB placement draft",1,Proposed addition,"J1–J9, ATX Molex input, C1 1000 µF, C2 470 µF, C3 100 nF; unrouted draft."
+P02,BLE level divider,1 kΩ and 2 kΩ 1/4W metal film resistors,2,Proposed addition,Protects HM-10 3.3 V RX input from Arduino Mega 5 V TX1 output signal.
+P03,Rail filter capacitors,"1000 µF 16V, 470 µF 6.3V electrolytic, 100 nF ceramic",3,Proposed addition,Smooths 12 V brushless ESC switching noise and 5 V servo stall surges.
+P04,Wiring harness & terminals,"10-pin Mega harness, Molex connector, 3-pin headers, 3.5 mm bullets",1,Proposed addition,Organized clean wiring between wooden base electronics and moving gimbal.

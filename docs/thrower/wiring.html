@@ -1,0 +1,26 @@
+<div id="w3d">
+  <section id="stage3">
+    <canvas id="view3" aria-label="3D view of the phase 1 wiring"></canvas>
+    <div id="labels"></div>
+    <div id="tip3" hidden></div>
+    <div id="bar3">
+      <button id="v-all">Whole rig</button>
+      <button id="v-board">Board close-up</button>
+      <label><input type="checkbox" id="names" checked> Part names</label>
+    </div>
+  </section>
+  <aside id="side3">
+    <a class="back" href="#thrower-workbench" data-wiring-close>← Back to the viewer</a>
+    <h1>Phase 1 wiring in 3D</h1>
+    <p class="lead">Each coloured cable joins exactly the two points it touches. Click a step to light up only its cables, or click one cable to follow it alone. Drag to turn the view, scroll to zoom, and hover anything to see what it is.</p>
+    <p class="note3">The colours are only a guide to tell the cables apart. Any colour works, but keep red for + and black for −. Phase 2 uses exactly the same circuit, screwed down on the bench plate.</p>
+    <p class="note3">On the perfboard, a cable drawn to a pin or leg goes into the hole right next to it. Underneath, bend its bare end against that pin and solder the two together.</p>
+    <div class="nav3">
+      <button id="prev" aria-label="Previous step">←</button>
+      <span id="count"></span>
+      <button id="next" aria-label="Next step">→</button>
+      <button id="all">All cables</button>
+    </div>
+    <ol id="wsteps"></ol>
+  </aside>
+</div>
